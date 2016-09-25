@@ -3,20 +3,44 @@
 
 
     
-    
-    
   <url>
-    <loc>http://yoursite.com/2016/09/14/hello-world/</loc>
-    <lastmod>2016-09-14T12:23:51.018Z</lastmod>
+    <loc>http://yoursite.com/2016/09/25/my-first-blog/</loc>
+    <lastmod>2016-09-25T14:20:43.901Z</lastmod>
     <data>
         <display>
-        <title>Hello World</title>
-        <pubTime>2016-09-14T12:23:51.018Z</pubTime>
+        <title>my first blog</title>
+        <pubTime>2016-09-25T14:19:05.000Z</pubTime>
         
+        <tag>test</tag>
+         
          
            
         </display>
     </data>
     </url>
 
+    
+  <url>
+    <loc>http://yoursite.com/2016/09/14/hello-world/</loc>
+    <lastmod>2016-09-25T14:16:13.325Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2016-09-14T12:23:51.018Z</pubTime>
+        
+        <tag>text</tag>
+         
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="Thinking" url="http://yoursite.com/categories/Thinking/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
 </urlset>
