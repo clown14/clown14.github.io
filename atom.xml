@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-08T08:23:34.745Z</updated>
+  <updated>2017-01-08T08:47:15.466Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,15 +20,13 @@
     <link href="http://yoursite.com/2017/01/08/1-8/"/>
     <id>http://yoursite.com/2017/01/08/1-8/</id>
     <published>2017-01-08T08:20:11.000Z</published>
-    <updated>2017-01-08T08:23:34.745Z</updated>
+    <updated>2017-01-08T08:47:15.466Z</updated>
     
-    <content type="html"><![CDATA[<p>#插入排序</p>
-]]></content>
+    <content type="html"><![CDATA[<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;#插入排序&lt;/p&gt;
-
+      &lt;h1 id=&quot;插入排序&quot;&gt;&lt;a href=&quot;#插入排序&quot; class=&quot;headerlink&quot; title=&quot;插入排序&quot;&gt;&lt;/a&gt;插入排序&lt;/h1&gt;
     
     </summary>
     
