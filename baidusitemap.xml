@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/10/08/hexo-git%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2017-01-08T09:17:29.888Z</lastmod>
+    <data>
+        <display>
+        <title>hexo+git部署博客</title>
+        <pubTime>2016-10-08T14:13:57.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="个人博客" url="http://yoursite.com/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/01/08/1-8/</loc>
     <lastmod>2017-01-08T08:47:15.466Z</lastmod>
     <data>
