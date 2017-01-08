@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-25T14:20:43.901Z</updated>
+  <updated>2017-01-08T08:23:34.745Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>算法导论（一）</title>
+    <link href="http://yoursite.com/2017/01/08/1-8/"/>
+    <id>http://yoursite.com/2017/01/08/1-8/</id>
+    <published>2017-01-08T08:20:11.000Z</published>
+    <updated>2017-01-08T08:23:34.745Z</updated>
+    
+    <content type="html"><![CDATA[<p>#插入排序</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#插入排序&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>my first blog</title>
