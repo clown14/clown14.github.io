@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-09T10:04:43.141Z</updated>
+  <updated>2017-01-09T10:08:42.566Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,15 +20,15 @@
     <link href="http://yoursite.com/2017/01/08/1-8/"/>
     <id>http://yoursite.com/2017/01/08/1-8/</id>
     <published>2017-01-08T08:20:11.000Z</published>
-    <updated>2017-01-09T10:04:43.141Z</updated>
+    <updated>2017-01-09T10:08:42.566Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Insertion-Sort-amp-amp-Merge-Sort-伪码"><a href="#Insertion-Sort-amp-amp-Merge-Sort-伪码" class="headerlink" title="Insertion-Sort &amp;&amp; Merge-Sort(伪码)"></a>Insertion-Sort &amp;&amp; Merge-Sort(伪码)</h1><a id="more"></a>
-<h2 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion-Sort"></a>Insertion-Sort</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line"><span class="keyword">for</span>(j=2; j&lt;A.length; j++)</div><div class="line">&#123;</div><div class="line">  key= A[j]</div><div class="line">  i=j-1</div><div class="line">  <span class="keyword">while</span>(i&gt;0 &amp;&amp; A[i]&gt;key)</div><div class="line">  &#123;   </div><div class="line">  	A[i+1]= A[i]</div><div class="line">      i=i-1   </div><div class="line">  &#125;</div><div class="line">  A[i+1]=key</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge-Sort"></a>Merge-Sort</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line">q=1/2A.length</div><div class="line">n1=q,n2=A.length-q+1</div><div class="line"><span class="keyword">for</span>(i=0; i&lt;n1; i++)</div><div class="line">&#123;</div><div class="line">  L[i]=A[i];</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(j=0; j&lt;n2; j++)</div><div class="line">&#123;</div><div class="line">  R[j]=A[j+q];</div><div class="line">&#125;</div><div class="line">L[n1+1]= ∞</div><div class="line">R[n1+1]= ∞ </div><div class="line">i=j=1</div><div class="line"><span class="keyword">for</span>(k=0; k&lt;A.length; k++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(L[i]&lt;=R[j])</div><div class="line">  &#123;</div><div class="line">      A[k]=L[i]</div><div class="line">      i=i+1</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">      A[k]=R[j]</div><div class="line">      j=j+1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>Insertion-Sort &amp;&amp; Merge-Sort(伪码)<br><a id="more"></a></p>
+<h3 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion-Sort"></a>Insertion-Sort</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line"><span class="keyword">for</span>(j=2; j&lt;A.length; j++)</div><div class="line">&#123;</div><div class="line">  key= A[j]</div><div class="line">  i=j-1</div><div class="line">  <span class="keyword">while</span>(i&gt;0 &amp;&amp; A[i]&gt;key)</div><div class="line">  &#123;   </div><div class="line">  	A[i+1]= A[i]</div><div class="line">      i=i-1   </div><div class="line">  &#125;</div><div class="line">  A[i+1]=key</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge-Sort"></a>Merge-Sort</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line">q=1/2A.length</div><div class="line">n1=q,n2=A.length-q+1</div><div class="line"><span class="keyword">for</span>(i=0; i&lt;n1; i++)</div><div class="line">&#123;</div><div class="line">  L[i]=A[i];</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(j=0; j&lt;n2; j++)</div><div class="line">&#123;</div><div class="line">  R[j]=A[j+q];</div><div class="line">&#125;</div><div class="line">L[n1+1]= ∞</div><div class="line">R[n1+1]= ∞ </div><div class="line">i=j=1</div><div class="line"><span class="keyword">for</span>(k=0; k&lt;A.length; k++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(L[i]&lt;=R[j])</div><div class="line">  &#123;</div><div class="line">      A[k]=L[i]</div><div class="line">      i=i+1</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">      A[k]=R[j]</div><div class="line">      j=j+1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Insertion-Sort-amp-amp-Merge-Sort-伪码&quot;&gt;&lt;a href=&quot;#Insertion-Sort-amp-amp-Merge-Sort-伪码&quot; class=&quot;headerlink&quot; title=&quot;Insertion-Sort &amp;amp;&amp;amp; Merge-Sort(伪码)&quot;&gt;&lt;/a&gt;Insertion-Sort &amp;amp;&amp;amp; Merge-Sort(伪码)&lt;/h1&gt;
+      &lt;p&gt;Insertion-Sort &amp;amp;&amp;amp; Merge-Sort(伪码)&lt;br&gt;
     
     </summary>
     
@@ -44,9 +44,10 @@
     <link href="http://yoursite.com/2016/10/08/hexo-git%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2016/10/08/hexo-git部署博客/</id>
     <published>2016-10-08T14:13:57.000Z</published>
-    <updated>2017-01-09T09:59:12.993Z</updated>
+    <updated>2017-01-09T10:07:26.684Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="简单介绍一下我搭建这个博客的心得。"><a href="#简单介绍一下我搭建这个博客的心得。" class="headerlink" title="简单介绍一下我搭建这个博客的心得。"></a>简单介绍一下我搭建这个博客的心得。</h2><a id="more"></a>
+    <content type="html"><![CDATA[<p>简单介绍一下我搭建这个博客的心得。</p>
+<a id="more"></a>
 <h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先，我是在windows上搭建的博客(才不是没钱买mac)。<br>安装Git,Node.js具体安装百度即可。<br>安装上面两个之后就可以利用npm命令来安装hexo，执行下面这条命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo -g</div></pre></td></tr></table></figure>
 <h3 id="初始化生成博客"><a href="#初始化生成博客" class="headerlink" title="初始化生成博客"></a>初始化生成博客</h3><p>初始化Hexo博客只需进入博客目录，执行下面这条命令：</p>
@@ -70,7 +71,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;简单介绍一下我搭建这个博客的心得。&quot;&gt;&lt;a href=&quot;#简单介绍一下我搭建这个博客的心得。&quot; class=&quot;headerlink&quot; title=&quot;简单介绍一下我搭建这个博客的心得。&quot;&gt;&lt;/a&gt;简单介绍一下我搭建这个博客的心得。&lt;/h2&gt;
+      &lt;p&gt;简单介绍一下我搭建这个博客的心得。&lt;/p&gt;
     
     </summary>
     
