@@ -267,6 +267,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -297,9 +316,12 @@
 
       
         
-          
-            <h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1>
-          
+          <h1 id="Insertion-Sort-amp-amp-Merge-Sort-伪码"><a href="#Insertion-Sort-amp-amp-Merge-Sort-伪码" class="headerlink" title="Insertion-Sort &amp;&amp; Merge-Sort(伪码)"></a>Insertion-Sort &amp;&amp; Merge-Sort(伪码)</h1>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/08/1-8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -416,28 +438,12 @@
 
       
         
-          
-            <p>简单介绍一下我搭建这个博客的心得。<br>一开始我是大体是照着这个<a href="http://jingyan.baidu.com/article/d8072ac47aca0fec95cefd2d.html" target="_blank" rel="external">百度经验</a>搭建的。</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先，我是在windows上搭建的博客(才不是没钱买mac)。<br>安装Git,Node.js具体安装百度即可。<br>安装上面两个之后就可以利用npm命令来安装hexo，执行下面这条命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo -g</div></pre></td></tr></table></figure>
-<h3 id="初始化生成博客"><a href="#初始化生成博客" class="headerlink" title="初始化生成博客"></a>初始化生成博客</h3><p>初始化Hexo博客只需进入博客目录，执行下面这条命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
-<p>初始化博客之后博客目录下会产生一些配置文件和模板文件，现在就要利用这些模板文件来生成我们的静态博客文件，通过下面这条命令就可以生成我们的博客。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  hexo generate</div></pre></td></tr></table></figure>
-<h3 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h3><p>生成博客之后我们就可以开始在本地部署我们的博客，执行下面这条命令。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   hexo server</div></pre></td></tr></table></figure>
-<p>现在打开浏览器访问<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 就可以看到我们的博客了。</p>
-<h3 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h3><p>通过上面这些步骤我们只是在本地搭建起了博客，要让别人看到还需要把它部署到GitHub上。<br>首先，当然是需要申请一个GitHub账号，然后新建一个Repository，接着在命名的时候需要注意，GitHubPage的名字必须用户名.github.com或者用户名.github.io。<br>创建完Repository之后，我们要配置Hexo的github地址然后才可以把我们的博客部署到GitHub上面。在博客目录底下打开_congig.yml，这就是Hexo的配置文件。找到下面这段代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$   <span class="comment"># Deployment</span></div><div class="line">    <span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line">    deploy:</div><div class="line">    <span class="built_in">type</span>:</div></pre></td></tr></table></figure>
-<p>把上面的内容替换成你刚才创建的Repository地址，如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$    <span class="comment"># Deployment</span></div><div class="line">    <span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line">    deploy:</div><div class="line">    <span class="built_in">type</span>: github</div><div class="line">    repository: https://github.com/用户名/用户名.github.io.git</div><div class="line">    branch: master</div></pre></td></tr></table></figure>
-<p>创建Repository并且修改配置文件之后我们就可以把我们的博客部署到GitHub上面了，通过下面这个命令，过程中需要输入Git账号和密码:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$     hexo deploy</div></pre></td></tr></table></figure>
-<p>现在打开浏览器访问<a href="http://用户名.github.com" target="_blank" rel="external">http://用户名.github.com</a> 或者 <a href="http://用户名.github.io" target="_blank" rel="external">http://用户名.github.io</a> ，部署之后大约十分钟就可以看到博客效果了。</p>
-<p>关于Git,具体可以看廖雪峰的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">教程</a>。这里有一点说一下，安装完成后要配置username，usermail，注意设置完是没有任何显示的，我一开始以为是自己的问题，其实并不是。</p>
-<p>安装完博客之后开始考虑优化，可以参考<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">这里</a>，只要到Hexo目录下从Git克隆代码，具体操作参照N<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">ext使用手册</a></p>
-
-          
+          <h2 id="简单介绍一下我搭建这个博客的心得。"><a href="#简单介绍一下我搭建这个博客的心得。" class="headerlink" title="简单介绍一下我搭建这个博客的心得。"></a>简单介绍一下我搭建这个博客的心得。</h2>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/08/hexo-git部署博客/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -486,7 +492,7 @@
               
                 
                 <a class="post-title-link" href="/2016/09/25/my-first-blog/" itemprop="url">
-                  my first blog
+                  My first blog
                 </a>
               
             
@@ -536,7 +542,7 @@
       
         
           
-            <h1 id="my-first-blog"><a href="#my-first-blog" class="headerlink" title="my first blog."></a>my first blog.</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h2>
+            <h1 id="My-first-blog"><a href="#My-first-blog" class="headerlink" title="My first blog."></a>My first blog.</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h2>
           
         
       
@@ -605,25 +611,6 @@
           </span>
 
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">Thinking</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
 
           
             
@@ -654,18 +641,12 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/14/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -726,8 +707,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
-               alt="cysun" />
-          <p class="site-author-name" itemprop="name">cysun</p>
+               alt="孙晨阳" />
+          <p class="site-author-name" itemprop="name">孙晨阳</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
@@ -741,7 +722,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -750,7 +731,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -849,7 +830,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">cysun</span>
+  <span class="author" itemprop="copyrightHolder">孙晨阳</span>
 </div>
 
 <div class="powered-by">

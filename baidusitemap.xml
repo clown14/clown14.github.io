@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/01/08/1-8/</loc>
+    <lastmod>2017-01-09T10:04:43.141Z</lastmod>
+    <data>
+        <display>
+        <title>算法导论（一）</title>
+        <pubTime>2017-01-08T08:20:11.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/10/08/hexo-git%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2017-01-08T09:20:48.635Z</lastmod>
+    <lastmod>2017-01-09T09:59:12.993Z</lastmod>
     <data>
         <display>
         <title>hexo+git部署博客</title>
@@ -26,26 +46,11 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/01/08/1-8/</loc>
-    <lastmod>2017-01-08T08:47:15.466Z</lastmod>
-    <data>
-        <display>
-        <title>算法导论（一）</title>
-        <pubTime>2017-01-08T08:20:11.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://yoursite.com/2016/09/25/my-first-blog/</loc>
-    <lastmod>2016-09-25T14:20:43.901Z</lastmod>
+    <lastmod>2017-01-09T09:04:24.618Z</lastmod>
     <data>
         <display>
-        <title>my first blog</title>
+        <title>My first blog</title>
         <pubTime>2016-09-25T14:19:05.000Z</pubTime>
         
         <tag>test</tag>
@@ -59,21 +64,16 @@
     
   <url>
     <loc>http://yoursite.com/2016/09/14/hello-world/</loc>
-    <lastmod>2016-09-25T14:16:13.325Z</lastmod>
+    <lastmod>2017-01-09T09:03:54.898Z</lastmod>
     <data>
         <display>
         <title>Hello World</title>
         <pubTime>2016-09-14T12:23:51.018Z</pubTime>
         
-        <tag>text</tag>
-         
-        <tag>Hexo</tag>
+        <tag>hexo</tag>
          
          
            
-             
-              <breadCrumb title="Thinking" url="http://yoursite.com/categories/Thinking/"/>
-          
         </display>
     </data>
     </url>
