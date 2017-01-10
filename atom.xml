@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-09T10:08:42.566Z</updated>
+  <updated>2017-01-10T10:16:04.522Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,19 +16,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>算法导论（一）</title>
-    <link href="http://yoursite.com/2017/01/08/1-8/"/>
-    <id>http://yoursite.com/2017/01/08/1-8/</id>
-    <published>2017-01-08T08:20:11.000Z</published>
-    <updated>2017-01-09T10:08:42.566Z</updated>
+    <title>算法导论笔记（二）</title>
+    <link href="http://yoursite.com/2017/01/10/%E7%AE%97%E6%B3%952/"/>
+    <id>http://yoursite.com/2017/01/10/算法2/</id>
+    <published>2017-01-10T09:49:28.000Z</published>
+    <updated>2017-01-10T10:16:04.522Z</updated>
     
-    <content type="html"><![CDATA[<p>Insertion-Sort &amp;&amp; Merge-Sort(伪码)<br><a id="more"></a></p>
-<h3 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion-Sort"></a>Insertion-Sort</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line"><span class="keyword">for</span>(j=2; j&lt;A.length; j++)</div><div class="line">&#123;</div><div class="line">  key= A[j]</div><div class="line">  i=j-1</div><div class="line">  <span class="keyword">while</span>(i&gt;0 &amp;&amp; A[i]&gt;key)</div><div class="line">  &#123;   </div><div class="line">  	A[i+1]= A[i]</div><div class="line">      i=i-1   </div><div class="line">  &#125;</div><div class="line">  A[i+1]=key</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge-Sort"></a>Merge-Sort</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line">q=1/2A.length</div><div class="line">n1=q,n2=A.length-q+1</div><div class="line"><span class="keyword">for</span>(i=0; i&lt;n1; i++)</div><div class="line">&#123;</div><div class="line">  L[i]=A[i];</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(j=0; j&lt;n2; j++)</div><div class="line">&#123;</div><div class="line">  R[j]=A[j+q];</div><div class="line">&#125;</div><div class="line">L[n1+1]= ∞</div><div class="line">R[n1+1]= ∞ </div><div class="line">i=j=1</div><div class="line"><span class="keyword">for</span>(k=0; k&lt;A.length; k++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(L[i]&lt;=R[j])</div><div class="line">  &#123;</div><div class="line">      A[k]=L[i]</div><div class="line">      i=i+1</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">      A[k]=R[j]</div><div class="line">      j=j+1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>Find-Maxing-Crossing-Subarray &amp;&amp; Min-HEAPIFY<br><a id="more"></a></p>
+<h3 id="Find-Maxing-Crossing-Subarray（最大子数组）"><a href="#Find-Maxing-Crossing-Subarray（最大子数组）" class="headerlink" title="Find-Maxing-Crossing-Subarray（最大子数组）"></a>Find-Maxing-Crossing-Subarray（最大子数组）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">A(low,mid,high)</div><div class="line">leftsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(i=mid; i&gt;low; i--)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[i]</div><div class="line">  <span class="keyword">if</span>(sum&gt;leftsum)</div><div class="line">  &#123;</div><div class="line">    leftsum=sum</div><div class="line">    maxleft=i</div><div class="line">  &#125;	</div><div class="line">&#125; </div><div class="line">rightsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(j=mid+1; j&lt;high; j++)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[j]</div><div class="line">  <span class="keyword">if</span>(sum&gt;rightsum)</div><div class="line">  &#123;</div><div class="line">    rightsum=sum</div><div class="line">    maxright=j</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Min-HEAPIFY（最小堆）"><a href="#Min-HEAPIFY（最小堆）" class="headerlink" title="Min-HEAPIFY（最小堆）"></a>Min-HEAPIFY（最小堆）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">M<span class="keyword">in</span>-HEAPIFY(A,i)</div><div class="line">l=LEFT(i)</div><div class="line">r=RIGHT(i)</div><div class="line"><span class="keyword">if</span>(l&lt;=A.heapsize &amp;&amp; A[l]&lt;A[i])</div><div class="line">&#123;</div><div class="line">  smallest=l</div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  smallest=i</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(r&lt;=A.heapsize &amp;&amp; A[r]&lt;A[smallest])</div><div class="line">&#123;</div><div class="line">  smallest=r</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(smallest!=i)</div><div class="line">&#123;</div><div class="line">  exchange A[i] with A[smallest]</div><div class="line">  M<span class="keyword">in</span>-HEAPIFY(A,smallest)</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Insertion-Sort &amp;amp;&amp;amp; Merge-Sort(伪码)&lt;br&gt;
+      &lt;p&gt;Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-HEAPIFY&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法导论笔记（一）</title>
+    <link href="http://yoursite.com/2017/01/08/%E7%AE%97%E6%B3%951/"/>
+    <id>http://yoursite.com/2017/01/08/算法1/</id>
+    <published>2017-01-08T08:20:11.000Z</published>
+    <updated>2017-01-10T09:50:44.366Z</updated>
+    
+    <content type="html"><![CDATA[<p>Insertion-Sort &amp;&amp; Merge-Sort<br><a id="more"></a></p>
+<h3 id="Insertion-Sort（插入）"><a href="#Insertion-Sort（插入）" class="headerlink" title="Insertion-Sort（插入）"></a>Insertion-Sort（插入）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line"><span class="keyword">for</span>(j=2; j&lt;A.length; j++)</div><div class="line">&#123;</div><div class="line">  key= A[j]</div><div class="line">  i=j-1</div><div class="line">  <span class="keyword">while</span>(i&gt;0 &amp;&amp; A[i]&gt;key)</div><div class="line">  &#123;   </div><div class="line">  	A[i+1]= A[i]</div><div class="line">      i=i-1   </div><div class="line">  &#125;</div><div class="line">  A[i+1]=key</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Merge-Sort（分治3）"><a href="#Merge-Sort（分治3）" class="headerlink" title="Merge-Sort（分治3）"></a>Merge-Sort（分治3）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line">q=1/2A.length</div><div class="line">n1=q,n2=A.length-q+1</div><div class="line"><span class="keyword">for</span>(i=0; i&lt;n1; i++)</div><div class="line">&#123;</div><div class="line">  L[i]=A[i];</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(j=0; j&lt;n2; j++)</div><div class="line">&#123;</div><div class="line">  R[j]=A[j+q];</div><div class="line">&#125;</div><div class="line">L[n1+1]= ∞</div><div class="line">R[n1+1]= ∞ </div><div class="line">i=j=1</div><div class="line"><span class="keyword">for</span>(k=0; k&lt;A.length; k++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(L[i]&lt;=R[j])</div><div class="line">  &#123;</div><div class="line">      A[k]=L[i]</div><div class="line">      i=i+1</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">      A[k]=R[j]</div><div class="line">      j=j+1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Insertion-Sort &amp;amp;&amp;amp; Merge-Sort&lt;br&gt;
     
     </summary>
     
