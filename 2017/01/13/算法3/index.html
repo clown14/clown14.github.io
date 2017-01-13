@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -86,12 +86,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Onion'blog">
-<meta property="og:url" content="http://yoursite.com/tags/test/index.html">
+<meta name="description" content="Quick-Sort &amp;amp;&amp;amp; Stack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论笔记（三）">
+<meta property="og:url" content="http://yoursite.com/2017/01/13/算法3/index.html">
 <meta property="og:site_name" content="Onion'blog">
+<meta property="og:description" content="Quick-Sort &amp;amp;&amp;amp; Stack">
+<meta property="og:updated_time" content="2017-01-13T08:24:30.576Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Onion'blog">
+<meta name="twitter:title" content="算法导论笔记（三）">
+<meta name="twitter:description" content="Quick-Sort &amp;amp;&amp;amp; Stack">
 
 
 
@@ -112,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/test/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/13/算法3/"/>
 
-  <title> 标签: test | Onion'blog </title>
+  <title> 算法导论笔记（三） | Onion'blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -135,7 +139,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -223,46 +227,168 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        test
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                算法导论笔记（三）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-13T16:02:10+08:00" content="2017-01-13">
+              2017-01-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/13/算法3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/13/算法3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>Quick-Sort &amp;&amp; Stack<br><a id="more"></a></p>
+<h3 id="Quick-Sort（快速）"><a href="#Quick-Sort（快速）" class="headerlink" title="Quick-Sort（快速）"></a>Quick-Sort（快速）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">PARTITION(A,p,r)</div><div class="line">x=A[r]</div><div class="line">r=p-1</div><div class="line"><span class="keyword">for</span>(j=p; j&lt;r; j++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(A[j]&lt;=x)</div><div class="line">  &#123;</div><div class="line">    i++</div><div class="line">    exchange A[i] with A[j]</div><div class="line">  &#125;	</div><div class="line">&#125; </div><div class="line">exchange A[i+1] with A[r]</div><div class="line"><span class="built_in">return</span> i+1</div></pre></td></tr></table></figure>
+<h3 id="Stack（栈）"><a href="#Stack（栈）" class="headerlink" title="Stack（栈）"></a>Stack（栈）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Stack-Empty(s) (置空)</div><div class="line"><span class="keyword">if</span>(s.top==0)</div><div class="line">&#123;</div><div class="line">  <span class="built_in">return</span> True</div><div class="line">&#125;<span class="keyword">else</span> </div><div class="line"><span class="built_in">return</span> False</div><div class="line"></div><div class="line"></div><div class="line">Push(s,x) (进栈)</div><div class="line">s[s.top++]=x</div><div class="line"></div><div class="line"></div><div class="line">Pop(s) (出栈)</div><div class="line"><span class="keyword">if</span>(Stack-Empty(s))</div><div class="line">&#123;</div><div class="line">  error <span class="string">"underflow"</span></div><div class="line">&#125;<span class="keyword">else</span> </div><div class="line">s.top--</div><div class="line"><span class="built_in">return</span> s.[s.top++]</div></pre></td></tr></table></figure>
+      
+    </div>
 
-      <h1 class="post-title">
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/09/25/my-first-blog/" itemprop="url">
-              
-                <span itemprop="name">My first blog</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-25T22:19:05+08:00"
-              content="2016-09-25" >
-          09-25
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/10/算法2/" rel="next" title="算法导论笔记（二）">
+                <i class="fa fa-chevron-left"></i> 算法导论笔记（二）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/01/13/算法3/"
+     data-title="算法导论笔记（三）"
+     data-content=""
+     data-url="http://yoursite.com/2017/01/13/算法3/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -270,6 +396,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/13/算法3/"
+           data-title="算法导论笔记（三）" data-url="http://yoursite.com/2017/01/13/算法3/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -289,8 +423,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -399,6 +542,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Quick-Sort（快速）"><span class="nav-number">1.</span> <span class="nav-text">Quick-Sort（快速）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stack（栈）"><span class="nav-number">2.</span> <span class="nav-text">Stack（栈）</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -494,6 +648,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

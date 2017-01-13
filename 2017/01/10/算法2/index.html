@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-HEAPIFY">
+<meta name="description" content="Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-Heapify">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法导论笔记（二）">
 <meta property="og:url" content="http://yoursite.com/2017/01/10/算法2/index.html">
 <meta property="og:site_name" content="Onion'blog">
-<meta property="og:description" content="Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-HEAPIFY">
-<meta property="og:updated_time" content="2017-01-10T10:16:04.522Z">
+<meta property="og:description" content="Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-Heapify">
+<meta property="og:updated_time" content="2017-01-13T08:51:34.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法导论笔记（二）">
-<meta name="twitter:description" content="Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-HEAPIFY">
+<meta name="twitter:description" content="Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-Heapify">
 
 
 
@@ -314,9 +314,9 @@
       
 
       
-        <p>Find-Maxing-Crossing-Subarray &amp;&amp; Min-HEAPIFY<br><a id="more"></a></p>
+        <p>Find-Maxing-Crossing-Subarray &amp;&amp; Min-Heapify<br><a id="more"></a></p>
 <h3 id="Find-Maxing-Crossing-Subarray（最大子数组）"><a href="#Find-Maxing-Crossing-Subarray（最大子数组）" class="headerlink" title="Find-Maxing-Crossing-Subarray（最大子数组）"></a>Find-Maxing-Crossing-Subarray（最大子数组）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">A(low,mid,high)</div><div class="line">leftsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(i=mid; i&gt;low; i--)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[i]</div><div class="line">  <span class="keyword">if</span>(sum&gt;leftsum)</div><div class="line">  &#123;</div><div class="line">    leftsum=sum</div><div class="line">    maxleft=i</div><div class="line">  &#125;	</div><div class="line">&#125; </div><div class="line">rightsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(j=mid+1; j&lt;high; j++)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[j]</div><div class="line">  <span class="keyword">if</span>(sum&gt;rightsum)</div><div class="line">  &#123;</div><div class="line">    rightsum=sum</div><div class="line">    maxright=j</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Min-HEAPIFY（最小堆）"><a href="#Min-HEAPIFY（最小堆）" class="headerlink" title="Min-HEAPIFY（最小堆）"></a>Min-HEAPIFY（最小堆）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">M<span class="keyword">in</span>-HEAPIFY(A,i)</div><div class="line">l=LEFT(i)</div><div class="line">r=RIGHT(i)</div><div class="line"><span class="keyword">if</span>(l&lt;=A.heapsize &amp;&amp; A[l]&lt;A[i])</div><div class="line">&#123;</div><div class="line">  smallest=l</div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  smallest=i</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(r&lt;=A.heapsize &amp;&amp; A[r]&lt;A[smallest])</div><div class="line">&#123;</div><div class="line">  smallest=r</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(smallest!=i)</div><div class="line">&#123;</div><div class="line">  exchange A[i] with A[smallest]</div><div class="line">  M<span class="keyword">in</span>-HEAPIFY(A,smallest)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Min-Heapify（最小堆）"><a href="#Min-Heapify（最小堆）" class="headerlink" title="Min-Heapify（最小堆）"></a>Min-Heapify（最小堆）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">M<span class="keyword">in</span>-HEAPIFY(A,i)</div><div class="line">l=LEFT(i)</div><div class="line">r=RIGHT(i)</div><div class="line"><span class="keyword">if</span>(l&lt;=A.heapsize &amp;&amp; A[l]&lt;A[i])</div><div class="line">&#123;</div><div class="line">  smallest=l</div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  smallest=i</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(r&lt;=A.heapsize &amp;&amp; A[r]&lt;A[smallest])</div><div class="line">&#123;</div><div class="line">  smallest=r</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(smallest!=i)</div><div class="line">&#123;</div><div class="line">  exchange A[i] with A[smallest]</div><div class="line">  M<span class="keyword">in</span>-HEAPIFY(A,smallest)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -354,6 +354,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/13/算法3/" rel="prev" title="算法导论笔记（三）">
+                算法导论笔记（三） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -444,7 +448,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -548,7 +552,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-Maxing-Crossing-Subarray（最大子数组）"><span class="nav-number">1.</span> <span class="nav-text">Find-Maxing-Crossing-Subarray（最大子数组）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Min-HEAPIFY（最小堆）"><span class="nav-number">2.</span> <span class="nav-text">Min-HEAPIFY（最小堆）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-Maxing-Crossing-Subarray（最大子数组）"><span class="nav-number">1.</span> <span class="nav-text">Find-Maxing-Crossing-Subarray（最大子数组）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Min-Heapify（最小堆）"><span class="nav-number">2.</span> <span class="nav-text">Min-Heapify（最小堆）</span></a></li></ol></div>
             
           </div>
         </section>

@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/08/算法1/index.html">
 <meta property="og:site_name" content="Onion'blog">
 <meta property="og:description" content="Insertion-Sort &amp;amp;&amp;amp; Merge-Sort">
-<meta property="og:updated_time" content="2017-01-10T09:50:44.366Z">
+<meta property="og:updated_time" content="2017-01-13T08:03:56.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法导论笔记（一）">
 <meta name="twitter:description" content="Insertion-Sort &amp;amp;&amp;amp; Merge-Sort">
@@ -316,7 +316,7 @@
       
         <p>Insertion-Sort &amp;&amp; Merge-Sort<br><a id="more"></a></p>
 <h3 id="Insertion-Sort（插入）"><a href="#Insertion-Sort（插入）" class="headerlink" title="Insertion-Sort（插入）"></a>Insertion-Sort（插入）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line"><span class="keyword">for</span>(j=2; j&lt;A.length; j++)</div><div class="line">&#123;</div><div class="line">  key= A[j]</div><div class="line">  i=j-1</div><div class="line">  <span class="keyword">while</span>(i&gt;0 &amp;&amp; A[i]&gt;key)</div><div class="line">  &#123;   </div><div class="line">  	A[i+1]= A[i]</div><div class="line">      i=i-1   </div><div class="line">  &#125;</div><div class="line">  A[i+1]=key</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Merge-Sort（分治3）"><a href="#Merge-Sort（分治3）" class="headerlink" title="Merge-Sort（分治3）"></a>Merge-Sort（分治3）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line">q=1/2A.length</div><div class="line">n1=q,n2=A.length-q+1</div><div class="line"><span class="keyword">for</span>(i=0; i&lt;n1; i++)</div><div class="line">&#123;</div><div class="line">  L[i]=A[i];</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(j=0; j&lt;n2; j++)</div><div class="line">&#123;</div><div class="line">  R[j]=A[j+q];</div><div class="line">&#125;</div><div class="line">L[n1+1]= ∞</div><div class="line">R[n1+1]= ∞ </div><div class="line">i=j=1</div><div class="line"><span class="keyword">for</span>(k=0; k&lt;A.length; k++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(L[i]&lt;=R[j])</div><div class="line">  &#123;</div><div class="line">      A[k]=L[i]</div><div class="line">      i=i+1</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">      A[k]=R[j]</div><div class="line">      j=j+1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Merge-Sort（分治）"><a href="#Merge-Sort（分治）" class="headerlink" title="Merge-Sort（分治）"></a>Merge-Sort（分治）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line">q=1/2A.length</div><div class="line">n1=q,n2=A.length-q+1</div><div class="line"><span class="keyword">for</span>(i=0; i&lt;n1; i++)</div><div class="line">&#123;</div><div class="line">  L[i]=A[i];</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(j=0; j&lt;n2; j++)</div><div class="line">&#123;</div><div class="line">  R[j]=A[j+q];</div><div class="line">&#125;</div><div class="line">L[n1+1]= ∞</div><div class="line">R[n1+1]= ∞ </div><div class="line">i=j=1</div><div class="line"><span class="keyword">for</span>(k=0; k&lt;A.length; k++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(L[i]&lt;=R[j])</div><div class="line">  &#123;</div><div class="line">      A[k]=L[i]</div><div class="line">      i=i+1</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">      A[k]=R[j]</div><div class="line">      j=j+1</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -448,7 +448,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -552,7 +552,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Insertion-Sort（插入）"><span class="nav-number">1.</span> <span class="nav-text">Insertion-Sort（插入）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-Sort（分治3）"><span class="nav-number">2.</span> <span class="nav-text">Merge-Sort（分治3）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Insertion-Sort（插入）"><span class="nav-number">1.</span> <span class="nav-text">Insertion-Sort（插入）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-Sort（分治）"><span class="nav-number">2.</span> <span class="nav-text">Merge-Sort（分治）</span></a></li></ol></div>
             
           </div>
         </section>

@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2017/01/10/%E7%AE%97%E6%B3%952/</loc>
-    <lastmod>2017-01-10T10:16:04.522Z</lastmod>
+    <lastmod>2017-01-13T08:51:34.284Z</lastmod>
     <data>
         <display>
         <title>算法导论笔记（二）</title>
@@ -24,12 +24,34 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/01/08/%E7%AE%97%E6%B3%951/</loc>
-    <lastmod>2017-01-10T09:50:44.366Z</lastmod>
+    <loc>http://yoursite.com/2016/10/08/hexo-git%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2017-01-13T08:51:05.844Z</lastmod>
     <data>
         <display>
-        <title>算法导论笔记（一）</title>
-        <pubTime>2017-01-08T08:20:11.000Z</pubTime>
+        <title>hexo+git部署博客</title>
+        <pubTime>2016-10-08T14:13:57.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="个人博客" url="http://yoursite.com/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/01/13/%E7%AE%97%E6%B3%953/</loc>
+    <lastmod>2017-01-13T08:24:30.576Z</lastmod>
+    <data>
+        <display>
+        <title>算法导论笔记（三）</title>
+        <pubTime>2017-01-13T08:02:10.000Z</pubTime>
         
         <tag>算法</tag>
          
@@ -44,21 +66,19 @@
 
     
   <url>
-    <loc>http://yoursite.com/2016/10/08/hexo-git%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2017-01-09T10:07:26.684Z</lastmod>
+    <loc>http://yoursite.com/2017/01/08/%E7%AE%97%E6%B3%951/</loc>
+    <lastmod>2017-01-13T08:03:56.500Z</lastmod>
     <data>
         <display>
-        <title>hexo+git部署博客</title>
-        <pubTime>2016-10-08T14:13:57.000Z</pubTime>
+        <title>算法导论笔记（一）</title>
+        <pubTime>2017-01-08T08:20:11.000Z</pubTime>
         
-        <tag>hexo</tag>
-         
-        <tag>git</tag>
+        <tag>算法</tag>
          
          
            
              
-              <breadCrumb title="个人博客" url="http://yoursite.com/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
           
         </display>
     </data>
