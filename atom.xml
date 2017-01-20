@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-16T08:00:26.157Z</updated>
+  <updated>2017-01-20T06:49:17.292Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,20 +16,44 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>算法导论笔记（五）</title>
+    <link href="http://yoursite.com/2017/01/19/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/01/19/算法导论笔记（五）/</id>
+    <published>2017-01-19T14:24:09.000Z</published>
+    <updated>2017-01-20T06:49:17.292Z</updated>
+    
+    <content type="html"><![CDATA[<p>Depth-First-Search<br><a id="more"></a></p>
+<h3 id="DFS-G"><a href="#DFS-G" class="headerlink" title="DFS(G)"></a>DFS(G)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> each vertex u∈G.V 图G=(V,E)</div><div class="line">&#123;</div><div class="line">  u.color=WHITE</div><div class="line">  u.π=NULL	（u前驱</div><div class="line">&#125;</div><div class="line">time=0</div><div class="line"><span class="keyword">for</span> each vertex u∈G.V</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(u.color==WHITE)</div><div class="line">  &#123;</div><div class="line">    DFS-VISIT(G,u)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="DFS-VISIT-G-u"><a href="#DFS-VISIT-G-u" class="headerlink" title="DFS-VISIT(G,u)"></a>DFS-VISIT(G,u)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">time++</div><div class="line">u.d=time (发现时间</div><div class="line">u.color=GRAY</div><div class="line"><span class="keyword">for</span> each v∈G:Adj[u]  (邻接链表</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(v.color==WHITE)</div><div class="line">  &#123;</div><div class="line">    v.π=u</div><div class="line">    DFS-VISIT(G,v)</div><div class="line">  &#125;</div><div class="line">&#125; </div><div class="line">u.color=BLCAK</div><div class="line">time++</div><div class="line">u.f=time (结束时间</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Depth-First-Search&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>算法导论笔记（四）</title>
     <link href="http://yoursite.com/2017/01/16/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
     <id>http://yoursite.com/2017/01/16/算法导论笔记（四）/</id>
     <published>2017-01-16T07:33:54.000Z</published>
-    <updated>2017-01-16T08:00:26.157Z</updated>
+    <updated>2017-01-20T06:35:41.435Z</updated>
     
-    <content type="html"><![CDATA[<p>Queue &amp;&amp; Breadth-first-Search<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p>Queue &amp;&amp; Breadth-First-Search<br><a id="more"></a></p>
 <h3 id="Queue（队列）"><a href="#Queue（队列）" class="headerlink" title="Queue（队列）"></a>Queue（队列）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Enqueue(Q,x) （进栈）</div><div class="line"><span class="keyword">if</span>(Q.head==Q.tail+1)</div><div class="line">&#123;</div><div class="line">  error <span class="string">"overflow"</span></div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  Q.[Q.tail]=x</div><div class="line">  <span class="keyword">if</span>(Q.tail==Q.length)</div><div class="line">  &#123;</div><div class="line">    e.tail=1</div><div class="line">  &#125;<span class="keyword">else</span></div><div class="line">  Q.tail++</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Dequeue(Q) （出栈）</div><div class="line"><span class="keyword">if</span>(Q.head==Q.tail)</div><div class="line">&#123;</div><div class="line">  error <span class="string">"underflow"</span></div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  x=Q.[Q.head]</div><div class="line">  <span class="keyword">if</span>(Q.head==Q.length)</div><div class="line">  &#123;</div><div class="line">    e.head=1</div><div class="line">  &#125;<span class="keyword">else</span></div><div class="line">  Q.head++</div><div class="line">  <span class="built_in">return</span> x</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Breadth-first-Search（广度优先）"><a href="#Breadth-first-Search（广度优先）" class="headerlink" title="Breadth-first-Search（广度优先）"></a>Breadth-first-Search（广度优先）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> each vertex u∈G.V-&#123;s&#125; 图G=(V,E)</div><div class="line">&#123;</div><div class="line">  u.color=WHITE</div><div class="line">  u.d=∞		（s至u的距离</div><div class="line">  u.π=NULL	（u前驱</div><div class="line">&#125;</div><div class="line">s.color=GRAY</div><div class="line">s.d=0</div><div class="line">s.π=NULL</div><div class="line">Q=Φ </div><div class="line">Enqueue(Q,s)</div><div class="line"><span class="keyword">while</span>(Q!=Φ )</div><div class="line">&#123;</div><div class="line">  u=Dequeue(Q)</div><div class="line">  <span class="keyword">for</span> each v∈G.Adj[u]	（邻接链表</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span>(v.color==WHITE)</div><div class="line">    &#123;</div><div class="line">      v.color=GRAY</div><div class="line">      v.d=u.d+1</div><div class="line">      v.π=u</div><div class="line">      Enqueue(Q,v)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  u.color=BLACK</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+<h3 id="Breadth-First-Search（广度优先）"><a href="#Breadth-First-Search（广度优先）" class="headerlink" title="Breadth-First-Search（广度优先）"></a>Breadth-First-Search（广度优先）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> each vertex u∈G.V-&#123;s&#125; 图G=(V,E)</div><div class="line">&#123;</div><div class="line">  u.color=WHITE</div><div class="line">  u.d=∞		（s至u的距离</div><div class="line">  u.π=NULL	（u前驱</div><div class="line">&#125;</div><div class="line">s.color=GRAY</div><div class="line">s.d=0</div><div class="line">s.π=NULL</div><div class="line">Q=Φ </div><div class="line">Enqueue(Q,s)</div><div class="line"><span class="keyword">while</span>(Q!=Φ )</div><div class="line">&#123;</div><div class="line">  u=Dequeue(Q)</div><div class="line">  <span class="keyword">for</span> each v∈G.Adj[u]	（邻接链表</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span>(v.color==WHITE)</div><div class="line">    &#123;</div><div class="line">      v.color=GRAY</div><div class="line">      v.d=u.d+1</div><div class="line">      v.π=u</div><div class="line">      Enqueue(Q,v)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  u.color=BLACK</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Queue &amp;amp;&amp;amp; Breadth-first-Search&lt;br&gt;
+      &lt;p&gt;Queue &amp;amp;&amp;amp; Breadth-First-Search&lt;br&gt;
     
     </summary>
     
