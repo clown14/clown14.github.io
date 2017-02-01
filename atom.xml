@@ -5,15 +5,72 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-20T06:49:17.292Z</updated>
+  <updated>2017-02-01T13:55:06.404Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>孙晨阳</name>
+    <name>onion</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis学习笔记（一）</title>
+    <link href="http://yoursite.com/2017/02/01/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/02/01/Mybatis学习笔记（一）/</id>
+    <published>2017-02-01T12:33:13.000Z</published>
+    <updated>2017-02-01T13:55:06.404Z</updated>
+    
+    <content type="html"><![CDATA[<p>jdbc问题总结 &amp;&amp; Mybatis简介<br><a id="more"></a></p>
+<h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><h3 id="jdbc实现步骤："><a href="#jdbc实现步骤：" class="headerlink" title="jdbc实现步骤："></a>jdbc实现步骤：</h3><ul>
+<li>加载数据库驱动</li>
+<li>创建并获取数据源连接</li>
+<li>创建jdbc的statement对象</li>
+<li>设置sql语句</li>
+<li>设置statement中的sql参数(statement的参数注入)</li>
+<li>statement执行sql语句</li>
+<li>对sql执行结果进行解析处理</li>
+<li>释放资源(statement,connection,resultSet)</li>
+</ul>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><ul>
+<li>数据库连接，使用时就创建，不使用立即释放，对数据库进行频繁连接开启和关闭，造成数据库资源浪费，影响数据库性能。</li>
+<li>我们使用JDBC进行操作数据库时，SQL语句基本都散落在各个JAVA类中，这样有三个不足之处：<br>第一，可读性很差，不利于维护以及做性能调优。<br>第二，改动Java代码需要重新编译、打包部署。<br>第三，不利于取出SQL在数据库客户端执行（取出后还得删掉中间的Java代码，编写好的SQL语句写好后还得通过＋号在Java进行拼凑）。 </li>
+<li>很多情况下，我们都可以通过在SQL语句中设置占位符来达到使用传入参数的目的，这种方式本身就有一定局限性，它是按照一定顺序传入参数的，要与占位符一一匹配。</li>
+<li>从resutSet中遍历结果集数据时，存在硬编码，将获取表的字段进行硬编码，不利于系统维护。</li>
+<li>存在sql重复问题，不利于维护。</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//数据库连接</span></div><div class="line">        Connection connection = <span class="keyword">null</span>;</div><div class="line">        <span class="comment">//预编译的Statement，使用预编译的Statement提高数据库性能</span></div><div class="line">        PreparedStatement preparedStatement = <span class="keyword">null</span>;</div><div class="line">        <span class="comment">//结果集</span></div><div class="line">        ResultSet resultSet = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">//加载数据库驱动</span></div><div class="line">            Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</div><div class="line">            <span class="comment">//通过驱动管理类获取数据库链接</span></div><div class="line">            connection =  DriverManager.getConnection(<span class="string">"jdbc:mysql://localhost:3306/mybatis001?characterEncoding=utf-8"</span>, <span class="string">"root"</span>, <span class="string">"mysql"</span>);</div><div class="line">            <span class="comment">//定义sql语句 ?表示占位符</span></div><div class="line">            String sql = <span class="string">"select * from user where username = ?"</span>;</div><div class="line">            <span class="comment">//获取预处理statement</span></div><div class="line">            preparedStatement = connection.prepareStatement(sql);</div><div class="line">            <span class="comment">//设置参数，第一个参数为sql语句中参数的序号（从1开始），第二个参数为设置的参数值</span></div><div class="line">            preparedStatement.setString(<span class="number">1</span>, <span class="string">"王五"</span>);</div><div class="line">            <span class="comment">//向数据库发出sql执行查询，查询出结果集</span></div><div class="line">            resultSet =  preparedStatement.executeQuery();</div><div class="line">            <span class="comment">//遍历查询结果集</span></div><div class="line">            <span class="keyword">while</span>(resultSet.next())&#123;</div><div class="line">                System.out.println(resultSet.getString(<span class="string">"id"</span>)+<span class="string">"  "</span>+resultSet.getString(<span class="string">"username"</span>));</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;<span class="keyword">finally</span>&#123;</div><div class="line">            <span class="comment">//释放资源</span></div><div class="line">            <span class="keyword">if</span>(resultSet!=<span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    resultSet.close();</div><div class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</div><div class="line">                    <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(preparedStatement!=<span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    preparedStatement.close();</div><div class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</div><div class="line">                    <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(connection!=<span class="keyword">null</span>)&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    connection.close();</div><div class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</div><div class="line">                    <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h2><h3 id="什么是Mybatis"><a href="#什么是Mybatis" class="headerlink" title="什么是Mybatis"></a>什么是Mybatis</h3><ul>
+<li>mybatis是一个持久层的框架，是apache下的顶级项目。</li>
+<li>mybatis托管到goolecode下，再后来托管到github下(<a href="https://github.com/mybatis/mybatis-3/releases)。" target="_blank" rel="external">https://github.com/mybatis/mybatis-3/releases)。</a></li>
+<li>mybatis让程序将主要精力放在sql上，通过mybatis提供的映射方式，自由灵活生成（半自动化，大部分需要程序员编写sql）满足需要sql语句。</li>
+<li>mybatis通过xml或注解的方式将要执行的各种statement（statement、preparedStatemnt、CallableStatement）配置起来，并通过java对象和statement中的sql进行映射生成最终执行的sql语句，最后由mybatis框架执行sql并将结果映射成java对象并返回。</li>
+</ul>
+<h3 id="框架图"><a href="#框架图" class="headerlink" title="框架图"></a>框架图</h3><p><img src="/img/mybatis_框架图.png" alt="图片名称" title=""></p>
+<ul>
+<li>mybatis配置<br>SqlMapConfig.xml，此文件作为mybatis的全局配置文件，配置了mybatis的运行环境等信息。<br>mapper.xml文件即sql映射文件，文件中配置了操作数据库的sql语句。此文件需要在SqlMapConfig.xml中加载。</li>
+<li>通过mybatis环境等配置信息构造SqlSessionFactory即会话工厂</li>
+<li>由会话工厂创建sqlSession即会话，操作数据库需要通过sqlSession进行。</li>
+<li>mybatis底层自定义了Executor执行器接口操作数据库，Executor接口有两个实现，一个是基本执行器、一个是缓存执行器。</li>
+<li>Mapped Statement也是mybatis一个底层封装对象，它包装了mybatis配置信息及sql映射信息等。mapper.xml文件中一个sql对应一个Mapped Statement对象，sql的id即是Mapped statement的id。</li>
+<li>Mapped Statement对sql执行输入参数进行定义，包括HashMap、基本类型、pojo，Executor通过Mapped Statement在执行sql前将输入的java对象映射至sql中，输入参数映射就是jdbc编程中对preparedStatement设置参数。</li>
+<li>Mapped Statement对sql执行输出结果进行定义，包括HashMap、基本类型、pojo，Executor通过Mapped Statement在执行sql后将输出结果映射至java对象中，输出结果映射过程相当于jdbc编程中对结果的解析处理过程。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;jdbc问题总结 &amp;amp;&amp;amp; Mybatis简介&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Mybatis" scheme="http://yoursite.com/categories/Mybatis/"/>
+    
+    
+      <category term="Mybatis" scheme="http://yoursite.com/tags/Mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>算法导论笔记（五）</title>

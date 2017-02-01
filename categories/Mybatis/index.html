@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -86,16 +86,12 @@
 
 
 
-<meta name="description" content="Depth-First-Search">
-<meta property="og:type" content="article">
-<meta property="og:title" content="算法导论笔记（五）">
-<meta property="og:url" content="http://yoursite.com/2017/01/19/算法导论笔记（五）/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Onion'blog">
+<meta property="og:url" content="http://yoursite.com/categories/Mybatis/index.html">
 <meta property="og:site_name" content="Onion'blog">
-<meta property="og:description" content="Depth-First-Search">
-<meta property="og:updated_time" content="2017-01-20T06:49:17.292Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法导论笔记（五）">
-<meta name="twitter:description" content="Depth-First-Search">
+<meta name="twitter:title" content="Onion'blog">
 
 
 
@@ -116,9 +112,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/19/算法导论笔记（五）/"/>
+  <link rel="canonical" href="http://yoursite.com/categories/Mybatis/"/>
 
-  <title> 算法导论笔记（五） | Onion'blog </title>
+  <title> 分类: Mybatis | Onion'blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -139,7 +135,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,172 +223,47 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                算法导论笔记（五）
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-19T22:24:09+08:00" content="2017-01-19">
-              2017-01-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/01/19/算法导论笔记（五）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/19/算法导论笔记（五）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>Depth-First-Search<br><a id="more"></a></p>
-<h3 id="DFS-G"><a href="#DFS-G" class="headerlink" title="DFS(G)"></a>DFS(G)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> each vertex u∈G.V 图G=(V,E)</div><div class="line">&#123;</div><div class="line">  u.color=WHITE</div><div class="line">  u.π=NULL	（u前驱</div><div class="line">&#125;</div><div class="line">time=0</div><div class="line"><span class="keyword">for</span> each vertex u∈G.V</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(u.color==WHITE)</div><div class="line">  &#123;</div><div class="line">    DFS-VISIT(G,u)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="DFS-VISIT-G-u"><a href="#DFS-VISIT-G-u" class="headerlink" title="DFS-VISIT(G,u)"></a>DFS-VISIT(G,u)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">time++</div><div class="line">u.d=time (发现时间</div><div class="line">u.color=GRAY</div><div class="line"><span class="keyword">for</span> each v∈G:Adj[u]  (邻接链表</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(v.color==WHITE)</div><div class="line">  &#123;</div><div class="line">    v.π=u</div><div class="line">    DFS-VISIT(G,v)</div><div class="line">  &#125;</div><div class="line">&#125; </div><div class="line">u.color=BLCAK</div><div class="line">time++</div><div class="line">u.f=time (结束时间</div></pre></td></tr></table></figure>
-      
+  <section id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        Mybatis
+        <small>分类</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-
-      
-    </div>
-
-    <div>
-      
+            <a class="post-title-link" href="/2017/02/01/Mybatis学习笔记（一）/" itemprop="url">
+              
+                <span itemprop="name">Mybatis学习笔记（一）</span>
+              
+            </a>
         
+      </h1>
 
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-02-01T20:33:13+08:00"
+              content="2017-02-01" >
+          02-01
+        </time>
+      </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/算法/" rel="tag">#算法</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/01/16/算法导论笔记（四）/" rel="next" title="算法导论笔记（四）">
-                <i class="fa fa-chevron-left"></i> 算法导论笔记（四）
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/01/Mybatis学习笔记（一）/" rel="prev" title="Mybatis学习笔记（一）">
-                Mybatis学习笔记（一） <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2017/01/19/算法导论笔记（五）/"
-     data-title="算法导论笔记（五）"
-     data-content=""
-     data-url="http://yoursite.com/2017/01/19/算法导论笔记（五）/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+  
 
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
-    </div>
-  </div>
 
 
           </div>
@@ -400,14 +271,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/01/19/算法导论笔记（五）/"
-           data-title="算法导论笔记（五）" data-url="http://yoursite.com/2017/01/19/算法导论笔记（五）/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -427,17 +290,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -546,17 +400,6 @@
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DFS-G"><span class="nav-number">1.</span> <span class="nav-text">DFS(G)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DFS-VISIT-G-u"><span class="nav-number">2.</span> <span class="nav-text">DFS-VISIT(G,u)</span></a></li></ol></div>
-            
-          </div>
-        </section>
-      
 
     </div>
   </aside>
@@ -652,10 +495,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
