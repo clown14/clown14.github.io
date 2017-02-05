@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-01T13:55:06.404Z</updated>
+  <updated>2017-02-05T07:58:57.857Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,260 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis学习笔记（二）</title>
+    <link href="http://yoursite.com/2017/02/05/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/02/05/Mybatis学习笔记（二）/</id>
+    <published>2017-02-05T06:36:12.000Z</published>
+    <updated>2017-02-05T07:58:57.857Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mybatis入门程序<br><a id="more"></a></p>
+<h2 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h2><p>第一步：创建一个java工程。（数据库自行创建）<br>第二步：导入jar包。包括mybatis的jar包、mybatis依赖的jar包、mysql的数据库驱动。<br>第三步：创建一个log4j.properties。方便查看sql语句用的。<br>第四步：创建一个SqlMapConfig.xml。配置数据库连接池。<br>第五步：创建Mapper映射文件。<br>第六步：编码。</p>
+<h3 id="log4j-properties"><a href="#log4j-properties" class="headerlink" title="log4j.properties"></a>log4j.properties</h3><pre><code># Global logging configuration
+log4j.rootLogger=DEBUG, stdout
+# Console output...
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
+</code></pre><h3 id="SqlMapConfig-xml"><a href="#SqlMapConfig-xml" class="headerlink" title="SqlMapConfig.xml"></a>SqlMapConfig.xml</h3><pre><code>&lt;configuration&gt;
+    &lt;!-- 和spring整合后 environments配置将废除 --&gt;
+    &lt;environments default=&quot;development&quot;&gt;
+        &lt;environment id=&quot;development&quot;&gt;
+        &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+            &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+            &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://127.0.0.1:3306/mybatis&quot; /&gt;
+            &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+            &lt;property name=&quot;password&quot; value=&quot;&quot;/&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;  
+
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;com/mybatis/po/User.xml&quot;/&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre><h3 id="Mapper映射文件"><a href="#Mapper映射文件" class="headerlink" title="Mapper映射文件"></a>Mapper映射文件</h3><p>习惯上mapper映射文件的名称和数据库的表名一致。user.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 命名空间，作用就是对sql进行分类化管理,理解为sql隔离
+ 注意：使用mapper代理方法开发，namespace有特殊重要的作用
+ --&gt;
+&lt;mapper namespace=&quot;test&quot;&gt;
+    &lt;!-- 在映射文件中配置很多sql语句 --&gt;
+    &lt;!--需求:通过id查询用户表的记录 --&gt;
+    &lt;!-- 通过select执行数据库查询
+     id:标识映射文件中的sql，称为statement的id
+     将sql语句封装到mappedStatement对象中，所以将id称为statement的id
+     parameterType:指定输入参数的类型
+     #{}标示一个占位符,
+     #{value}其中value表示接收输入参数的名称，如果输入参数是简单类型，那么#{}中的值可以任意。
+
+     resultType：指定sql输出结果的映射的java对象类型，select指定resultType表示将单条记录映射成java对象
+     --&gt;
+
+    &lt;select id=&quot;selectUserByID&quot;    parameterType=&quot;int&quot;      resultType=&quot;User&quot;&gt;
+        select * from user where userID = #{userId}
+    &lt;/select&gt;
+
+    &lt;!-- 根据用户名称模糊查询用户信息，可能返回多条
+    resultType：指定就是单条记录所映射的java对象类型
+    ${}:表示拼接sql串，将接收到参数的内容不加任何修饰拼接在sql中。
+    使用${}拼接sql，引起 sql注入
+    ${value}：接收输入参数的内容，如果传入类型是简单类型，${}中只能使用value
+     --&gt;
+
+    &lt;select id=&quot;getUserByName&quot; parameterType=&quot;string&quot; resultType=&quot;User&quot;&gt;
+        select * from user where userName LIKE #{name}
+    &lt;/select&gt;
+
+    &lt;!-- 添加用户
+    parameterType：指定输入 参数类型是pojo（包括 用户信息）
+    #{}中指定pojo的属性名，接收到pojo对象的属性值，mybatis通过OGNL获取对象的属性值
+    --&gt;
+
+    &lt;insert id=&quot;insertUser&quot;  parameterType=&quot;User&quot; &gt;
+        &lt;!--
+         将插入数据的主键返回，返回到user对象中
+
+         SELECT LAST_INSERT_ID()：得到刚insert进去记录的主键值，只适用与自增主键
+
+         keyProperty：将查询到主键值设置到parameterType指定的对象的哪个属性
+         order：SELECT LAST_INSERT_ID()执行顺序，相对于insert语句来说它的执行顺序
+         resultType：指定SELECT LAST_INSERT_ID()的结果类型
+          --&gt;
+        &lt;selectKey keyProperty=&quot;id&quot; order=&quot;AFTER&quot; resultType=&quot;java.lang.Integer&quot;&gt;
+          SELECT LAST_INSERT_ID()
+        &lt;/selectKey&gt;
+
+        INSERT INTO `user`(userName,userAge,userAddress) 
+        VALUES(#{userName},#{userAge},#{userAddress})
+    &lt;/insert&gt;
+
+    &lt;!-- 删除用户 根据id删除用户，需要输入 id值--&gt;
+    &lt;delete id=&quot;deleteUser&quot; parameterType=&quot;java.lang.Integer&quot;&gt;
+        delete from user where id=#{userId}
+    &lt;/delete&gt;
+
+    &lt;!-- 根据id更新用户
+    分析：
+    需要传入用户的id
+    需要传入用户的更新信息
+    parameterType指定user对象，包括 id和更新信息，注意：id必须存在
+    #{id}：从输入 user对象中获取id属性值
+     --&gt;
+
+    &lt;update id=&quot;updateUser&quot; parameterType=&quot;User&quot;&gt;
+        UPDATE USER
+        SET userName = #{username},
+         userAge = #{age},
+         userAddress = #{address},
+        WHERE
+        userID = #{id}
+    &lt;/update&gt;
+&lt;/mapper&gt;
+</code></pre><h3 id="po类"><a href="#po类" class="headerlink" title="po类"></a>po类</h3><p>User.java</p>
+<pre><code>public class User {
+    private int userid;
+    private String userName;
+    private int userAge;
+    private String userAddress;
+     /**
+     * @return the userid
+     */
+    public int getUserid() {
+        return userid;
+    }
+    /**
+     * @param userid the userid to set
+     */
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+    /**
+     * @return the userName
+     */
+    public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * @param userName the userName to set
+     */
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    /**
+     * @return the userAge
+     */
+    public int getUserAge() {
+        return userAge;
+    }
+    /**
+     * @param userAge the userAge to set
+     */
+    public void setUserAge(int userAge) {
+        this.userAge = userAge;
+    }
+    /**
+     * @return the userAddress
+     */
+    public String getUserAddress() {
+        return userAddress;
+    }
+    /**
+     * @param userAddress the userAddress to set
+     */
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return &quot;User [userid=&quot; + userid + &quot;, userName=&quot; + userName + &quot;, userAge=&quot; + userAge + &quot;, userAddress=&quot;
+                + userAddress + &quot;]&quot;;
+    }
+}
+</code></pre><h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><pre><code>public class Test1 {
+    static {
+        try {
+            //把配置文件读取到流中
+            reader = Resources.getResourceAsReader(&quot;SqlMapConfig.xml&quot;);
+            // InputStream=Resources.getResourceAsStream(&quot;SqlMapConfig.xml&quot;);
+            //创建SqlSessionFactory对象
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static SqlSessionFactory getSession() {
+        return sqlSessionFactory;
+    }
+
+    public static void main(String[] args) {
+        //创建sqlsession对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        try {
+            //查询用户
+            //查询一条记录使用selectOne方法
+            //第一个参数：statementID
+            //第二个参数：sql语句用到的参数
+            User user =(User) sqlSession.selectOne(&quot;test.selectUserByID&quot;,2);
+            System.out.println(user);    
+
+        /*  //添加用户            
+            User user = new User(); user.setUserName(&quot;张三&quot;);
+            user.setUserAge(26); 
+            user.setUserAddress(&quot;天津&quot;);
+            sqlSession.insert(&quot;test.insertUser&quot;, user);
+
+            //
+            //删除用户
+            sqlSession.delete(&quot;test.deleteUser&quot;, 2);
+
+            //更新信息
+            User user = sqlSession.selectOne(&quot;test.getUserByID&quot;, 2);
+            System.out.println(user); 
+            user.setUserName(&quot;武松&quot;);
+            user.setUserAge(20); 
+            user.setUserAddress(&quot;清河县&quot;);
+            sqlSession.update(&quot;test.updateUser&quot;, user);*/
+
+        } finally {
+            //关闭sqlsession
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+}
+</code></pre><h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><pre><code>User [userid=3, userName=sss, userAge=0, userAddress=null]
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="parameterType"><a href="#parameterType" class="headerlink" title="parameterType"></a>parameterType</h3><p>指定传递参数类型，前台传入参数和后台获取参数类型必须匹配</p>
+<h3 id="resultType"><a href="#resultType" class="headerlink" title="resultType"></a>resultType</h3><p>指定返回值类型，执行sql结果映射Java对象</p>
+<h3 id="和"><a href="#和" class="headerlink" title="#和$"></a>#和$</h3><p>#{}表示一个占位符，#{}接受传入参数，类型可以是基本类型，pojo，map<br>如果接受的是基本类型的值，那么#{}括号中可以任意或者value<br>如果#{}获取是的pojo，mybatis通过ognl获取参数值。Ognl就是对象导航语言 属性.属性.属性的方式获取值。<br>如果传递是map值，#{}中需要的是map的key</p>
+<p>${}表示拼接sql,会引入sql注入，不建议使用<br>${}接受输入参数可以是pojo，基本类型，map<br>${}如果接受的是基本类型，只能是value<br>${}接受pojo类型的参数，通过ognl对象导航进行获取</p>
+<h3 id="selectOne和selectList"><a href="#selectOne和selectList" class="headerlink" title="selectOne和selectList"></a>selectOne和selectList</h3><p>selectOne是查询单个对象记录，selectList查询多条记录<br>不能使用selectOne查询selectList的记录</p>
+<h3 id="mybatis和hibernate区别"><a href="#mybatis和hibernate区别" class="headerlink" title="mybatis和hibernate区别"></a>mybatis和hibernate区别</h3><p>Hibernate:hibernate是一个标准的ORM框架，不需要写sql语句，维护关系比叫复杂，sql语句自动生成，对sql语句优化，修改比较困难。<br>Hibernate的优缺点：<br>优点：面向对象开发，不需要自己写sql语句。如果进行数据库迁移不需要修改sql语句，只需要修改一下方言。<br>缺点：hibernate维护数据表关系比较复杂。完全是有hibernate来管理数据表的关系，对于我们来说完全是透明的，不易维护。<br>Hibernate自动生成sql语句，生成sql语句比较复杂，比较难挑错。<br>Hibernate由于是面向对象开发，不能开发比较复杂的业务。<br>应用场景：<br>适合需求变化较少的项目，比如ERP，CRM等等<br>Mybatis框架对jdbc框架进行封装，屏蔽了jdbc的缺点，开发简单。<br>Mybatis只需要程序员关注sql本身，不需要过多的关注业务。对sql的优化，修改比较容易<br>适应场景：<br>适合需求变化多端的项目，比如：互联网项目</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Mybatis入门程序&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Mybatis" scheme="http://yoursite.com/categories/Mybatis/"/>
+    
+    
+      <category term="Mybatis" scheme="http://yoursite.com/tags/Mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis学习笔记（一）</title>
