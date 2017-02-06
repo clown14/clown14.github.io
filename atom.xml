@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-05T07:58:57.857Z</updated>
+  <updated>2017-02-06T09:11:29.632Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,219 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis学习笔记（三）</title>
+    <link href="http://yoursite.com/2017/02/06/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/02/06/Mybatis学习笔记（三）/</id>
+    <published>2017-02-06T07:49:23.000Z</published>
+    <updated>2017-02-06T09:11:29.632Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mybatis的Dao开发<br><a id="more"></a><br>使用dao开发有两种开发方式，一种是使用普通的接口和接口实现类来进行开发<br>另一种开发方式是使用mapper代理的开发的方式(直接使用接口)</p>
+<h2 id="sqlSession的使用范围"><a href="#sqlSession的使用范围" class="headerlink" title="sqlSession的使用范围"></a>sqlSession的使用范围</h2><h3 id="sessionFactoryBuidler"><a href="#sessionFactoryBuidler" class="headerlink" title="sessionFactoryBuidler"></a>sessionFactoryBuidler</h3><p>通过SqlSessionFactoryBuilder创建会话工厂SqlSessionFactory将SqlSessionFactoryBuilder当成一个工具类使用即可，不需要使用单例管理SqlSessionFactoryBuilder。在需要创建SqlSessionFactory时候，只需要new一次SqlSessionFactoryBuilder即可。</p>
+<h3 id="sqlSessionFactory"><a href="#sqlSessionFactory" class="headerlink" title="sqlSessionFactory"></a>sqlSessionFactory</h3><p>sqlSessionFactory生产sqlSession回话，使用单列模式进行创建sqlSessionFactory(工厂一旦创建，只创建一个实例)，将mybatis和spring进行整合后使用单列模式进行管理。</p>
+<h3 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h3><p>sqlSession是面向用户的一个回话接口<br>sqlSession提供很多操作数据库的方法：selectOne(查询单个对象)，selectList(返回单个或者多个对象)<br>sqlSession是线程不安全的，在sqlSession实现类中除了有查询数据库中的方法外还有数据域属性。<br>sqlSession最好是在方法内部使用。</p>
+<h2 id="传统的dao的开发方式"><a href="#传统的dao的开发方式" class="headerlink" title="传统的dao的开发方式"></a>传统的dao的开发方式</h2><p>程序员需要编写dao接口和dao接口实现类<br>在dao实现类里面进行注入sqlSessionFactory,然后通过sqlSessionFactory创建sqlSession</p>
+<h3 id="Dao接口"><a href="#Dao接口" class="headerlink" title="Dao接口"></a>Dao接口</h3><pre><code>public interface UserDao {
+    public User selectUserByID(int id) throws Exception;
+
+    public void insertUser(User user) throws Exception;
+
+    public List&lt;User&gt; getUserByName(String name) throws Exception;
+
+    public void deleteUser(int id) throws Exception;
+}
+</code></pre><h3 id="Dao的实现类"><a href="#Dao的实现类" class="headerlink" title="Dao的实现类"></a>Dao的实现类</h3><pre><code>public class UserDaoImpl implements UserDao {
+
+    //给dao层注入SessionFactory对象
+    //使用构造方法进行注入
+    public SqlSessionFactory sessionFactory;    
+    public UserDaoImpl(SqlSessionFactory sessionFactory){
+        this.sessionFactory=sessionFactory;
+    }
+
+    @Override
+    public User selectUserByID(int id) throws Exception {
+        // TODO Auto-generated method stub
+        //获取sqlSession
+            SqlSession sqlSession = sessionFactory.openSession();
+            //根据ID进行查询
+            User user = sqlSession.selectOne(&quot;test.selectUserByID&quot;, 3);
+            return user;
+    }
+
+    @Override
+    public void insertUser(User user) throws Exception{
+        // TODO Auto-generated method stub
+        SqlSession sqlSession = sessionFactory.openSession();
+        //执行插入操作
+        sqlSession.insert(&quot;test.insertUser&quot;, user);
+    }
+
+    @Override
+    public List&lt;User&gt; getUserByName(String name) throws Exception{
+        // TODO Auto-generated method stub
+        SqlSession sqlSession = sessionFactory.openSession();
+        List&lt;User&gt; list = sqlSession.selectList(&quot;test.getUserByName&quot;, name);
+        return list;
+    }
+
+    @Override
+    public void deleteUser(int id) throws Exception {
+        // TODO Auto-generated method stub
+        SqlSession sqlSession = sessionFactory.openSession();
+        //执行删除操作
+        sqlSession.delete(&quot;test.deleteUser&quot;, id);
+    }
+
+}
+</code></pre><h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><pre><code>public class UserDaoImplTest {
+
+    private SqlSessionFactory sqlSessionFactory;
+
+    // 此方法是在执行testFindUserById之前执行
+    @Before
+    public void setUp() throws Exception {
+        // 创建sqlSessionFactory
+
+        // mybatis配置文件
+        String resource = &quot;SqlMapConfig.xml&quot;;
+        // 得到配置文件流
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 创建会话工厂，传入mybatis的配置文件信息
+        sqlSessionFactory = new SqlSessionFactoryBuilder()
+                .build(inputStream);
+    }
+
+    @Test
+    public void testFindUserById() throws Exception {
+        // 创建UserDao的对象
+        UserDao userDao = new UserDaoImpl(sqlSessionFactory);
+
+        // 调用UserDao的方法
+        User user = userDao.selectUserByID(1);
+
+        System.out.println(user);
+    }
+
+}
+</code></pre><h3 id="原始dao总结"><a href="#原始dao总结" class="headerlink" title="原始dao总结"></a>原始dao总结</h3><ul>
+<li>dao接口中存在着大量的模版方法，能不能提取出来，大量减轻程序员的压力</li>
+<li>实现类进行操作数据库时对statement的ID进行硬编码了。</li>
+<li>sqlSession直接进行设置参数，由于sqlsession使用的泛型，设置参数类型不会报错，这样不利于开发。</li>
+</ul>
+<h2 id="代理Mapper开发模式"><a href="#代理Mapper开发模式" class="headerlink" title="代理Mapper开发模式"></a>代理Mapper开发模式</h2><p>程序员还需要开发mapper.xml文件。<br>程序员编写mapper接口需要遵循一些开发规范。Mybatis会自动生成mapper接口实现类代理类。</p>
+<h3 id="开发规范"><a href="#开发规范" class="headerlink" title="开发规范"></a>开发规范</h3><ul>
+<li><p>namespace的地址和mapper.xml的地址相同</p>
+  <!--
+   namespace 命名空间，作用就是对sql进行分类化管理,理解为sql隔离
+   注意：使用mapper代理方法开发，namespace有特殊重要的作用,namespace等于mapper接口地址
+   -->
+  <mapper namespace="com.mybatis.mapper.UserMapper">
+</mapper></li>
+<li><p>Dao接口中的方法必须和statement的Id必须一致</p>
+</li>
+<li>Mapper接口中的方法输入参数必须和对应的Mapper.xml中的parameterType中的参数匹配</li>
+<li>Mapper接口返回值类型必须和对应的mapper.xml中resultType输出类型匹配。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function">User <span class="title">getUserByName</span><span class="params">(String name)</span></span>;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;select id="getUserByName" parameterType="string" resultType="User"&gt;</div><div class="line">  SELECT * FROM  user  WHERE userName LIKE #&#123;name&#125;</div><div class="line">&lt;/select&gt;</div></pre></td></tr></table></figure>
+<h3 id="mapper-xml"><a href="#mapper-xml" class="headerlink" title="mapper.xml"></a>mapper.xml</h3><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+&lt;mapper namespace=&quot;com.mybatis.mapper.UserMapper&quot;&gt;
+
+    &lt;select id=&quot;selectUserByID&quot;    parameterType=&quot;int&quot;      resultType=&quot;User&quot;&gt;
+        select * from user where userID = #{userId}
+    &lt;/select&gt;
+
+    &lt;insert id=&quot;addUser&quot;  parameterType=&quot;User&quot; &gt;
+        INSERT INTO `user`(userName,userAge,userAddress) 
+        VALUES(#{userName},#{userAge},#{userAddress})
+    &lt;/insert&gt;
+
+    &lt;!-- resultType是返回结果中一条记录的类型 --&gt;
+    &lt;select id=&quot;getUserByName&quot; parameterType=&quot;string&quot; resultType=&quot;User&quot;&gt;
+        SELECT * from user where userName LIKE #{name}
+    &lt;/select&gt;
+
+    &lt;update id=&quot;updateUser&quot; parameterType=&quot;User&quot;&gt;
+        UPDATE USER
+        SET userName = #{username},
+         userAge = #{age},
+         userAddress = #{address},
+        WHERE
+        userID = #{id}
+    &lt;/update&gt;
+
+    &lt;delete id=&quot;deleteUser&quot; parameterType=&quot;int&quot;&gt;
+           delete from user where id=#{userId}
+    &lt;/delete&gt;
+
+&lt;/mapper&gt;
+</code></pre><h3 id="UserMapper-java"><a href="#UserMapper-java" class="headerlink" title="UserMapper.java"></a>UserMapper.java</h3><pre><code>public interface UserMapper {
+    User selectUserByID(int id);
+
+    void insertUser(User user);
+
+    User getUserByName(String name);
+
+    void updateUser (User user);
+
+    void deleteUser(int id);
+}
+</code></pre><h3 id="Test-java"><a href="#Test-java" class="headerlink" title="Test.java"></a>Test.java</h3><pre><code>public class UserDaoImplTest {
+
+    private SqlSessionFactory sqlSessionFactory;
+
+    // 此方法是在执行testFindUserById之前执行
+    @Before
+    public void setUp() throws Exception {
+        // 创建sqlSessionFactory
+
+        // mybatis配置文件
+        String resource = &quot;SqlMapConfig.xml&quot;;
+        // 得到配置文件流
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 创建会话工厂，传入mybatis的配置文件信息
+        sqlSessionFactory = new SqlSessionFactoryBuilder()
+                .build(inputStream);
+    }
+
+    @Test
+    public void testFindUserById() throws Exception {
+        SqlSession sqlSession=sqlSessionFactory.openSession();  
+
+        //创建UserMapper代理对象  
+        UserMapper userMapper=sqlSession.getMapper(UserMapper.class);  
+
+        //调用userMapper的方法  
+        User user=userMapper.selectUserById(1);  
+
+        System.out.println(user.getUsername());
+    }
+
+}
+</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Mapper动态代理方式底层根据返回值类型进行判断调用那个方法：<br>如果是返回单个对象就调用selectOne<br>如果是返回集合就调用selectList</p>
+<p>Mapper接口中的参数只能是一个是否影响系统开发系统维护：<br>注意：dao层代码是被业务层公用的，即使是dao层代码参数只能是一个<br>业务层包装成不同类型pojo都可以满足不同业务需求。<br>持久层方法参数可以是map，基本类型，自定义对象，包装类型.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Mybatis的Dao开发&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Mybatis" scheme="http://yoursite.com/categories/Mybatis/"/>
+    
+    
+      <category term="Mybatis" scheme="http://yoursite.com/tags/Mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis学习笔记（二）</title>
