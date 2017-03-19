@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-03-15T08:39:41.283Z</updated>
+  <updated>2017-03-19T13:03:21.154Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,195 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Core Java I 学习笔记(二)</title>
+    <link href="http://yoursite.com/2017/03/18/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/"/>
+    <id>http://yoursite.com/2017/03/18/Core-Java-I-学习笔记-二/</id>
+    <published>2017-03-18T11:45:08.000Z</published>
+    <updated>2017-03-19T13:03:21.154Z</updated>
+    
+    <content type="html"><![CDATA[<p>Java的基本程序设计结构<br><a id="more"></a></p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Java中，有三种标记注释的方式。</p>
+<ul>
+<li>最常用的是//，注释内容从//开始到本行结尾。</li>
+</ul>
+<pre><code>System.out.println(&quot;We will not use &apos;Hello,World&apos;&quot;);//is this too cute?
+</code></pre><ul>
+<li>第2种注释</li>
+</ul>
+<pre><code>/* This is the first sample program in Core Java Chapter 3 */
+</code></pre><ul>
+<li>第3种注释可以用来自动地生成文档。</li>
+</ul>
+<pre><code class="bash">/**
+ * This is the first sample program <span class="keyword">in</span> Core Java Chapter 3
+ * @version 1.01 1997-03-22
+ * @author Gary Cornell
+ */
+</code></pre>
+<p> 注：Java中，/**/注释不能嵌套</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p> Java是强类型语言，每个变量声明一种类型。<br> Java中一共有8种基本类型。</p>
+<h3 id="整型（4种）"><a href="#整型（4种）" class="headerlink" title="整型（4种）"></a>整型（4种）</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">存储需求</th>
+<th style="text-align:center">取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">4字节</td>
+<td style="text-align:center">-2 147 483 648~2 147 483 647</td>
+</tr>
+<tr>
+<td style="text-align:center">short</td>
+<td style="text-align:center">2字节</td>
+<td style="text-align:center">-32768~32767</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">8字节</td>
+<td style="text-align:center">-9 223 372 036 854 775 808~9 223 372 036 854 775 807</td>
+</tr>
+<tr>
+<td style="text-align:center">byte</td>
+<td style="text-align:center">1字节</td>
+<td style="text-align:center">-128~127</td>
+</tr>
+</tbody>
+</table>
+<h3 id="浮点型（2种）"><a href="#浮点型（2种）" class="headerlink" title="浮点型（2种）"></a>浮点型（2种）</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">存储需求</th>
+<th style="text-align:center">取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">4字节</td>
+<td style="text-align:center">大约±3.402 823 47E+38F（有效位6~7位）</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">8字节</td>
+<td style="text-align:center">大约±1.797 693 134 862 315 70E+308（有效位15位）</td>
+</tr>
+</tbody>
+</table>
+<p>注：浮点数值不适用于无法接收舍入误差的金融计算。<br>浮点数值采用二进制系统表示，无法精确地表示分数1/10。</p>
+<h3 id="char类型"><a href="#char类型" class="headerlink" title="char类型"></a>char类型</h3><p>描述了UTF-16编码中的一个代码单元。建议不要在程序中使用char类型。</p>
+<h3 id="boolean类型"><a href="#boolean类型" class="headerlink" title="boolean类型"></a>boolean类型</h3><p>boolean类型有两个值：false和true，用来判定逻辑条件。整型和布尔值之间不能进行互相转换。</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li>在Java中，每个变量都有一个类型。</li>
+<li>声明一个变量后，必须用赋值语句对变量进行显式初始化。</li>
+<li><p>变量的声明尽可能靠近变量第一次使用的地方</p>
+</li>
+<li><p>Java中用final指示常量，表示只能被赋值一次，不能更改。</p>
+</li>
+</ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>Java中使用+ - * /表示加减乘除。<br>当参与/运算的两个操作数都是整数时，表整除，否则表浮点除法。整数的求余用%表示。</p>
+<h3 id="数值类型转换"><a href="#数值类型转换" class="headerlink" title="数值类型转换"></a>数值类型转换</h3><p><img src="/img/数值类型转换.png" alt="图片名称" title=""></p>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><p>语法格式是在圆括号中给出想要转换的目标类型，后面紧跟待转换的变量名。</p>
+<pre><code>double x= 9.997;
+int nx= (int)Math.round(x);
+</code></pre><h3 id="括号和运算符级别"><a href="#括号和运算符级别" class="headerlink" title="括号和运算符级别"></a>括号和运算符级别</h3><p><img src="/img/运算符.jpg" alt="图片名称" title=""></p>
+<h3 id="枚举类型（详见后）"><a href="#枚举类型（详见后）" class="headerlink" title="枚举类型（详见后）"></a>枚举类型（详见后）</h3><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h3><p>substring可以从一个较大的字符串提取出一个子串。如：</p>
+<pre><code>String greeting= &quot;Hello&quot;;
+String s= greeting.substring(0,3); //Hel
+</code></pre><h3 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h3><p>Java允许使用+号拼接两个字符串。</p>
+<pre><code>String expletive= &quot;Expletive&quot;;
+String PG13=&quot;deleted&quot;;
+String message= expletive + PG13; //Expletivedeleted
+</code></pre><h3 id="不可变"><a href="#不可变" class="headerlink" title="不可变"></a>不可变</h3><p>String类没有提供用于修改字符串的方法。<br>而是创建一个新字符串，而不是修改一个代码单元。</p>
+<h3 id="检测字符串是否相等"><a href="#检测字符串是否相等" class="headerlink" title="检测字符串是否相等"></a>检测字符串是否相等</h3><p>可以使用equals方法检测两个字符串是否相等。如：</p>
+<pre><code>s.equals(t);
+</code></pre><p>注：不要用==检测两个字符串是否相等，它只能确定两个字符串是否放在同一个位置上。</p>
+<h2 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h2><h3 id="块作用域"><a href="#块作用域" class="headerlink" title="块作用域"></a>块作用域</h3><p>块（即复合语句）是指在一对大括号括起来的若干条简单的Java语句。块决定了变量的作用域，一个块可以嵌套在另一个块中。但是不能在嵌套的两个块中声明同名的变量。</p>
+<pre><code>public static void main(String[] args)
+{
+    int n;
+    ...
+    {
+        int k;
+        int n; //Error--can&apos;t redefine n in inner block
+        ...
+    }
+}
+</code></pre><h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><pre><code>if (condition){
+    statement
+}else if (condition){
+    statement
+}else{
+    statement
+}
+</code></pre><h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><pre><code>while(condition)
+{
+    statement
+}
+
+
+do
+{
+    statement
+}
+while(condition);
+</code></pre><h3 id="确定循环"><a href="#确定循环" class="headerlink" title="确定循环"></a>确定循环</h3><pre><code>for(condition)
+{
+    statement
+}
+</code></pre><h3 id="多重选择"><a href="#多重选择" class="headerlink" title="多重选择"></a>多重选择</h3><pre><code>switch(choice)
+{
+    case 1:
+        ...
+        break;
+    case 2:
+        ...
+        break;
+    case 3:
+        ...
+        break;
+    case 4:
+        ...
+        break;
+    default:
+        //bad input
+        ...
+        break;
+}
+</code></pre><p>注：switch语句将从与选项值相匹配的case标签处开始执行直到遇到break语句，或者执行到switch语句的结束处为止。如果没有相匹配的case标签，而有default字句，就执行这个子句。</p>
+<p>case标签可以使常量表达式，枚举常量，还可以是字符串字面量。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="两种声明形式"><a href="#两种声明形式" class="headerlink" title="两种声明形式"></a>两种声明形式</h3><pre><code>int[] a;
+
+或
+
+int a[];
+</code></pre><h3 id="for-each-循环"><a href="#for-each-循环" class="headerlink" title="for each 循环"></a>for each 循环</h3><p>可以用来依次处理数组中的每个元素（其他类型的元素集合亦可）。</p>
+<pre><code>for (variable : collection ) statement
+
+如:
+for(int element : a)
+    System.out.println(element);
+</code></pre><h3 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h3><p>在Java中。允许将一个数组变量拷贝给另一个数组变量。这时，两个变量将引用同一个数组。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java的基本程序设计结构&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux 学习笔记</title>
@@ -1062,26 +1251,6 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>My first blog</title>
-    <link href="http://yoursite.com/2016/09/25/my-first-blog/"/>
-    <id>http://yoursite.com/2016/09/25/my-first-blog/</id>
-    <published>2016-09-25T14:19:05.000Z</published>
-    <updated>2017-01-09T09:04:24.618Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="My-first-blog"><a href="#My-first-blog" class="headerlink" title="My first blog."></a>My first blog.</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World!"></a>Hello World!</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;My-first-blog&quot;&gt;&lt;a href=&quot;#My-first-blog&quot; class=&quot;headerlink&quot; title=&quot;My first blog.&quot;&gt;&lt;/a&gt;My first blog.&lt;/h1&gt;&lt;h2 id=&quot;Hello-World&quot;&gt;&lt;a hre
-    
-    </summary>
-    
-    
-      <category term="test" scheme="http://yoursite.com/tags/test/"/>
     
   </entry>
   

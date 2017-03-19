@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/03/18/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/</loc>
+    <lastmod>2017-03-19T13:03:21.154Z</lastmod>
+    <data>
+        <display>
+        <title>Core Java I 学习笔记(二)</title>
+        <pubTime>2017-03-18T11:45:08.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://yoursite.com/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/03/15/Linux-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2017-03-15T08:39:41.283Z</lastmod>
     <data>
@@ -240,23 +260,6 @@
              
               <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/09/25/my-first-blog/</loc>
-    <lastmod>2017-01-09T09:04:24.618Z</lastmod>
-    <data>
-        <display>
-        <title>My first blog</title>
-        <pubTime>2016-09-25T14:19:05.000Z</pubTime>
-        
-        <tag>test</tag>
-         
-         
-           
         </display>
     </data>
     </url>
