@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-09T11:57:49.677Z</updated>
+  <updated>2017-04-16T12:59:18.755Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,137 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Core Java I 学习笔记(六)</title>
+    <link href="http://yoursite.com/2017/04/15/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/"/>
+    <id>http://yoursite.com/2017/04/15/Core-Java-I-学习笔记-六/</id>
+    <published>2017-04-15T11:31:01.000Z</published>
+    <updated>2017-04-16T12:59:18.755Z</updated>
+    
+    <content type="html"><![CDATA[<p>泛型<br><a id="more"></a></p>
+<h2 id="为什么要使用泛型程序设计"><a href="#为什么要使用泛型程序设计" class="headerlink" title="为什么要使用泛型程序设计"></a>为什么要使用泛型程序设计</h2><p><strong>泛型程序设计</strong>意味着编写的代码可以被很多不同类型的对象所重用。</p>
+<h3 id="类型参数的好处"><a href="#类型参数的好处" class="headerlink" title="类型参数的好处"></a>类型参数的好处</h3><p>在Java增加泛型类之前，泛型程序设计使用继承实现的。ArayList类只维护一个Object引用的数组：</p>
+<pre><code>public class ArrayList
+{
+    private Object[] elementData;
+    ...
+    public Object get(int i){...}
+    public void add(Object o){...}
+}
+</code></pre><p>这种方法有两个问题</p>
+<ul>
+<li>但获取一个值时必须进行强制类型转换</li>
+<li>没有错误检查，可以向数组列表添加任何类的对象。</li>
+</ul>
+<p>泛型提供了一个更好的解决方案：<strong>类型参数（type parameters）</strong>。ArrayList类有一个类型参数来只是元素类型：</p>
+<pre><code>ArrayList&lt;String&gt; files= new ArrayList&lt;&gt;();
+</code></pre><p>参数类型的魅力在于：使得程序具有更好的可读性和安全性。</p>
+<h2 id="定义简单泛型类"><a href="#定义简单泛型类" class="headerlink" title="定义简单泛型类"></a>定义简单泛型类</h2><p>一个<strong>泛型类（generic class）</strong>就是具有一个或多个类型变量的类。</p>
+<pre><code>public class Pair&lt;T&gt;
+{
+    private T first;
+    private T second;
+
+    public Pair() {first = null; second = null;}
+    public Pair(T first, T secont){this.first = first; this.second = secont;}
+
+    public T getFirst(){return first;}
+    public T getSecont(){return second;}
+
+    public void setFirst(T newValue){first= newValue;}
+    public void setSecot(T newValue){second= newValue;}
+}
+</code></pre><p>泛型类可以有多个类型变量。如：</p>
+<pre><code>public class Pair&lt;T, U&gt;{...}
+</code></pre><p>用具体的类型替换类型变量就可以实例化泛型类型，如：</p>
+<pre><code>Pair&lt;String&gt;
+</code></pre><p>可以将结果想象成带有构造器的普通类：</p>
+<pre><code>Pair&lt;String&gt;()
+Pair&lt;String&gt;(String, String)
+</code></pre><p>和方法：</p>
+<pre><code>String getFirst()
+String getSecond()
+void setFirst(String)
+void setSecond(String)
+</code></pre><p>换句话说，泛型类可以看作普通类的工厂。</p>
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><pre><code>class ArrayAlg{
+    public void &lt;T&gt; T getMiddle(T...a){
+        return a[a.length / 2];
+    }
+}
+</code></pre><p>类型变量放在修饰符的后面，放在类型的前面。泛型方法可以定义在普通类中，也可以定义在泛型类中。但调用一个泛型方法时，在方法名前的尖括号中放入具体的类型：</p>
+<pre><code>String middle= ArrayAlg.&lt;String&gt;getMiddle(&quot;John&quot;,&quot;Q.&quot;,&quot;Public&quot;);
+</code></pre><p>一般，方法调用中可以省略<string>类型参数。</string></p>
+<h2 id="类型变量的限定"><a href="#类型变量的限定" class="headerlink" title="类型变量的限定"></a>类型变量的限定</h2><p>有时，类或方法需要对类型变量加以约束：</p>
+<pre><code>public static &lt;T extends Comparable&gt; T min(T[] a)....
+</code></pre><p>现在，泛型的min方法只能被实现了Comparable接口的类的数组调用。<br>一个类型变量或通配符可以有多个限定：</p>
+<pre><code>T extends Comparable &amp; Serializable
+</code></pre><p>注：java中可以根据需要拥有多个接口超类型，但限定中至多有一个类。如果一个类作为限定，必须是限定列表中的第一个。</p>
+<h2 id="泛型代码和虚拟机"><a href="#泛型代码和虚拟机" class="headerlink" title="泛型代码和虚拟机"></a>泛型代码和虚拟机</h2><p>关于Java泛型转换的事实：</p>
+<ul>
+<li>虚拟机中没有泛型，只有普通的类和方法；</li>
+<li>所以的类型参数都用它们的限定类型替换；</li>
+<li>桥方法被合成来保护多态；</li>
+<li>为保持类型安全性，必要时插入强制类型转换。</li>
+</ul>
+<h3 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h3><p>无论何时定义一个泛型类型，都自动提供了一个相应的<strong>原始类型（raw type）</strong>。原始类型的名字就是删除类型参数后的泛型类型名。<strong>擦除（erased）</strong>类型变量，并替换为限定类型（无限定的变量用Object）。</p>
+<p>如，Pair<t>的原始类型如下：</t></p>
+<pre><code>public class Pair
+{
+    private Object first;
+    private Object second;
+
+    public Pair() {first = null; second = null;}
+    public Pair(Object first, Object secont){this.first = first; this.second = secont;}
+
+    public Object getFirst(){return first;}
+    public Object getSecont(){return second;}
+
+    public void setFirst(Object newValue){first= newValue;}
+    public void setSecot(Object newValue){second= newValue;}
+}
+</code></pre><h2 id="约束与局限性"><a href="#约束与局限性" class="headerlink" title="约束与局限性"></a>约束与局限性</h2><ul>
+<li>不能用基本类型实例化类型参数；</li>
+<li>运行时类型查询只适用于原始类型；</li>
+<li>varargs警告；</li>
+<li>不能实例化类型变量；</li>
+<li>不能构造泛型数组；</li>
+<li>泛型类的静态上下文中类型变量无效；</li>
+<li>不能抛出或捕获泛型类的实例；</li>
+<li>可以消除对受查异常的检查；</li>
+<li>注意擦除后的冲突。</li>
+</ul>
+<h2 id="泛型类型的继承规则"><a href="#泛型类型的继承规则" class="headerlink" title="泛型类型的继承规则"></a>泛型类型的继承规则</h2><ul>
+<li>Manager继承Employee，但Pair &lt; Employee &gt;与Pair &lt; Manager &gt;没有什么联系。</li>
+<li>永远可以将参数化类型转换为一个原始类型。</li>
+<li>泛型类可以扩展或实现其他的泛型类。</li>
+</ul>
+<h2 id="通配符类型"><a href="#通配符类型" class="headerlink" title="通配符类型"></a>通配符类型</h2><h3 id="通配符概念"><a href="#通配符概念" class="headerlink" title="通配符概念"></a>通配符概念</h3><p>通配符类型中，允许类型参数变化：</p>
+<pre><code>Pair &lt;? extends Employee&gt;
+</code></pre><p>表示任何泛型Pair类型，它的类型参数是Employee的子类。</p>
+<h3 id="通配符的超类型限定"><a href="#通配符的超类型限定" class="headerlink" title="通配符的超类型限定"></a>通配符的超类型限定</h3><pre><code>? super Manager
+</code></pre><p>这个通配符限制为Manager的所有超类型。可以为方法提供参数，但不能使用返回值。</p>
+<pre><code>void setFirst(? super Manager)
+? super Manager getFirst()
+</code></pre><p>这不是真正的Java语法，但可以看出编译器知道什么，编译器无法知道setFirst方法的具体类型，只能传递Manager类型的对象，或某个子类型对象。调用getFirst，不能保证返回对象的类型。只能把它赋给一个Object。</p>
+<h3 id="无限定通配符"><a href="#无限定通配符" class="headerlink" title="无限定通配符"></a>无限定通配符</h3><p>类型Pair&lt;?&gt;有以下方法：</p>
+<pre><code>? getFirst()
+void setFirst(?)
+</code></pre><p>getFirst的返回值只能赋给一个Object。setFirst方法不能被调用。</p>
+<h3 id="通配符捕获"><a href="#通配符捕获" class="headerlink" title="通配符捕获"></a>通配符捕获</h3><p>通配符不是类型变量，因此，不能在编写代码中使用”?“作为一种类型。可以通过写一个辅助函数解决。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;泛型&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Core Java I 学习笔记(五)</title>
