@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-16T12:59:18.755Z</updated>
+  <updated>2017-05-13T10:53:38.181Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,134 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Core Java I 学习笔记(七)</title>
+    <link href="http://yoursite.com/2017/04/22/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%83/"/>
+    <id>http://yoursite.com/2017/04/22/Core-Java-I-学习笔记-七/</id>
+    <published>2017-04-22T11:35:18.000Z</published>
+    <updated>2017-05-13T10:53:38.181Z</updated>
+    
+    <content type="html"><![CDATA[<p>集合<br><a id="more"></a></p>
+<h2 id="Java集合框架"><a href="#Java集合框架" class="headerlink" title="Java集合框架"></a>Java集合框架</h2><p>与现代的数据结构类库的常见情况一样，Java集合类库也将<strong>接口（interface）</strong>与<strong>实现（implementation）</strong>分离。</p>
+<p>在Java类库中，集合类的基本接口是Collection接口。有两个基本方法：</p>
+<pre><code>public interface Collection&lt;E&gt;{
+    boolean add(E element);
+    Iterator&lt;E&gt; iterator;
+    ...
+}
+</code></pre><ul>
+<li>add方法用于向集合中添加元素。</li>
+<li>iterator方法用于返回一个实现了Iterator接口的对象。可以使用这个迭代器对象依次访问集合中的元素。</li>
+</ul>
+<p>Iterator接口包含4个方法：</p>
+<pre><code>public interface Iterator&lt;E&gt;{
+    E next();
+    boolean hasNext();
+    void remove;
+    default void forEachRemaining(Consumer&lt;? super E&gt; action);
+}
+</code></pre><p>remove方法将会删除上次调用next方法时返回的元素，next和remove方法的调用具有互相依赖性。如果调用remove之前没有调用next将是非法的。</p>
+<p>Java集合框架为不同类型的集合定义了大量接口：</p>
+<p><img src="/img/集合框架的接口.png" alt="图片名称" title=""></p>
+<h2 id="具体的集合"><a href="#具体的集合" class="headerlink" title="具体的集合"></a>具体的集合</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">集合类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ArrayList</td>
+<td style="text-align:center">一种可以动态增长和缩减的索引序列</td>
+</tr>
+<tr>
+<td style="text-align:center">LinkedList</td>
+<td style="text-align:center">一种可以在任何位置进行高效地插入和删除操作的有序序列</td>
+</tr>
+<tr>
+<td style="text-align:center">ArrayDeque</td>
+<td style="text-align:center">一种用循环数组实现的双端队列</td>
+</tr>
+<tr>
+<td style="text-align:center">HashSet</td>
+<td style="text-align:center">一种没有重复元素的无序集合</td>
+</tr>
+<tr>
+<td style="text-align:center">TreeSet</td>
+<td style="text-align:center">一种有序集</td>
+</tr>
+<tr>
+<td style="text-align:center">EnumSet</td>
+<td style="text-align:center">一种包含枚举类型值的集</td>
+</tr>
+<tr>
+<td style="text-align:center">LinkedHashSet</td>
+<td style="text-align:center">一种可以记住元素插入次序的集</td>
+</tr>
+<tr>
+<td style="text-align:center">PriorityQueue</td>
+<td style="text-align:center">一种允许高效删除最小元素的集合</td>
+</tr>
+<tr>
+<td style="text-align:center">HashMap</td>
+<td style="text-align:center">一种存储键/值关联的数据结构</td>
+</tr>
+<tr>
+<td style="text-align:center">TreeMap</td>
+<td style="text-align:center">一种键值有序排列的映射表</td>
+</tr>
+<tr>
+<td style="text-align:center">EnumMap</td>
+<td style="text-align:center">一种键值属于枚举类型的映射表</td>
+</tr>
+<tr>
+<td style="text-align:center">LinkedHashMap</td>
+<td style="text-align:center">一种可以记住键/值项添加次序的映射表</td>
+</tr>
+<tr>
+<td style="text-align:center">WeakHashMap</td>
+<td style="text-align:center">一种其值无用武之地后可以被垃圾回收器回收的映射表</td>
+</tr>
+<tr>
+<td style="text-align:center">IdentityHashMap</td>
+<td style="text-align:center">一种用==而不是equals比较键值的映射表</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/img/集合框架中的类.png" alt="图片名称" title=""></p>
+<p>Notes：<br>在java中，所有链表实际上都是<strong>双向链接（doubly linked）</strong>，即每个结点还存放着前驱结点的引用。<br><strong>散列表（hash table）</strong>可以快速地查找说需要的对象，散列表为每个对象计算一个整数，称为<strong>散列码（hash code）</strong>。<br>TreeSet类与散列集十分相似，不过它比散列集有所改进。树集是一个<strong>有序集合（sorted collection）</strong>。可以以任意顺序将元素插入到集合中。</p>
+<h2 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h2><p>集是一个集合，它可以快速地查找现有的元素。但是，要查看一个元素，需要有要查找元素的精确副本。通常，我们知道某些键的信息，并想要查找与之对应的元素。<strong>映射（map）</strong>数据结构就是为此设计的。映射用来存放键/值对。</p>
+<h3 id="基本映射操作"><a href="#基本映射操作" class="headerlink" title="基本映射操作"></a>基本映射操作</h3><p>Java类库为映射提供了两个通用的实现：HashMap和TreeMap。<br>散列映射对键进行散列，树映射用键的整体顺序对元素进行排序，并将其组织成搜索树。散列或比较函数只能作用于键。与键关联的值不能进行散列或比较。<br>与集一样，散列稍微快一点，如果不需要按照排列顺序访问键，最好选择散列。</p>
+<p>下列代码键为存储的员工信息建立一个散列映射：</p>
+<pre><code>Map&lt;String, Employee&gt; staff= new HashMap&lt;&gt;();
+Employee harry= new Employee(&quot;Harry Hacker&quot;);
+staff.put(&quot;987-98-9996&quot;,harry);
+...
+</code></pre><p>每当往映射中添加对象时，必须同时提供一个键。在这里，键是一个字符串，对应的值是Employee对象。<br>要想检索一个对象，必须使用一个键。</p>
+<pre><code>String id= &quot;987-98-9996&quot;;
+e= staff.get(id); //get harry
+</code></pre><p>如果在映射中没有对应的值，get将返回null。<br>remove方法用于从映射中删除给定键对应的元素。size方法用于返回映射中的元素数。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;集合&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Core Java I 学习笔记(六)</title>
     <link href="http://yoursite.com/2017/04/15/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/"/>
     <id>http://yoursite.com/2017/04/15/Core-Java-I-学习笔记-六/</id>
     <published>2017-04-15T11:31:01.000Z</published>
-    <updated>2017-04-16T12:59:18.755Z</updated>
+    <updated>2017-04-26T06:20:31.503Z</updated>
     
     <content type="html"><![CDATA[<p>泛型<br><a id="more"></a></p>
 <h2 id="为什么要使用泛型程序设计"><a href="#为什么要使用泛型程序设计" class="headerlink" title="为什么要使用泛型程序设计"></a>为什么要使用泛型程序设计</h2><p><strong>泛型程序设计</strong>意味着编写的代码可以被很多不同类型的对象所重用。</p>
@@ -143,6 +266,8 @@ void setFirst(?)
     
       <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
     
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
   </entry>
   
