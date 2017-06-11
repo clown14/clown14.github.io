@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-13T10:53:38.181Z</updated>
+  <updated>2017-06-11T12:29:06.710Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,75 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MBG使用手册</title>
+    <link href="http://yoursite.com/2017/06/11/MBG%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/"/>
+    <id>http://yoursite.com/2017/06/11/MBG使用手册/</id>
+    <published>2017-06-11T12:09:20.000Z</published>
+    <updated>2017-06-11T12:29:06.710Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mybaits Generator 使用手册<br><a id="more"></a></p>
+<h2 id="Generator工具简介"><a href="#Generator工具简介" class="headerlink" title="Generator工具简介"></a>Generator工具简介</h2><p>自动生成底层模型类、Dao接口类甚至Mapping映射文件。</p>
+<h2 id="数据库建表"><a href="#数据库建表" class="headerlink" title="数据库建表"></a>数据库建表</h2><p><img src="/img/数据库1.png" alt="图片名称" title=""><br><img src="/img/数据库2.png" alt="图片名称" title=""></p>
+<h2 id="下载对应jar包，"><a href="#下载对应jar包，" class="headerlink" title="下载对应jar包，"></a>下载对应jar包，</h2><p><img src="/img/jar包.png" alt="图片名称" title=""></p>
+<h2 id="generatorConfig-xml配置文件书写"><a href="#generatorConfig-xml配置文件书写" class="headerlink" title="generatorConfig.xml配置文件书写"></a>generatorConfig.xml配置文件书写</h2><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;  
+&lt;!DOCTYPE generatorConfiguration  
+  PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;  
+  &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;  
+&lt;generatorConfiguration&gt;  
+&lt;!-- 数据库驱动--&gt;  
+    &lt;classPathEntry  location=&quot;mysql-connector-java-3.1.12-bin.jar&quot;/&gt;  
+    &lt;context id=&quot;DB2Tables&quot;  targetRuntime=&quot;MyBatis3&quot;&gt;  
+        &lt;commentGenerator&gt;  
+            &lt;property name=&quot;suppressDate&quot; value=&quot;true&quot;/&gt;  
+            &lt;!-- 是否去除自动生成的注释 true：是 ： false:否 --&gt;  
+            &lt;property name=&quot;suppressAllComments&quot; value=&quot;true&quot;/&gt;  
+        &lt;/commentGenerator&gt;  
+        &lt;!--数据库链接URL，用户名、密码 --&gt;  
+        &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot; connectionURL=&quot;jdbc:mysql://localhost/test&quot; userId=&quot;root&quot; password=&quot;&quot;&gt;  
+        &lt;/jdbcConnection&gt;  
+        &lt;javaTypeResolver&gt;  
+            &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot;/&gt;  
+        &lt;/javaTypeResolver&gt;  
+        &lt;!-- 生成模型的包名和位置--&gt;  
+        &lt;javaModelGenerator targetPackage=&quot;model&quot; targetProject=&quot;src&quot;&gt;  
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;  
+            &lt;property name=&quot;trimStrings&quot; value=&quot;true&quot;/&gt;  
+        &lt;/javaModelGenerator&gt;  
+        &lt;!-- 生成映射文件的包名和位置--&gt;  
+        &lt;sqlMapGenerator targetPackage=&quot;mapping&quot; targetProject=&quot;src&quot;&gt;  
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;  
+        &lt;/sqlMapGenerator&gt;  
+        &lt;!-- 生成DAO的包名和位置--&gt;  
+        &lt;javaClientGenerator type=&quot;XMLMAPPER&quot; targetPackage=&quot;dao&quot; targetProject=&quot;src&quot;&gt;  
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;  
+        &lt;/javaClientGenerator&gt;  
+        &lt;!-- 要生成哪些表--&gt;  
+        &lt;table tableName=&quot;test&quot; domainObjectName=&quot;Test&quot; enableCountByExample=&quot;false&quot; enableUpdateByExample=&quot;false&quot; enableDeleteByExample=&quot;false&quot; enableSelectByExample=&quot;false&quot; selectByExampleQueryId=&quot;false&quot;&gt;&lt;/table&gt;  
+    &lt;/context&gt;  
+&lt;/generatorConfiguration&gt;  
+</code></pre><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>进入命令行界面，mybatis-generator-core-1.3.2\lib目录下运行</p>
+<pre><code>Java -jar mybatis-generator-core-1.3.2.jar -configfile generatorConfig.xml -overwrite
+</code></pre><p><img src="/img/运行成功.png" alt="图片名称" title=""></p>
+<h2 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h2><p><img src="/img/生成文件.png" alt="图片名称" title=""></p>
+<p>Test.java 实体类：<br><img src="/img/生成1.png" alt="图片名称" title=""></p>
+<p>TestMapper.java 映射接口：<br><img src="/img/生成2.png" alt="图片名称" title=""></p>
+<p>TestMapper.xml 具体sql语句：<br><img src="/img/生成3.png" alt="图片名称" title=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Mybaits Generator 使用手册&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Mybatis" scheme="http://yoursite.com/categories/Mybatis/"/>
+    
+    
+      <category term="Mybatis" scheme="http://yoursite.com/tags/Mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Core Java I 学习笔记(七)</title>

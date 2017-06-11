@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Mybatis," />
 
 
 
@@ -86,12 +86,25 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Onion'blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Mybaits Generator 使用手册">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MBG使用手册">
+<meta property="og:url" content="http://yoursite.com/2017/06/11/MBG使用手册/index.html">
 <meta property="og:site_name" content="Onion'blog">
+<meta property="og:description" content="Mybaits Generator 使用手册">
+<meta property="og:image" content="http://yoursite.com/img/数据库1.png">
+<meta property="og:image" content="http://yoursite.com/img/数据库2.png">
+<meta property="og:image" content="http://yoursite.com/img/jar包.png">
+<meta property="og:image" content="http://yoursite.com/img/运行成功.png">
+<meta property="og:image" content="http://yoursite.com/img/生成文件.png">
+<meta property="og:image" content="http://yoursite.com/img/生成1.png">
+<meta property="og:image" content="http://yoursite.com/img/生成2.png">
+<meta property="og:image" content="http://yoursite.com/img/生成3.png">
+<meta property="og:updated_time" content="2017-06-11T12:29:06.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Onion'blog">
+<meta name="twitter:title" content="MBG使用手册">
+<meta name="twitter:description" content="Mybaits Generator 使用手册">
+<meta name="twitter:image" content="http://yoursite.com/img/数据库1.png">
 
 
 
@@ -112,9 +125,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/11/MBG使用手册/"/>
 
-  <title> Onion'blog </title>
+  <title> MBG使用手册 | Onion'blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -135,9 +148,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -224,9 +235,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -246,10 +257,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/06/11/MBG使用手册/" itemprop="url">
-                  MBG使用手册
-                </a>
+                MBG使用手册
               
             
           </h1>
@@ -308,506 +316,107 @@
       
 
       
-        
-          <p>Mybaits Generator 使用手册<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/06/11/MBG使用手册/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+        <p>Mybaits Generator 使用手册<br><a id="more"></a></p>
+<h2 id="Generator工具简介"><a href="#Generator工具简介" class="headerlink" title="Generator工具简介"></a>Generator工具简介</h2><p>自动生成底层模型类、Dao接口类甚至Mapping映射文件。</p>
+<h2 id="数据库建表"><a href="#数据库建表" class="headerlink" title="数据库建表"></a>数据库建表</h2><p><img src="/img/数据库1.png" alt="图片名称" title=""><br><img src="/img/数据库2.png" alt="图片名称" title=""></p>
+<h2 id="下载对应jar包，"><a href="#下载对应jar包，" class="headerlink" title="下载对应jar包，"></a>下载对应jar包，</h2><p><img src="/img/jar包.png" alt="图片名称" title=""></p>
+<h2 id="generatorConfig-xml配置文件书写"><a href="#generatorConfig-xml配置文件书写" class="headerlink" title="generatorConfig.xml配置文件书写"></a>generatorConfig.xml配置文件书写</h2><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;  
+&lt;!DOCTYPE generatorConfiguration  
+  PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;  
+  &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;  
+&lt;generatorConfiguration&gt;  
+&lt;!-- 数据库驱动--&gt;  
+    &lt;classPathEntry  location=&quot;mysql-connector-java-3.1.12-bin.jar&quot;/&gt;  
+    &lt;context id=&quot;DB2Tables&quot;  targetRuntime=&quot;MyBatis3&quot;&gt;  
+        &lt;commentGenerator&gt;  
+            &lt;property name=&quot;suppressDate&quot; value=&quot;true&quot;/&gt;  
+            &lt;!-- 是否去除自动生成的注释 true：是 ： false:否 --&gt;  
+            &lt;property name=&quot;suppressAllComments&quot; value=&quot;true&quot;/&gt;  
+        &lt;/commentGenerator&gt;  
+        &lt;!--数据库链接URL，用户名、密码 --&gt;  
+        &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot; connectionURL=&quot;jdbc:mysql://localhost/test&quot; userId=&quot;root&quot; password=&quot;&quot;&gt;  
+        &lt;/jdbcConnection&gt;  
+        &lt;javaTypeResolver&gt;  
+            &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot;/&gt;  
+        &lt;/javaTypeResolver&gt;  
+        &lt;!-- 生成模型的包名和位置--&gt;  
+        &lt;javaModelGenerator targetPackage=&quot;model&quot; targetProject=&quot;src&quot;&gt;  
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;  
+            &lt;property name=&quot;trimStrings&quot; value=&quot;true&quot;/&gt;  
+        &lt;/javaModelGenerator&gt;  
+        &lt;!-- 生成映射文件的包名和位置--&gt;  
+        &lt;sqlMapGenerator targetPackage=&quot;mapping&quot; targetProject=&quot;src&quot;&gt;  
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;  
+        &lt;/sqlMapGenerator&gt;  
+        &lt;!-- 生成DAO的包名和位置--&gt;  
+        &lt;javaClientGenerator type=&quot;XMLMAPPER&quot; targetPackage=&quot;dao&quot; targetProject=&quot;src&quot;&gt;  
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;  
+        &lt;/javaClientGenerator&gt;  
+        &lt;!-- 要生成哪些表--&gt;  
+        &lt;table tableName=&quot;test&quot; domainObjectName=&quot;Test&quot; enableCountByExample=&quot;false&quot; enableUpdateByExample=&quot;false&quot; enableDeleteByExample=&quot;false&quot; enableSelectByExample=&quot;false&quot; selectByExampleQueryId=&quot;false&quot;&gt;&lt;/table&gt;  
+    &lt;/context&gt;  
+&lt;/generatorConfiguration&gt;  
+</code></pre><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>进入命令行界面，mybatis-generator-core-1.3.2\lib目录下运行</p>
+<pre><code>Java -jar mybatis-generator-core-1.3.2.jar -configfile generatorConfig.xml -overwrite
+</code></pre><p><img src="/img/运行成功.png" alt="图片名称" title=""></p>
+<h2 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h2><p><img src="/img/生成文件.png" alt="图片名称" title=""></p>
+<p>Test.java 实体类：<br><img src="/img/生成1.png" alt="图片名称" title=""></p>
+<p>TestMapper.java 映射接口：<br><img src="/img/生成2.png" alt="图片名称" title=""></p>
+<p>TestMapper.xml 具体sql语句：<br><img src="/img/生成3.png" alt="图片名称" title=""></p>
+
       
     </div>
 
     <div>
       
+        
+
+      
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/22/Core-Java-I-学习笔记-七/" itemprop="url">
-                  Core Java I 学习笔记(七)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-22T19:35:18+08:00" content="2017-04-22">
-              2017-04-22
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Mybatis/" rel="tag">#Mybatis</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>集合<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/22/Core-Java-I-学习笔记-七/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/22/Core-Java-I-学习笔记-七/" rel="next" title="Core Java I 学习笔记(七)">
+                <i class="fa fa-chevron-left"></i> Core Java I 学习笔记(七)
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/15/Core-Java-I-学习笔记-六/" itemprop="url">
-                  Core Java I 学习笔记(六)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-15T19:31:01+08:00" content="2017-04-15">
-              2017-04-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>泛型<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/15/Core-Java-I-学习笔记-六/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/08/Core-Java-I-学习笔记-五/" itemprop="url">
-                  Core Java I 学习笔记(五)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-08T19:46:50+08:00" content="2017-04-08">
-              2017-04-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>接口，lambda表达式与内部类<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/08/Core-Java-I-学习笔记-五/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/02/Core-Java-I-学习笔记-四/" itemprop="url">
-                  Core Java I 学习笔记(四)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-02T16:31:37+08:00" content="2017-04-02">
-              2017-04-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>继承<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/04/02/Core-Java-I-学习笔记-四/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -815,6 +424,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -834,8 +447,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -944,6 +566,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Generator工具简介"><span class="nav-number">1.</span> <span class="nav-text">Generator工具简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库建表"><span class="nav-number">2.</span> <span class="nav-text">数据库建表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载对应jar包，"><span class="nav-number">3.</span> <span class="nav-text">下载对应jar包，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generatorConfig-xml配置文件书写"><span class="nav-number">4.</span> <span class="nav-text">generatorConfig.xml配置文件书写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">5.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成文件"><span class="nav-number">6.</span> <span class="nav-text">生成文件</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -1039,6 +672,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
@@ -1060,6 +697,10 @@
     
 
    
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+        <!-- UY END -->
+    
   
   
   
