@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-11T12:31:12.106Z</updated>
+  <updated>2018-02-26T12:54:26.889Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一八展望</title>
+    <link href="http://yoursite.com/2018/02/26/%E4%B8%80%E5%85%AB%E5%B1%95%E6%9C%9B/"/>
+    <id>http://yoursite.com/2018/02/26/一八展望/</id>
+    <published>2018-02-26T12:53:42.000Z</published>
+    <updated>2018-02-26T12:54:26.889Z</updated>
+    
+    <content type="html"><![CDATA[<p>一八展望<br><a id="more"></a></p>
+<p>开始写这个博客的时候，想的是只写技术不写其他，到这篇之前也的确是这样的，当然，我承认水平还远远不够，不过今天想来想去还是对一八年做个展望吧。</p>
+<p>顺便也总结下一七年，因为考研，到今天为止大半年没学技术了，博客也停更到现在，很可惜考研基本上失利了，期间阴差阳错谈了个女朋友，避免了大学没谈恋爱的尴尬。因为考研，放弃了很多，得到了很多，具体就不细说了。</p>
+<p>关于一八，昨儿发了条微博：想勤奋一点，努力一点，专注一点，多学一点，少睡一点。这是真切的感受，一直觉得自己过于懒散了。然后就在这里列个一八年的目标吧，找一份工作，找个好的城市安定下来。看书，每天时间不少于两小时，看技术书，写博客，频率至少在一周一篇，看杂书，一年争取看十五到二十本书，包括技术书。继续健身，一周坚持不少于三次。下半年二战。就酱。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一八展望&lt;br&gt;
+    
+    </summary>
+    
+      <category term="杂" scheme="http://yoursite.com/categories/%E6%9D%82/"/>
+    
+    
+      <category term="杂" scheme="http://yoursite.com/tags/%E6%9D%82/"/>
+    
+  </entry>
   
   <entry>
     <title>MBG使用手册</title>
@@ -1855,35 +1881,6 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2016/09/14/hello-world/"/>
-    <id>http://yoursite.com/2016/09/14/hello-world/</id>
-    <published>2016-09-14T12:23:51.019Z</published>
-    <updated>2017-01-09T09:03:54.899Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
   </entry>
   
