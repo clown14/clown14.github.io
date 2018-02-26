@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-11T12:29:06.710Z</updated>
+  <updated>2017-06-11T12:31:12.106Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://yoursite.com/2017/06/11/MBG%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/"/>
     <id>http://yoursite.com/2017/06/11/MBG使用手册/</id>
     <published>2017-06-11T12:09:20.000Z</published>
-    <updated>2017-06-11T12:29:06.710Z</updated>
+    <updated>2017-06-11T12:31:12.106Z</updated>
     
     <content type="html"><![CDATA[<p>Mybaits Generator 使用手册<br><a id="more"></a></p>
 <h2 id="Generator工具简介"><a href="#Generator工具简介" class="headerlink" title="Generator工具简介"></a>Generator工具简介</h2><p>自动生成底层模型类、Dao接口类甚至Mapping映射文件。</p>
 <h2 id="数据库建表"><a href="#数据库建表" class="headerlink" title="数据库建表"></a>数据库建表</h2><p><img src="/img/数据库1.png" alt="图片名称" title=""><br><img src="/img/数据库2.png" alt="图片名称" title=""></p>
-<h2 id="下载对应jar包，"><a href="#下载对应jar包，" class="headerlink" title="下载对应jar包，"></a>下载对应jar包，</h2><p><img src="/img/jar包.png" alt="图片名称" title=""></p>
+<h2 id="下载对应jar包"><a href="#下载对应jar包" class="headerlink" title="下载对应jar包"></a>下载对应jar包</h2><p><img src="/img/jar包.png" alt="图片名称" title=""></p>
 <h2 id="generatorConfig-xml配置文件书写"><a href="#generatorConfig-xml配置文件书写" class="headerlink" title="generatorConfig.xml配置文件书写"></a>generatorConfig.xml配置文件书写</h2><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;  
 &lt;!DOCTYPE generatorConfiguration  
   PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;  
@@ -212,7 +212,7 @@ e= staff.get(id); //get harry
     <link href="http://yoursite.com/2017/04/15/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/"/>
     <id>http://yoursite.com/2017/04/15/Core-Java-I-学习笔记-六/</id>
     <published>2017-04-15T11:31:01.000Z</published>
-    <updated>2017-04-26T06:20:31.503Z</updated>
+    <updated>2017-04-26T06:20:31.504Z</updated>
     
     <content type="html"><![CDATA[<p>泛型<br><a id="more"></a></p>
 <h2 id="为什么要使用泛型程序设计"><a href="#为什么要使用泛型程序设计" class="headerlink" title="为什么要使用泛型程序设计"></a>为什么要使用泛型程序设计</h2><p><strong>泛型程序设计</strong>意味着编写的代码可以被很多不同类型的对象所重用。</p>
@@ -345,7 +345,7 @@ void setFirst(?)
     <link href="http://yoursite.com/2017/04/08/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/"/>
     <id>http://yoursite.com/2017/04/08/Core-Java-I-学习笔记-五/</id>
     <published>2017-04-08T11:46:50.000Z</published>
-    <updated>2017-04-09T11:57:49.677Z</updated>
+    <updated>2017-04-09T11:57:49.678Z</updated>
     
     <content type="html"><![CDATA[<p>接口，lambda表达式与内部类<br><a id="more"></a></p>
 <h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在Java中，接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义。<br>接口中的所有方法自动地属于public，接口绝不能含有实例域。<br>实现接口时，必须把方法声明为public。</p>
@@ -413,7 +413,7 @@ class Employee implements Comparable
     <link href="http://yoursite.com/2017/04/02/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/"/>
     <id>http://yoursite.com/2017/04/02/Core-Java-I-学习笔记-四/</id>
     <published>2017-04-02T08:31:37.000Z</published>
-    <updated>2017-04-03T11:28:36.865Z</updated>
+    <updated>2017-04-03T11:28:36.866Z</updated>
     
     <content type="html"><![CDATA[<p>继承<br><a id="more"></a></p>
 <p>利用继承，可以基于已存在的类构造一个新类。继承已存在的类就是复用这些类的方法和域。在此基础上，还可以添加一些新的的方法和域，以满足新的需求。</p>
@@ -887,7 +887,7 @@ for(int element : a)
     <link href="http://yoursite.com/2017/03/06/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/"/>
     <id>http://yoursite.com/2017/03/06/Core-Java-I-学习笔记-一/</id>
     <published>2017-03-06T10:50:40.000Z</published>
-    <updated>2017-03-06T11:22:39.034Z</updated>
+    <updated>2017-03-06T11:22:39.035Z</updated>
     
     <content type="html"><![CDATA[<p>Java程序概述<br><a id="more"></a></p>
 <h2 id="关键术语"><a href="#关键术语" class="headerlink" title="关键术语"></a>关键术语</h2><h3 id="简单性"><a href="#简单性" class="headerlink" title="简单性"></a>简单性</h3><p>Java剔除了C++中许多很少使用，难以处理，易混淆的特性，是C++语法的一个“纯洁”版本，<br>如没有头文件、指针运算、结构、联合、操作符重载等。</p>
@@ -926,7 +926,7 @@ for(int element : a)
     <link href="http://yoursite.com/2017/02/08/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
     <id>http://yoursite.com/2017/02/08/Mybatis学习笔记（四）/</id>
     <published>2017-02-08T07:02:39.000Z</published>
-    <updated>2017-02-08T10:39:09.466Z</updated>
+    <updated>2017-02-08T10:39:09.467Z</updated>
     
     <content type="html"><![CDATA[<p>SqlMapConfig配置文件 &amp;&amp; 输入&amp;输出映射<br><a id="more"></a></p>
 <h2 id="SqlMapConfig"><a href="#SqlMapConfig" class="headerlink" title="SqlMapConfig"></a>SqlMapConfig</h2><p>SqlMapConfig.xml中配置的内容和顺序如下</p>
@@ -1386,7 +1386,7 @@ PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
     <link href="http://yoursite.com/2017/02/05/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>http://yoursite.com/2017/02/05/Mybatis学习笔记（二）/</id>
     <published>2017-02-05T06:36:12.000Z</published>
-    <updated>2017-02-05T07:58:57.857Z</updated>
+    <updated>2017-02-05T07:58:57.858Z</updated>
     
     <content type="html"><![CDATA[<p>Mybatis入门程序<br><a id="more"></a></p>
 <h2 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h2><p>第一步：创建一个java工程。（数据库自行创建）<br>第二步：导入jar包。包括mybatis的jar包、mybatis依赖的jar包、mysql的数据库驱动。<br>第三步：创建一个log4j.properties。方便查看sql语句用的。<br>第四步：创建一个SqlMapConfig.xml。配置数据库连接池。<br>第五步：创建Mapper映射文件。<br>第六步：编码。</p>
@@ -1697,7 +1697,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <link href="http://yoursite.com/2017/01/19/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/"/>
     <id>http://yoursite.com/2017/01/19/算法导论笔记（五）/</id>
     <published>2017-01-19T14:24:09.000Z</published>
-    <updated>2017-01-20T06:49:17.292Z</updated>
+    <updated>2017-01-20T06:49:17.293Z</updated>
     
     <content type="html"><![CDATA[<p>Depth-First-Search<br><a id="more"></a></p>
 <h3 id="DFS-G"><a href="#DFS-G" class="headerlink" title="DFS(G)"></a>DFS(G)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> each vertex u∈G.V 图G=(V,E)</div><div class="line">&#123;</div><div class="line">  u.color=WHITE</div><div class="line">  u.π=NULL	（u前驱</div><div class="line">&#125;</div><div class="line">time=0</div><div class="line"><span class="keyword">for</span> each vertex u∈G.V</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(u.color==WHITE)</div><div class="line">  &#123;</div><div class="line">    DFS-VISIT(G,u)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1746,7 +1746,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <link href="http://yoursite.com/2017/01/13/%E7%AE%97%E6%B3%953/"/>
     <id>http://yoursite.com/2017/01/13/算法3/</id>
     <published>2017-01-13T08:02:10.000Z</published>
-    <updated>2017-01-13T08:24:30.576Z</updated>
+    <updated>2017-01-13T08:24:30.577Z</updated>
     
     <content type="html"><![CDATA[<p>Quick-Sort &amp;&amp; Stack<br><a id="more"></a></p>
 <h3 id="Quick-Sort（快速）"><a href="#Quick-Sort（快速）" class="headerlink" title="Quick-Sort（快速）"></a>Quick-Sort（快速）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">PARTITION(A,p,r)</div><div class="line">x=A[r]</div><div class="line">r=p-1</div><div class="line"><span class="keyword">for</span>(j=p; j&lt;r; j++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(A[j]&lt;=x)</div><div class="line">  &#123;</div><div class="line">    i++</div><div class="line">    exchange A[i] with A[j]</div><div class="line">  &#125;	</div><div class="line">&#125; </div><div class="line">exchange A[i+1] with A[r]</div><div class="line"><span class="built_in">return</span> i+1</div></pre></td></tr></table></figure>
@@ -1770,7 +1770,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <link href="http://yoursite.com/2017/01/10/%E7%AE%97%E6%B3%952/"/>
     <id>http://yoursite.com/2017/01/10/算法2/</id>
     <published>2017-01-10T09:49:28.000Z</published>
-    <updated>2017-01-13T08:51:34.284Z</updated>
+    <updated>2017-01-13T08:51:34.285Z</updated>
     
     <content type="html"><![CDATA[<p>Find-Maxing-Crossing-Subarray &amp;&amp; Min-Heapify<br><a id="more"></a></p>
 <h3 id="Find-Maxing-Crossing-Subarray（最大子数组）"><a href="#Find-Maxing-Crossing-Subarray（最大子数组）" class="headerlink" title="Find-Maxing-Crossing-Subarray（最大子数组）"></a>Find-Maxing-Crossing-Subarray（最大子数组）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">A(low,mid,high)</div><div class="line">leftsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(i=mid; i&gt;low; i--)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[i]</div><div class="line">  <span class="keyword">if</span>(sum&gt;leftsum)</div><div class="line">  &#123;</div><div class="line">    leftsum=sum</div><div class="line">    maxleft=i</div><div class="line">  &#125;	</div><div class="line">&#125; </div><div class="line">rightsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(j=mid+1; j&lt;high; j++)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[j]</div><div class="line">  <span class="keyword">if</span>(sum&gt;rightsum)</div><div class="line">  &#123;</div><div class="line">    rightsum=sum</div><div class="line">    maxright=j</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1862,8 +1862,8 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <title>Hello World</title>
     <link href="http://yoursite.com/2016/09/14/hello-world/"/>
     <id>http://yoursite.com/2016/09/14/hello-world/</id>
-    <published>2016-09-14T12:23:51.018Z</published>
-    <updated>2017-01-09T09:03:54.898Z</updated>
+    <published>2016-09-14T12:23:51.019Z</published>
+    <updated>2017-01-09T09:03:54.899Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
