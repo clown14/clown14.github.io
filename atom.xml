@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-02-26T12:54:26.889Z</updated>
+  <updated>2017-01-09T09:03:56.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/03/05/hello-world/"/>
+    <id>http://yoursite.com/2018/03/05/hello-world/</id>
+    <published>2018-03-05T02:36:37.426Z</published>
+    <updated>2017-01-09T09:03:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一八展望</title>
     <link href="http://yoursite.com/2018/02/26/%E4%B8%80%E5%85%AB%E5%B1%95%E6%9C%9B/"/>
     <id>http://yoursite.com/2018/02/26/一八展望/</id>
     <published>2018-02-26T12:53:42.000Z</published>
-    <updated>2018-02-26T12:54:26.889Z</updated>
+    <updated>2018-02-26T12:54:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>一八展望<br><a id="more"></a></p>
 <p>开始写这个博客的时候，想的是只写技术不写其他，到这篇之前也的确是这样的，当然，我承认水平还远远不够，不过今天想来想去还是对一八年做个展望吧。</p>
@@ -46,7 +75,7 @@
     <link href="http://yoursite.com/2017/06/11/MBG%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/"/>
     <id>http://yoursite.com/2017/06/11/MBG使用手册/</id>
     <published>2017-06-11T12:09:20.000Z</published>
-    <updated>2017-06-11T12:31:12.106Z</updated>
+    <updated>2017-06-11T12:31:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>Mybaits Generator 使用手册<br><a id="more"></a></p>
 <h2 id="Generator工具简介"><a href="#Generator工具简介" class="headerlink" title="Generator工具简介"></a>Generator工具简介</h2><p>自动生成底层模型类、Dao接口类甚至Mapping映射文件。</p>
@@ -115,7 +144,7 @@
     <link href="http://yoursite.com/2017/04/22/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%83/"/>
     <id>http://yoursite.com/2017/04/22/Core-Java-I-学习笔记-七/</id>
     <published>2017-04-22T11:35:18.000Z</published>
-    <updated>2017-05-13T10:53:38.181Z</updated>
+    <updated>2017-05-13T10:53:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>集合<br><a id="more"></a></p>
 <h2 id="Java集合框架"><a href="#Java集合框架" class="headerlink" title="Java集合框架"></a>Java集合框架</h2><p>与现代的数据结构类库的常见情况一样，Java集合类库也将<strong>接口（interface）</strong>与<strong>实现（implementation）</strong>分离。</p>
@@ -238,7 +267,7 @@ e= staff.get(id); //get harry
     <link href="http://yoursite.com/2017/04/15/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/"/>
     <id>http://yoursite.com/2017/04/15/Core-Java-I-学习笔记-六/</id>
     <published>2017-04-15T11:31:01.000Z</published>
-    <updated>2017-04-26T06:20:31.504Z</updated>
+    <updated>2017-04-26T06:20:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>泛型<br><a id="more"></a></p>
 <h2 id="为什么要使用泛型程序设计"><a href="#为什么要使用泛型程序设计" class="headerlink" title="为什么要使用泛型程序设计"></a>为什么要使用泛型程序设计</h2><p><strong>泛型程序设计</strong>意味着编写的代码可以被很多不同类型的对象所重用。</p>
@@ -371,7 +400,7 @@ void setFirst(?)
     <link href="http://yoursite.com/2017/04/08/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/"/>
     <id>http://yoursite.com/2017/04/08/Core-Java-I-学习笔记-五/</id>
     <published>2017-04-08T11:46:50.000Z</published>
-    <updated>2017-04-09T11:57:49.678Z</updated>
+    <updated>2017-04-09T11:57:50.000Z</updated>
     
     <content type="html"><![CDATA[<p>接口，lambda表达式与内部类<br><a id="more"></a></p>
 <h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在Java中，接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义。<br>接口中的所有方法自动地属于public，接口绝不能含有实例域。<br>实现接口时，必须把方法声明为public。</p>
@@ -439,7 +468,7 @@ class Employee implements Comparable
     <link href="http://yoursite.com/2017/04/02/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/"/>
     <id>http://yoursite.com/2017/04/02/Core-Java-I-学习笔记-四/</id>
     <published>2017-04-02T08:31:37.000Z</published>
-    <updated>2017-04-03T11:28:36.866Z</updated>
+    <updated>2017-04-03T11:28:38.000Z</updated>
     
     <content type="html"><![CDATA[<p>继承<br><a id="more"></a></p>
 <p>利用继承，可以基于已存在的类构造一个新类。继承已存在的类就是复用这些类的方法和域。在此基础上，还可以添加一些新的的方法和域，以满足新的需求。</p>
@@ -517,7 +546,7 @@ e= new Manager(..);
     <link href="http://yoursite.com/2017/03/25/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/"/>
     <id>http://yoursite.com/2017/03/25/Core-Java-I-学习笔记-三/</id>
     <published>2017-03-25T11:10:05.000Z</published>
-    <updated>2017-03-26T12:13:36.667Z</updated>
+    <updated>2017-03-26T12:13:38.000Z</updated>
     
     <content type="html"><![CDATA[<p>对象和类<br><a id="more"></a></p>
 <h2 id="面向对象概述"><a href="#面向对象概述" class="headerlink" title="面向对象概述"></a>面向对象概述</h2><p>Java完全面向对象。</p>
@@ -650,7 +679,7 @@ swap(a,v);
     <link href="http://yoursite.com/2017/03/18/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/"/>
     <id>http://yoursite.com/2017/03/18/Core-Java-I-学习笔记-二/</id>
     <published>2017-03-18T11:45:08.000Z</published>
-    <updated>2017-03-19T13:03:21.154Z</updated>
+    <updated>2017-03-19T13:03:22.000Z</updated>
     
     <content type="html"><![CDATA[<p>Java的基本程序设计结构<br><a id="more"></a></p>
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Java中，有三种标记注释的方式。</p>
@@ -839,7 +868,7 @@ for(int element : a)
     <link href="http://yoursite.com/2017/03/15/Linux-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2017/03/15/Linux-学习笔记/</id>
     <published>2017-03-15T05:59:32.000Z</published>
-    <updated>2017-03-15T08:39:41.283Z</updated>
+    <updated>2017-03-15T08:39:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>Linux概述<br><a id="more"></a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先安装虚拟机，可以自行搜索VM。<br>下载CentOS的linux系统，我的版本是CentOS-6.7-i386-bin-DVD1。</p>
@@ -913,7 +942,7 @@ for(int element : a)
     <link href="http://yoursite.com/2017/03/06/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/"/>
     <id>http://yoursite.com/2017/03/06/Core-Java-I-学习笔记-一/</id>
     <published>2017-03-06T10:50:40.000Z</published>
-    <updated>2017-03-06T11:22:39.035Z</updated>
+    <updated>2017-03-06T11:22:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>Java程序概述<br><a id="more"></a></p>
 <h2 id="关键术语"><a href="#关键术语" class="headerlink" title="关键术语"></a>关键术语</h2><h3 id="简单性"><a href="#简单性" class="headerlink" title="简单性"></a>简单性</h3><p>Java剔除了C++中许多很少使用，难以处理，易混淆的特性，是C++语法的一个“纯洁”版本，<br>如没有头文件、指针运算、结构、联合、操作符重载等。</p>
@@ -952,7 +981,7 @@ for(int element : a)
     <link href="http://yoursite.com/2017/02/08/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
     <id>http://yoursite.com/2017/02/08/Mybatis学习笔记（四）/</id>
     <published>2017-02-08T07:02:39.000Z</published>
-    <updated>2017-02-08T10:39:09.467Z</updated>
+    <updated>2017-02-08T10:39:10.000Z</updated>
     
     <content type="html"><![CDATA[<p>SqlMapConfig配置文件 &amp;&amp; 输入&amp;输出映射<br><a id="more"></a></p>
 <h2 id="SqlMapConfig"><a href="#SqlMapConfig" class="headerlink" title="SqlMapConfig"></a>SqlMapConfig</h2><p>SqlMapConfig.xml中配置的内容和顺序如下</p>
@@ -1196,7 +1225,7 @@ id：对resultMap的唯一标识
     <link href="http://yoursite.com/2017/02/06/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>http://yoursite.com/2017/02/06/Mybatis学习笔记（三）/</id>
     <published>2017-02-06T07:49:23.000Z</published>
-    <updated>2017-02-08T10:23:45.818Z</updated>
+    <updated>2017-02-08T10:23:46.000Z</updated>
     
     <content type="html"><![CDATA[<p>Mybatis的Dao开发<br><a id="more"></a><br>使用dao开发有两种开发方式，一种是使用普通的接口和接口实现类来进行开发<br>另一种开发方式是使用mapper代理的开发的方式(直接使用接口)</p>
 <h2 id="sqlSession的使用范围"><a href="#sqlSession的使用范围" class="headerlink" title="sqlSession的使用范围"></a>sqlSession的使用范围</h2><h3 id="sessionFactoryBuidler"><a href="#sessionFactoryBuidler" class="headerlink" title="sessionFactoryBuidler"></a>sessionFactoryBuidler</h3><p>通过SqlSessionFactoryBuilder创建会话工厂SqlSessionFactory将SqlSessionFactoryBuilder当成一个工具类使用即可，不需要使用单例管理SqlSessionFactoryBuilder。在需要创建SqlSessionFactory时候，只需要new一次SqlSessionFactoryBuilder即可。</p>
@@ -1412,7 +1441,7 @@ PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
     <link href="http://yoursite.com/2017/02/05/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>http://yoursite.com/2017/02/05/Mybatis学习笔记（二）/</id>
     <published>2017-02-05T06:36:12.000Z</published>
-    <updated>2017-02-05T07:58:57.858Z</updated>
+    <updated>2017-02-05T07:58:58.000Z</updated>
     
     <content type="html"><![CDATA[<p>Mybatis入门程序<br><a id="more"></a></p>
 <h2 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h2><p>第一步：创建一个java工程。（数据库自行创建）<br>第二步：导入jar包。包括mybatis的jar包、mybatis依赖的jar包、mysql的数据库驱动。<br>第三步：创建一个log4j.properties。方便查看sql语句用的。<br>第四步：创建一个SqlMapConfig.xml。配置数据库连接池。<br>第五步：创建Mapper映射文件。<br>第六步：编码。</p>
@@ -1666,7 +1695,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <link href="http://yoursite.com/2017/02/01/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://yoursite.com/2017/02/01/Mybatis学习笔记（一）/</id>
     <published>2017-02-01T12:33:13.000Z</published>
-    <updated>2017-02-01T13:55:06.404Z</updated>
+    <updated>2017-02-01T13:55:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>jdbc问题总结 &amp;&amp; Mybatis简介<br><a id="more"></a></p>
 <h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><h3 id="jdbc实现步骤："><a href="#jdbc实现步骤：" class="headerlink" title="jdbc实现步骤："></a>jdbc实现步骤：</h3><ul>
@@ -1723,7 +1752,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <link href="http://yoursite.com/2017/01/19/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/"/>
     <id>http://yoursite.com/2017/01/19/算法导论笔记（五）/</id>
     <published>2017-01-19T14:24:09.000Z</published>
-    <updated>2017-01-20T06:49:17.293Z</updated>
+    <updated>2017-01-20T06:49:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>Depth-First-Search<br><a id="more"></a></p>
 <h3 id="DFS-G"><a href="#DFS-G" class="headerlink" title="DFS(G)"></a>DFS(G)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> each vertex u∈G.V 图G=(V,E)</div><div class="line">&#123;</div><div class="line">  u.color=WHITE</div><div class="line">  u.π=NULL	（u前驱</div><div class="line">&#125;</div><div class="line">time=0</div><div class="line"><span class="keyword">for</span> each vertex u∈G.V</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(u.color==WHITE)</div><div class="line">  &#123;</div><div class="line">    DFS-VISIT(G,u)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1747,7 +1776,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <link href="http://yoursite.com/2017/01/16/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
     <id>http://yoursite.com/2017/01/16/算法导论笔记（四）/</id>
     <published>2017-01-16T07:33:54.000Z</published>
-    <updated>2017-01-20T06:35:41.435Z</updated>
+    <updated>2017-01-20T06:35:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>Queue &amp;&amp; Breadth-First-Search<br><a id="more"></a></p>
 <h3 id="Queue（队列）"><a href="#Queue（队列）" class="headerlink" title="Queue（队列）"></a>Queue（队列）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Enqueue(Q,x) （进栈）</div><div class="line"><span class="keyword">if</span>(Q.head==Q.tail+1)</div><div class="line">&#123;</div><div class="line">  error <span class="string">"overflow"</span></div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  Q.[Q.tail]=x</div><div class="line">  <span class="keyword">if</span>(Q.tail==Q.length)</div><div class="line">  &#123;</div><div class="line">    e.tail=1</div><div class="line">  &#125;<span class="keyword">else</span></div><div class="line">  Q.tail++</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1772,7 +1801,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <link href="http://yoursite.com/2017/01/13/%E7%AE%97%E6%B3%953/"/>
     <id>http://yoursite.com/2017/01/13/算法3/</id>
     <published>2017-01-13T08:02:10.000Z</published>
-    <updated>2017-01-13T08:24:30.577Z</updated>
+    <updated>2017-01-13T08:24:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>Quick-Sort &amp;&amp; Stack<br><a id="more"></a></p>
 <h3 id="Quick-Sort（快速）"><a href="#Quick-Sort（快速）" class="headerlink" title="Quick-Sort（快速）"></a>Quick-Sort（快速）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">PARTITION(A,p,r)</div><div class="line">x=A[r]</div><div class="line">r=p-1</div><div class="line"><span class="keyword">for</span>(j=p; j&lt;r; j++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(A[j]&lt;=x)</div><div class="line">  &#123;</div><div class="line">    i++</div><div class="line">    exchange A[i] with A[j]</div><div class="line">  &#125;	</div><div class="line">&#125; </div><div class="line">exchange A[i+1] with A[r]</div><div class="line"><span class="built_in">return</span> i+1</div></pre></td></tr></table></figure>
@@ -1796,7 +1825,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <link href="http://yoursite.com/2017/01/10/%E7%AE%97%E6%B3%952/"/>
     <id>http://yoursite.com/2017/01/10/算法2/</id>
     <published>2017-01-10T09:49:28.000Z</published>
-    <updated>2017-01-13T08:51:34.285Z</updated>
+    <updated>2017-01-13T08:51:36.000Z</updated>
     
     <content type="html"><![CDATA[<p>Find-Maxing-Crossing-Subarray &amp;&amp; Min-Heapify<br><a id="more"></a></p>
 <h3 id="Find-Maxing-Crossing-Subarray（最大子数组）"><a href="#Find-Maxing-Crossing-Subarray（最大子数组）" class="headerlink" title="Find-Maxing-Crossing-Subarray（最大子数组）"></a>Find-Maxing-Crossing-Subarray（最大子数组）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">A(low,mid,high)</div><div class="line">leftsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(i=mid; i&gt;low; i--)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[i]</div><div class="line">  <span class="keyword">if</span>(sum&gt;leftsum)</div><div class="line">  &#123;</div><div class="line">    leftsum=sum</div><div class="line">    maxleft=i</div><div class="line">  &#125;	</div><div class="line">&#125; </div><div class="line">rightsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(j=mid+1; j&lt;high; j++)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[j]</div><div class="line">  <span class="keyword">if</span>(sum&gt;rightsum)</div><div class="line">  &#123;</div><div class="line">    rightsum=sum</div><div class="line">    maxright=j</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1820,7 +1849,7 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <link href="http://yoursite.com/2017/01/08/%E7%AE%97%E6%B3%951/"/>
     <id>http://yoursite.com/2017/01/08/算法1/</id>
     <published>2017-01-08T08:20:11.000Z</published>
-    <updated>2017-01-13T08:03:56.500Z</updated>
+    <updated>2017-01-13T08:03:58.000Z</updated>
     
     <content type="html"><![CDATA[<p>Insertion-Sort &amp;&amp; Merge-Sort<br><a id="more"></a></p>
 <h3 id="Insertion-Sort（插入）"><a href="#Insertion-Sort（插入）" class="headerlink" title="Insertion-Sort（插入）"></a>Insertion-Sort（插入）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">A[]=&#123;5,2,4,6,1,3&#125;</div><div class="line"><span class="keyword">for</span>(j=2; j&lt;A.length; j++)</div><div class="line">&#123;</div><div class="line">  key= A[j]</div><div class="line">  i=j-1</div><div class="line">  <span class="keyword">while</span>(i&gt;0 &amp;&amp; A[i]&gt;key)</div><div class="line">  &#123;   </div><div class="line">  	A[i+1]= A[i]</div><div class="line">      i=i-1   </div><div class="line">  &#125;</div><div class="line">  A[i+1]=key</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1836,51 +1865,6 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     
     
       <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo+git部署博客</title>
-    <link href="http://yoursite.com/2016/10/08/hexo-git%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2016/10/08/hexo-git部署博客/</id>
-    <published>2016-10-08T14:13:57.000Z</published>
-    <updated>2017-01-13T08:51:05.844Z</updated>
-    
-    <content type="html"><![CDATA[<p>简单介绍一下我搭建这个博客的心得。</p>
-<a id="more"></a>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先，我是在windows上搭建的博客(才不是没钱买mac)。<br>安装Git,Node.js具体安装百度即可。<br>安装上面两个之后就可以利用npm命令来安装hexo，执行下面这条命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo -g</div></pre></td></tr></table></figure>
-<h3 id="初始化生成博客"><a href="#初始化生成博客" class="headerlink" title="初始化生成博客"></a>初始化生成博客</h3><p>初始化Hexo博客只需进入博客目录，执行下面这条命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
-<p>初始化博客之后博客目录下会产生一些配置文件和模板文件，现在就要利用这些模板文件来生成我们的静态博客文件，通过下面这条命令就可以生成我们的博客。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<h3 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h3><p>生成博客之后我们就可以开始在本地部署我们的博客，执行下面这条命令。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>现在打开浏览器访问<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 就可以看到我们的博客了。</p>
-<h3 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h3><p>通过上面这些步骤我们只是在本地搭建起了博客，要让别人看到还需要把它部署到GitHub上。<br>首先，当然是需要申请一个GitHub账号，然后新建一个Repository，接着在命名的时候需要注意，GitHubPage的名字必须用户名.github.com或者用户名.github.io。<br>创建完Repository之后，我们要配置Hexo的github地址然后才可以把我们的博客部署到GitHub上面。在博客目录底下打开_congig.yml，这就是Hexo的配置文件。找到下面这段代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$   <span class="comment"># Deployment</span></div><div class="line">    <span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line">    deploy:</div><div class="line">    <span class="built_in">type</span>:</div></pre></td></tr></table></figure>
-<p>把上面的内容替换成你刚才创建的Repository地址，如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$   <span class="comment"># Deployment</span></div><div class="line">    <span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line">    deploy:</div><div class="line">    <span class="built_in">type</span>: github</div><div class="line">    repository: https://github.com/用户名/用户名.github.io.git</div><div class="line">    branch: master</div></pre></td></tr></table></figure>
-<p>创建Repository并且修改配置文件之后我们就可以把我们的博客部署到GitHub上面了，通过下面这个命令，过程中需要输入Git账号和密码:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  hexo deploy</div></pre></td></tr></table></figure>
-<p>现在打开浏览器访问<a href="http://用户名.github.com" target="_blank" rel="external">http://用户名.github.com</a> 或者 <a href="http://用户名.github.io" target="_blank" rel="external">http://用户名.github.io</a> ，部署之后大约十分钟就可以看到博客效果了。</p>
-<p>关于Git,具体可以看廖雪峰的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">教程</a>。这里有一点说一下，安装完成后要配置username，usermail，注意设置完是没有任何显示的，我一开始以为是自己的问题，其实并不是。</p>
-<p>一开始我是大体是照着这个<a href="http://jingyan.baidu.com/article/d8072ac47aca0fec95cefd2d.html" target="_blank" rel="external">百度经验</a>搭建的。</p>
-<p>安装完博客之后开始考虑优化，可以参考<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">这里</a>，只要到Hexo目录下从Git克隆代码，具体操作参照N<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">ext使用手册</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;简单介绍一下我搭建这个博客的心得。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="个人博客" scheme="http://yoursite.com/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
   </entry>
   
