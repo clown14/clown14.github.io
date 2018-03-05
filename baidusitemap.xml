@@ -405,22 +405,5 @@
     </url>
 
     
-  <url>
-    <loc>http://yoursite.com/2018/03/05/hello-world/</loc>
-    <lastmod>2017-01-09T09:03:56.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2018-03-05T02:36:37.426Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
     
 </urlset>
