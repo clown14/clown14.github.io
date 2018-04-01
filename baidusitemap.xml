@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/04/01/MysqlCrashCourse%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    <lastmod>2018-04-01T07:51:02.872Z</lastmod>
+    <data>
+        <display>
+        <title>MysqlCrashCourse学习笔记（二）</title>
+        <pubTime>2018-04-01T05:49:45.000Z</pubTime>
+        
+        <tag>Mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mysql" url="http://yoursite.com/categories/Mysql/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/03/25/MysqlCrashCourse%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
-    <lastmod>2018-03-25T10:34:57.945Z</lastmod>
+    <lastmod>2018-04-01T05:51:53.821Z</lastmod>
     <data>
         <display>
         <title>MysqlCrashCourse学习笔记（一）</title>

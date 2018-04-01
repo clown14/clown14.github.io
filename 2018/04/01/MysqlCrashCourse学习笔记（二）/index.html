@@ -1,0 +1,1009 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mysql," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Onion'blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="MySQL必知必会（二）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MysqlCrashCourse学习笔记（二）">
+<meta property="og:url" content="http://yoursite.com/2018/04/01/MysqlCrashCourse学习笔记（二）/index.html">
+<meta property="og:site_name" content="Onion'blog">
+<meta property="og:description" content="MySQL必知必会（二）">
+<meta property="og:updated_time" content="2018-04-01T07:51:02.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MysqlCrashCourse学习笔记（二）">
+<meta name="twitter:description" content="MySQL必知必会（二）">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/01/MysqlCrashCourse学习笔记（二）/"/>
+
+  <title> MysqlCrashCourse学习笔记（二） | Onion'blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Onion'blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">write onece use anywhere</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MysqlCrashCourse学习笔记（二）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-01T13:49:45+08:00" content="2018-04-01">
+              2018-04-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MySQL必知必会（二）<br><a id="more"></a></p>
+<h1 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h1><h2 id="使用WHERE子句"><a href="#使用WHERE子句" class="headerlink" title="使用WHERE子句"></a>使用WHERE子句</h2><p>在SELECT语句中，数据根据WHERE子句中指定的搜索条件进行过滤。WHERE子句在表名(FROM子句)之后给出：</p>
+<pre><code>SELECT prod_name, prod_price FROM products WHERE prod_price = 2.50;
+</code></pre><p>这条语句从products表中检索两个列，但不返回所有行，只返回prod_price值为2.50的值。</p>
+<h2 id="WHERE子句操作符"><a href="#WHERE子句操作符" class="headerlink" title="WHERE子句操作符"></a><center>WHERE子句操作符</center></h2><table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;&gt;</td>
+<td style="text-align:center">不等于</td>
+</tr>
+<tr>
+<td style="text-align:center">!=</td>
+<td style="text-align:center">不等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">小于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">小于等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">大于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;=</td>
+<td style="text-align:center">大于等于</td>
+</tr>
+<tr>
+<td style="text-align:center">BETWEEN</td>
+<td style="text-align:center">在指定的两个值之间</td>
+</tr>
+</tbody>
+</table>
+<pre><code>SELECT prod_name, prod_price FROM products WHERE prod_name = &apos;fuses&apos;;
+</code></pre><p>检查WHERE prod_name=’fuses’语句，它返回prod_name的值为Fuses的一行。MySQL在执行匹配时默认不区分大小写；</p>
+<pre><code>SELECT prod_name, prod_price FROM products WHERE prod_price &lt; 10;
+</code></pre><p>列出价格小于10美元的所有产品；</p>
+<pre><code>SELECT vend_id, prod_name FROM products WHERE vend_id &lt;&gt;1003;
+</code></pre><p>列出不是由供应商1003制造的所有产品；</p>
+<pre><code>SELECT prod_name, prod_price FROM products WHERE prod_price BETWEEN 5 AND 10;
+</code></pre><p>检索价格在5美元和10美元之间的产品。使用BETWEEN时，必须指定两个值，用AND分隔。</p>
+<h1 id="数据过滤"><a href="#数据过滤" class="headerlink" title="数据过滤"></a>数据过滤</h1><h2 id="AND操作符"><a href="#AND操作符" class="headerlink" title="AND操作符"></a>AND操作符</h2><pre><code>SELECT prod_id, prod_price, prod_name FROM products WHERE vend_id = 1003 AND prod_price &lt;= 10;
+</code></pre><p>检索有供应商1003制造且价格小于等于10美元的所有产品的名称和价格。</p>
+<h2 id="OR操作符"><a href="#OR操作符" class="headerlink" title="OR操作符"></a>OR操作符</h2><pre><code>SELECT prod_name, prod_price FROM products WHERE vend_id = 1002 OR vend_id =1003;
+</code></pre><p>检索由任一个指定供应商制造的所有产品的产品名和价格。</p>
+<pre><code>SELECT prod_name, prod_price FROM products WHERE (vend_id = 1002 OR vend_id = 1003) AND prod_price &gt;= 10;
+</code></pre><p>SQL在处理OR操作符前，优先处理AND操作符，可以使用圆括号明确地分组相应的操作符。</p>
+<h2 id="IN操作符"><a href="#IN操作符" class="headerlink" title="IN操作符"></a>IN操作符</h2><pre><code>SELECT  prod_name, prod_price FROM products WHERE vend_id IN (1002, 1003) ORDER BY prod_name;
+</code></pre><p>IN操作符用来指定条件范围，范围中的每个条件都可以进行匹配。</p>
+<h1 id="用通配符进行过滤"><a href="#用通配符进行过滤" class="headerlink" title="用通配符进行过滤"></a>用通配符进行过滤</h1><h2 id="百分号（-）通配符"><a href="#百分号（-）通配符" class="headerlink" title="百分号（%）通配符"></a>百分号（%）通配符</h2><pre><code>SELECT prod_id, prod_name FROM products WHERE prod_name LIKE &apos;jet%&apos;;
+</code></pre><p>此例子使用了搜索模式’jet%’。在执行时，将检索任意以jet起头的词。%告诉MySQL接受jet之后的任意字符，不管它有多少字符。</p>
+<pre><code>SELECT prod_id, prod_name FROM products WHERE prod_name LIKE &apos;%anvil%&apos;;
+</code></pre><p>通配符可在搜索模式中任意位置使用，且可以使用多个通配符。</p>
+<h2 id="下划线（-）通配符"><a href="#下划线（-）通配符" class="headerlink" title="下划线（_）通配符"></a>下划线（_）通配符</h2><pre><code>SELECT prod_id, prod_name FROM products WHERE prod_name LIKE &apos;_ ton anvil&apos;;
+</code></pre><p>下划线的用途与%一样，但下划线只匹配单个字符而不是多个字符。与%能匹配0个字符不一样，_总是匹配一个字符，不能多也不能少。</p>
+<h1 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h1><h2 id="计算字段"><a href="#计算字段" class="headerlink" title="计算字段"></a>计算字段</h2><p>存储在数据库表中的数据一般不是应用程序所需要的格式。计算字段并不实际存在于数据库表中，计算字段是运行时在SELECT语句内创建的。</p>
+<h2 id="拼接字段"><a href="#拼接字段" class="headerlink" title="拼接字段"></a>拼接字段</h2><p>在MySQL的SELECT语句中，可使用Concat()函数来拼接两个列。</p>
+<pre><code>SELECT Concat(vend_name, &apos;(&apos;, vend_country, &apos;)&apos;) FROM vendors ORDER BY vend_name;
+</code></pre><p>上述SELECT语句返回包含上述4个元素的单个列（计算字段）。</p>
+<h2 id="使用别名"><a href="#使用别名" class="headerlink" title="使用别名"></a>使用别名</h2><pre><code>SELECT Concat(vend_name, &apos;(&apos;, vend_country, &apos;)&apos;) AS vend_title FROM vendors ORDER BY vend_name;
+</code></pre><p>SQL支持列别名。别名（alias）是一个字段或值的替换名。别名用AS关键字赋予。</p>
+<h1 id="使用数据处理函数"><a href="#使用数据处理函数" class="headerlink" title="使用数据处理函数"></a>使用数据处理函数</h1><h2 id="文本处理函数"><a href="#文本处理函数" class="headerlink" title="文本处理函数"></a><center>文本处理函数</center></h2><table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Left()</td>
+<td style="text-align:center">返回串左边的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">Length()</td>
+<td style="text-align:center">返回串的长度</td>
+</tr>
+<tr>
+<td style="text-align:center">Locate()</td>
+<td style="text-align:center">找出串的一个字串</td>
+</tr>
+<tr>
+<td style="text-align:center">Lower()</td>
+<td style="text-align:center">将串转换为小写</td>
+</tr>
+<tr>
+<td style="text-align:center">LTrim()</td>
+<td style="text-align:center">去掉串左边的空格</td>
+</tr>
+<tr>
+<td style="text-align:center">Right()</td>
+<td style="text-align:center">返回串右边的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">RTrim()</td>
+<td style="text-align:center">去掉串右边的空格</td>
+</tr>
+<tr>
+<td style="text-align:center">Soundex()</td>
+<td style="text-align:center">返回串的SOUNDEX值</td>
+</tr>
+<tr>
+<td style="text-align:center">SubString()</td>
+<td style="text-align:center">返回子串的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">Upper()</td>
+<td style="text-align:center">将串转换为大写</td>
+</tr>
+</tbody>
+</table>
+<h2 id="日期和时间处理函数"><a href="#日期和时间处理函数" class="headerlink" title="日期和时间处理函数"></a><center>日期和时间处理函数</center></h2><table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AddDate()</td>
+<td style="text-align:center">增加一个日期</td>
+</tr>
+<tr>
+<td style="text-align:center">AddTime()</td>
+<td style="text-align:center">增加一个时间</td>
+</tr>
+<tr>
+<td style="text-align:center">CurDate()</td>
+<td style="text-align:center">返回当前日期</td>
+</tr>
+<tr>
+<td style="text-align:center">CurTime()</td>
+<td style="text-align:center">返回当前时间</td>
+</tr>
+<tr>
+<td style="text-align:center">Date()</td>
+<td style="text-align:center">返回日期时间的日期部分</td>
+</tr>
+<tr>
+<td style="text-align:center">DateDiff()</td>
+<td style="text-align:center">计算两个日期之差</td>
+</tr>
+<tr>
+<td style="text-align:center">Date_ADD()</td>
+<td style="text-align:center">高度灵活的日期运算函数</td>
+</tr>
+<tr>
+<td style="text-align:center">Date_Format()</td>
+<td style="text-align:center">返回一个格式化的日期或时间串</td>
+</tr>
+<tr>
+<td style="text-align:center">Day()</td>
+<td style="text-align:center">返回一个日期的天数部分</td>
+</tr>
+<tr>
+<td style="text-align:center">DayOfWeek()</td>
+<td style="text-align:center">对于一个日期，返回对应的星期几</td>
+</tr>
+<tr>
+<td style="text-align:center">Hour()</td>
+<td style="text-align:center">返回一个时间的小时部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Minute()</td>
+<td style="text-align:center">返回一个时间的分钟部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Month()</td>
+<td style="text-align:center">返回一个日期的月份部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Now()</td>
+<td style="text-align:center">返回当前日期和时间</td>
+</tr>
+<tr>
+<td style="text-align:center">Second()</td>
+<td style="text-align:center">返回一个时间的秒部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Time()</td>
+<td style="text-align:center">返回一个日期时间的时间部分</td>
+</tr>
+<tr>
+<td style="text-align:center">Year()</td>
+<td style="text-align:center">返回一个日期的年份部分</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数值处理函数"><a href="#数值处理函数" class="headerlink" title="数值处理函数"></a><center>数值处理函数</center></h2><table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Abs()</td>
+<td style="text-align:center">返回一个数的绝对值</td>
+</tr>
+<tr>
+<td style="text-align:center">Cos()</td>
+<td style="text-align:center">返回一个角度的余弦</td>
+</tr>
+<tr>
+<td style="text-align:center">Exp()</td>
+<td style="text-align:center">返回一个数的指数值</td>
+</tr>
+<tr>
+<td style="text-align:center">Mod()</td>
+<td style="text-align:center">返回除操作的余数</td>
+</tr>
+<tr>
+<td style="text-align:center">Pi()</td>
+<td style="text-align:center">返回圆周率</td>
+</tr>
+<tr>
+<td style="text-align:center">Rand()</td>
+<td style="text-align:center">返回一个随机数</td>
+</tr>
+<tr>
+<td style="text-align:center">Sin()</td>
+<td style="text-align:center">返回一个角度的正弦</td>
+</tr>
+<tr>
+<td style="text-align:center">Sqrt()</td>
+<td style="text-align:center">返回一个数的平方根</td>
+</tr>
+<tr>
+<td style="text-align:center">Tan()</td>
+<td style="text-align:center">返回一个角度的正切</td>
+</tr>
+</tbody>
+</table>
+<h1 id="汇总数据"><a href="#汇总数据" class="headerlink" title="汇总数据"></a>汇总数据</h1><h2 id="SQL聚集函数"><a href="#SQL聚集函数" class="headerlink" title="SQL聚集函数"></a><center>SQL聚集函数</center></h2><table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AVG()</td>
+<td style="text-align:center">返回某列的平均值</td>
+</tr>
+<tr>
+<td style="text-align:center">COUNT()</td>
+<td style="text-align:center">返回某列的行数</td>
+</tr>
+<tr>
+<td style="text-align:center">MAX()</td>
+<td style="text-align:center">返回某列的最大值</td>
+</tr>
+<tr>
+<td style="text-align:center">MIN()</td>
+<td style="text-align:center">返回某列的最小值</td>
+</tr>
+<tr>
+<td style="text-align:center">SUM()</td>
+<td style="text-align:center">返回某列值之和</td>
+</tr>
+</tbody>
+</table>
+<h1 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h1><h2 id="创建分组"><a href="#创建分组" class="headerlink" title="创建分组"></a>创建分组</h2><pre><code>SELECT vend_id, COUNT(\*) AS num_prods FROM products GROUP BY vend_id;
+</code></pre><p>上面的SELECT语句指定了两个列，vend_id包含产品供应商的ID，num_prods为计算字段。GROUP BY子句指示MySQL按vend_id排序并分组数据。</p>
+<h2 id="过滤分组"><a href="#过滤分组" class="headerlink" title="过滤分组"></a>过滤分组</h2><pre><code>SELECT cust_id, COUNT(\*) AS orders FROM orders GROUP BY cust_id HAVING COUNT(\*) &gt;= 2;
+</code></pre><p>WHERE与HAVING相似，WHERE过滤行，HAVING过滤分组。</p>
+<h2 id="分组和排序"><a href="#分组和排序" class="headerlink" title="分组和排序"></a><center>分组和排序</center></h2><table>
+<thead>
+<tr>
+<th style="text-align:center">ORDER BY</th>
+<th style="text-align:center">GROUP BY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">排序产生的输出</td>
+<td style="text-align:center">分组行。但输出可能不是分组的顺序</td>
+</tr>
+<tr>
+<td style="text-align:center">任意列都可以使用</td>
+<td style="text-align:center">只可能使用选择列或表达式列，而且必须使用每个选择列表达式</td>
+</tr>
+<tr>
+<td style="text-align:center">不一定需要</td>
+<td style="text-align:center">如果与聚集函数一起使用列，则必须使用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="SELECT子句顺序"><a href="#SELECT子句顺序" class="headerlink" title="SELECT子句顺序"></a><center>SELECT子句顺序</center></h2><table>
+<thead>
+<tr>
+<th style="text-align:center">子句</th>
+<th style="text-align:center">说明</th>
+<th>是否必须使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SELECT</td>
+<td style="text-align:center">要返回的列或表达式</td>
+<td>是</td>
+</tr>
+<tr>
+<td style="text-align:center">FROM</td>
+<td style="text-align:center">从中检索数据的表</td>
+<td>仅在从表选择数据时使用</td>
+</tr>
+<tr>
+<td style="text-align:center">WHERE</td>
+<td style="text-align:center">行级过滤</td>
+<td>否</td>
+</tr>
+<tr>
+<td style="text-align:center">GROUP BY</td>
+<td style="text-align:center">分组说明</td>
+<td>仅在按组计算聚集时使用</td>
+</tr>
+<tr>
+<td style="text-align:center">HAVING</td>
+<td style="text-align:center">组级过滤</td>
+<td>否</td>
+</tr>
+<tr>
+<td style="text-align:center">ORDER BY</td>
+<td style="text-align:center">输出排序顺序</td>
+<td>否</td>
+</tr>
+<tr>
+<td style="text-align:center">LIMIT</td>
+<td style="text-align:center">要检索的行数</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mysql/" rel="tag">#Mysql</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/25/MysqlCrashCourse学习笔记（一）/" rel="next" title="MysqlCrashCourse学习笔记（一）">
+                <i class="fa fa-chevron-left"></i> MysqlCrashCourse学习笔记（一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="onion" />
+          <p class="site-author-name" itemprop="name">onion</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/clown14" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/clown14" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sun-ka-77" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yoyoyohamapi.me" title="yoyoyohamapi" target="_blank">yoyoyohamapi</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qinaoyun.cn/Blog/index.html" title="qinaoyun" target="_blank">qinaoyun</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤数据"><span class="nav-number">1.</span> <span class="nav-text">过滤数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用WHERE子句"><span class="nav-number">1.1.</span> <span class="nav-text">使用WHERE子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHERE子句操作符"><span class="nav-number">1.2.</span> <span class="nav-text">WHERE子句操作符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据过滤"><span class="nav-number">2.</span> <span class="nav-text">数据过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AND操作符"><span class="nav-number">2.1.</span> <span class="nav-text">AND操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OR操作符"><span class="nav-number">2.2.</span> <span class="nav-text">OR操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IN操作符"><span class="nav-number">2.3.</span> <span class="nav-text">IN操作符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用通配符进行过滤"><span class="nav-number">3.</span> <span class="nav-text">用通配符进行过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#百分号（-）通配符"><span class="nav-number">3.1.</span> <span class="nav-text">百分号（%）通配符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下划线（-）通配符"><span class="nav-number">3.2.</span> <span class="nav-text">下划线（_）通配符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建计算字段"><span class="nav-number">4.</span> <span class="nav-text">创建计算字段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算字段"><span class="nav-number">4.1.</span> <span class="nav-text">计算字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拼接字段"><span class="nav-number">4.2.</span> <span class="nav-text">拼接字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用别名"><span class="nav-number">4.3.</span> <span class="nav-text">使用别名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用数据处理函数"><span class="nav-number">5.</span> <span class="nav-text">使用数据处理函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本处理函数"><span class="nav-number">5.1.</span> <span class="nav-text">文本处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期和时间处理函数"><span class="nav-number">5.2.</span> <span class="nav-text">日期和时间处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值处理函数"><span class="nav-number">5.3.</span> <span class="nav-text">数值处理函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#汇总数据"><span class="nav-number">6.</span> <span class="nav-text">汇总数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL聚集函数"><span class="nav-number">6.1.</span> <span class="nav-text">SQL聚集函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组数据"><span class="nav-number">7.</span> <span class="nav-text">分组数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分组"><span class="nav-number">7.1.</span> <span class="nav-text">创建分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过滤分组"><span class="nav-number">7.2.</span> <span class="nav-text">过滤分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组和排序"><span class="nav-number">7.3.</span> <span class="nav-text">分组和排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELECT子句顺序"><span class="nav-number">7.4.</span> <span class="nav-text">SELECT子句顺序</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">onion</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+        <!-- UY END -->
+    
+  
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
