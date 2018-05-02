@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -86,16 +86,12 @@
 
 
 
-<meta name="description" content="Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-Heapify">
-<meta property="og:type" content="article">
-<meta property="og:title" content="算法导论笔记（二）">
-<meta property="og:url" content="http://yoursite.com/2017/01/10/算法2/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Onion'blog">
+<meta property="og:url" content="http://yoursite.com/page/6/index.html">
 <meta property="og:site_name" content="Onion'blog">
-<meta property="og:description" content="Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-Heapify">
-<meta property="og:updated_time" content="2017-01-13T08:51:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法导论笔记（二）">
-<meta name="twitter:description" content="Find-Maxing-Crossing-Subarray &amp;amp;&amp;amp; Min-Heapify">
+<meta name="twitter:title" content="Onion'blog">
 
 
 
@@ -116,9 +112,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/10/算法2/"/>
+  <link rel="canonical" href="http://yoursite.com/page/6/"/>
 
-  <title> 算法导论笔记（二） | Onion'blog </title>
+  <title> Onion'blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -139,7 +135,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,9 +224,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -248,7 +246,10 @@
             
             
               
-                算法导论笔记（二）
+                
+                <a class="post-title-link" href="/2016/10/08/hexo-git部署博客/" itemprop="url">
+                  hexo+git部署博客
+                </a>
               
             
           </h1>
@@ -260,8 +261,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-10T17:49:28+08:00" content="2017-01-10">
-              2017-01-10
+            <time itemprop="dateCreated" datetime="2016-10-08T22:13:57+08:00" content="2016-10-08">
+              2016-10-08
             </time>
           </span>
 
@@ -274,8 +275,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
                   </a>
                 </span>
 
@@ -307,66 +308,46 @@
       
 
       
-        <p>Find-Maxing-Crossing-Subarray &amp;&amp; Min-Heapify<br><a id="more"></a></p>
-<h3 id="Find-Maxing-Crossing-Subarray（最大子数组）"><a href="#Find-Maxing-Crossing-Subarray（最大子数组）" class="headerlink" title="Find-Maxing-Crossing-Subarray（最大子数组）"></a>Find-Maxing-Crossing-Subarray（最大子数组）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">A(low,mid,high)</div><div class="line">leftsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(i=mid; i&gt;low; i--)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[i]</div><div class="line">  <span class="keyword">if</span>(sum&gt;leftsum)</div><div class="line">  &#123;</div><div class="line">    leftsum=sum</div><div class="line">    maxleft=i</div><div class="line">  &#125;	</div><div class="line">&#125; </div><div class="line">rightsum=-∞</div><div class="line">sum=0</div><div class="line"><span class="keyword">for</span>(j=mid+1; j&lt;high; j++)</div><div class="line">&#123;</div><div class="line">  sum=sum+A[j]</div><div class="line">  <span class="keyword">if</span>(sum&gt;rightsum)</div><div class="line">  &#123;</div><div class="line">    rightsum=sum</div><div class="line">    maxright=j</div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Min-Heapify（最小堆）"><a href="#Min-Heapify（最小堆）" class="headerlink" title="Min-Heapify（最小堆）"></a>Min-Heapify（最小堆）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">M<span class="keyword">in</span>-HEAPIFY(A,i)</div><div class="line">l=LEFT(i)</div><div class="line">r=RIGHT(i)</div><div class="line"><span class="keyword">if</span>(l&lt;=A.heapsize &amp;&amp; A[l]&lt;A[i])</div><div class="line">&#123;</div><div class="line">  smallest=l</div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  smallest=i</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(r&lt;=A.heapsize &amp;&amp; A[r]&lt;A[smallest])</div><div class="line">&#123;</div><div class="line">  smallest=r</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>(smallest!=i)</div><div class="line">&#123;</div><div class="line">  exchange A[i] with A[smallest]</div><div class="line">  M<span class="keyword">in</span>-HEAPIFY(A,smallest)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
+          <p>简单介绍一下我搭建这个博客的心得。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/08/hexo-git部署博客/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/算法/" rel="tag">#算法</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/01/08/算法1/" rel="next" title="算法导论笔记（一）">
-                <i class="fa fa-chevron-left"></i> 算法导论笔记（一）
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/13/算法3/" rel="prev" title="算法导论笔记（三）">
-                算法导论笔记（三） <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
+
 
 
           </div>
@@ -374,10 +355,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -397,17 +374,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -516,17 +484,6 @@
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-Maxing-Crossing-Subarray（最大子数组）"><span class="nav-number">1.</span> <span class="nav-text">Find-Maxing-Crossing-Subarray（最大子数组）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Min-Heapify（最小堆）"><span class="nav-number">2.</span> <span class="nav-text">Min-Heapify（最小堆）</span></a></li></ol></div>
-            
-          </div>
-        </section>
-      
 
     </div>
   </aside>
@@ -622,10 +579,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
@@ -647,10 +600,6 @@
     
 
    
-        <!-- UY BEGIN -->
-        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
-        <!-- UY END -->
-    
   
   
   

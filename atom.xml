@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-02T12:01:44.867Z</updated>
+  <updated>2018-05-02T12:10:15.705Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,38 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>图解HTTP学习笔记（一）</title>
-    <link href="http://yoursite.com/2018/05/02/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://yoursite.com/2018/05/02/图解HTTP学习笔记（一）/</id>
-    <published>2018-05-02T11:18:34.000Z</published>
-    <updated>2018-05-02T12:01:44.867Z</updated>
+    <title>图解HTTP学习笔记（二）</title>
+    <link href="http://yoursite.com/2018/05/02/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://yoursite.com/2018/05/02/图解HTTP学习笔记（二）/</id>
+    <published>2018-05-02T12:08:10.000Z</published>
+    <updated>2018-05-02T12:10:15.705Z</updated>
     
-    <content type="html"><![CDATA[<p>图解HTTP（一）<br><a id="more"></a></p>
-<h1 id="了解Web与网络基础"><a href="#了解Web与网络基础" class="headerlink" title="了解Web与网络基础"></a>了解Web与网络基础</h1><h2 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h2><p>通常使用的网络实在TCP/IP协议族的基础上运作的，HTTP属于它内部的子集。</p>
-<h3 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h3><p>不同硬件、操作系统之间的通信，所有的这一切都需要一种规则。这种规则称为协议（protocal），TCP/IP是互联网相关的各类协议族的总称。</p>
-<h3 id="TCP-IP的分层管理"><a href="#TCP-IP的分层管理" class="headerlink" title="TCP/IP的分层管理"></a>TCP/IP的分层管理</h3><p>TCP/IP协议族按层次分别分为：应用、传输、网络、数据链路层。<br>应用层决定了向用户提供了应用服务时通信的活动。<br>传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。<br>网络层用来处理在网络上流动的数据包。<br>链路层用来处理联结网络的硬件部分。</p>
-<h3 id="TCP-IP通信传输流"><a href="#TCP-IP通信传输流" class="headerlink" title="TCP/IP通信传输流"></a>TCP/IP通信传输流</h3><p><img src="/img/HTTP1.png" alt="图片名称" title=""><br><img src="/img/HTTP2.png" alt="图片名称" title=""></p>
-<h2 id="与HTTP关系密切的协议：IP、TCP和DNS"><a href="#与HTTP关系密切的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系密切的协议：IP、TCP和DNS"></a>与HTTP关系密切的协议：IP、TCP和DNS</h2><h3 id="负责传输的IP协议（网络层）"><a href="#负责传输的IP协议（网络层）" class="headerlink" title="负责传输的IP协议（网络层）"></a>负责传输的IP协议（网络层）</h3><p>IP协议的作用是把各种数据包传送给对方，而要保证确实传送到对方那里，两个重要条件是IP地址和MAC地址。IP地址指明了节点被分配到的地址，MAC地址是指网卡所属的固定地址。IP地址考研和MAC地址进行配对，IP地址可变换，MAC地址基本上不会更改。</p>
-<p>ARP是一种用以解析地址的协议，根据IP地址考研反查出MAC地址。</p>
-<p>无论哪台计算机、网络设备，都无法全面掌握互联网中的细节。</p>
-<h3 id="确保可靠性的TCP协议（传输层）"><a href="#确保可靠性的TCP协议（传输层）" class="headerlink" title="确保可靠性的TCP协议（传输层）"></a>确保可靠性的TCP协议（传输层）</h3><p>TCP提供可靠的字节流服务，即为了方便传输，把大块数据分割成以报文段为单位的数据包进行管理。</p>
-<p>TCP协议采用三次握手将数据准确地送达目标处。发送端发送带SYN的数据包，接收端回传带SYN/ACK的数据包，发送端再回传带ACK的是数据包。<br><img src="/img/HTTP3.png" alt="图片名称" title=""></p>
-<h3 id="负责域名解析的DNS服务（应用层）"><a href="#负责域名解析的DNS服务（应用层）" class="headerlink" title="负责域名解析的DNS服务（应用层）"></a>负责域名解析的DNS服务（应用层）</h3><p>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。<br><img src="/img/HTTP4.png" alt="图片名称" title=""></p>
-<h2 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h2><p>URI：Uniform Resource Identifier，统一资源标识符，<br>URL：Uniform Resource Locator，统一资源定位符。</p>
-<p>URI用字符串标识某一互联网资源，而URL表示资源的地点。可见URL是URI的子集。<br><img src="/img/HTTP5.png" alt="图片名称" title=""></p>
-<h1 id="简单的HTTP协议"><a href="#简单的HTTP协议" class="headerlink" title="简单的HTTP协议"></a>简单的HTTP协议</h1><h2 id="HTTP协议用于客户端和服务器端之间的通信"><a href="#HTTP协议用于客户端和服务器端之间的通信" class="headerlink" title="HTTP协议用于客户端和服务器端之间的通信"></a>HTTP协议用于客户端和服务器端之间的通信</h2><p>应用HTTP协议时，必定一端担任客户端，另一端担任服务器<br><img src="/img/HTTP6.png" alt="图片名称" title=""></p>
-<h2 id="通过请求和响应的交换达成通信"><a href="#通过请求和响应的交换达成通信" class="headerlink" title="通过请求和响应的交换达成通信"></a>通过请求和响应的交换达成通信</h2><p>请求必由客户端发出，服务端回复响应<br><img src="/img/HTTP7.png" alt="图片名称" title=""><br><img src="/img/HTTP8.png" alt="图片名称" title=""><br><img src="/img/HTTP9.png" alt="图片名称" title=""></p>
-<h2 id="HTTP是不保存状态的协议"><a href="#HTTP是不保存状态的协议" class="headerlink" title="HTTP是不保存状态的协议"></a>HTTP是不保存状态的协议</h2><p>不保存状态即无状态，HTTP协议自身不对请求和响应之间的通信状态进行保存。<br><img src="/img/HTTP10.png" alt="图片名称" title=""></p>
-<h2 id="告知服务器意图的HTTP方法"><a href="#告知服务器意图的HTTP方法" class="headerlink" title="告知服务器意图的HTTP方法"></a>告知服务器意图的HTTP方法</h2><h3 id="GET-获取资源"><a href="#GET-获取资源" class="headerlink" title="GET:获取资源"></a>GET:获取资源</h3><p>GET方法请求访问已被URI识别的资源。指定的资源经服务器解析后返回响应内容。<br><img src="/img/HTTP11.png" alt="图片名称" title=""></p>
-<h3 id="POST：传输实体主体"><a href="#POST：传输实体主体" class="headerlink" title="POST：传输实体主体"></a>POST：传输实体主体</h3><p><img src="/img/HTTP12.png" alt="图片名称" title=""></p>
-<h3 id="PUT：传输文件"><a href="#PUT：传输文件" class="headerlink" title="PUT：传输文件"></a>PUT：传输文件</h3><p>PUT用来传输文件，像FTP一样，要求在请求报文的主题中包含文件内容，然后保存到请求URI指定的位置。但自身不带验证机制，存在安全问题，所有一般不使用。<br><img src="/img/HTTP13.png" alt="图片名称" title=""></p>
-<h3 id="HEAD：获得报文首部"><a href="#HEAD：获得报文首部" class="headerlink" title="HEAD：获得报文首部"></a>HEAD：获得报文首部</h3><p>HEAD跟GET一样，指示不返回报文主体部分。<br><img src="/img/HTTP14.png" alt="图片名称" title=""></p>
-<h3 id="DELETE：删除文件"><a href="#DELETE：删除文件" class="headerlink" title="DELETE：删除文件"></a>DELETE：删除文件</h3><p>DELDETE用来删除文件，与PUT相反，同样不安全，不常使用。<br><img src="/img/HTTP15.png" alt="图片名称" title=""><br><img src="/img/HTTP16.png" alt="图片名称" title=""></p>
-<h2 id="持久连接节省通信量"><a href="#持久连接节省通信量" class="headerlink" title="持久连接节省通信量"></a>持久连接节省通信量</h2><p><img src="/img/HTTP17.png" alt="图片名称" title=""></p>
-<h3 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h3><p>为解决上述TCP连接的问题，HTTP/1.1和部分HTTP/1.0提出了持久连接，只要任意一端没有明确提出断开连接，则保持TCP连接状态。<br><img src="/img/HTTP18.png" alt="图片名称" title=""></p>
-<h3 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h3><p>持久连接使得多数请求以管线化方式发送成为可能。即同时并行发送多个请求。<br><img src="/img/HTTP19.png" alt="图片名称" title=""></p>
-<h2 id="使用Cookie的状态管理"><a href="#使用Cookie的状态管理" class="headerlink" title="使用Cookie的状态管理"></a>使用Cookie的状态管理</h2><p>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态。Cookie会根据从服务器发送的响应报文内的Set-Cookie首部字段信息，通知客户端保存Cookie。<br><img src="/img/HTTP20.png" alt="图片名称" title=""></p>
-<h1 id="HTTP报文内的HTTP信息"><a href="#HTTP报文内的HTTP信息" class="headerlink" title="HTTP报文内的HTTP信息"></a>HTTP报文内的HTTP信息</h1><h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p>用于HTTP协议交互的信息称为HTTP报文。客户端的HTTP报文叫做请求报文，服务器端的叫做响应报文。<br><img src="/img/HTTP21.png" alt="图片名称" title=""><br><img src="/img/HTTP22.png" alt="图片名称" title=""></p>
+    <content type="html"><![CDATA[<p>图解HTTP（二）<br><a id="more"></a></p>
 <h1 id="返回结果的HTTP状态码"><a href="#返回结果的HTTP状态码" class="headerlink" title="返回结果的HTTP状态码"></a>返回结果的HTTP状态码</h1><h2 id="状态码告知从服务器端返回的请求结果"><a href="#状态码告知从服务器端返回的请求结果" class="headerlink" title="状态码告知从服务器端返回的请求结果"></a>状态码告知从服务器端返回的请求结果</h2><p>状态码的职责是当客户端向2服务器端发送请求时，描述返回的请求结果。<br><img src="/img/HTTP23.png" alt="图片名称" title=""></p>
 <h2 id="2XX成功"><a href="#2XX成功" class="headerlink" title="2XX成功"></a>2XX成功</h2><p>2XX的响应结果表明请求被正常处理了。</p>
 <h3 id="200-OK"><a href="#200-OK" class="headerlink" title="200 OK"></a>200 OK</h3><p><img src="/img/HTTP24.png" alt="图片名称" title=""><br>表示从客户端发来的请求在服务器端被正常处理了。</p>
@@ -75,6 +50,54 @@
 <h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><p><img src="/img/HTTP40.png" alt="图片名称" title=""><br>网关的工作机制和代理十分相似，而网关能够使通信线路上的服务器提提供非HTTP协议服务，利用网关嗯那个提高通信的安全性。</p>
 <h3 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h3><p><img src="/img/HTTP41.png" alt="图片名称" title=""><br>隧道的目的时确保客户端与服务器进行安全的通信。</p>
 <h2 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h2><p>缓存是指代理服务器或客户端本地磁盘内保存的资源副本，利用缓存可减少对源服务器的访问，因此也就节省了通信流量和通信时间。<br><img src="/img/HTTP42.png" alt="图片名称" title=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;图解HTTP（二）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="HTTP" scheme="http://yoursite.com/categories/HTTP/"/>
+    
+    
+      <category term="HTTP" scheme="http://yoursite.com/tags/HTTP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图解HTTP学习笔记（一）</title>
+    <link href="http://yoursite.com/2018/05/02/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://yoursite.com/2018/05/02/图解HTTP学习笔记（一）/</id>
+    <published>2018-05-02T11:18:34.000Z</published>
+    <updated>2018-05-02T12:08:50.160Z</updated>
+    
+    <content type="html"><![CDATA[<p>图解HTTP（一）<br><a id="more"></a></p>
+<h1 id="了解Web与网络基础"><a href="#了解Web与网络基础" class="headerlink" title="了解Web与网络基础"></a>了解Web与网络基础</h1><h2 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h2><p>通常使用的网络实在TCP/IP协议族的基础上运作的，HTTP属于它内部的子集。</p>
+<h3 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h3><p>不同硬件、操作系统之间的通信，所有的这一切都需要一种规则。这种规则称为协议（protocal），TCP/IP是互联网相关的各类协议族的总称。</p>
+<h3 id="TCP-IP的分层管理"><a href="#TCP-IP的分层管理" class="headerlink" title="TCP/IP的分层管理"></a>TCP/IP的分层管理</h3><p>TCP/IP协议族按层次分别分为：应用、传输、网络、数据链路层。<br>应用层决定了向用户提供了应用服务时通信的活动。<br>传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。<br>网络层用来处理在网络上流动的数据包。<br>链路层用来处理联结网络的硬件部分。</p>
+<h3 id="TCP-IP通信传输流"><a href="#TCP-IP通信传输流" class="headerlink" title="TCP/IP通信传输流"></a>TCP/IP通信传输流</h3><p><img src="/img/HTTP1.png" alt="图片名称" title=""><br><img src="/img/HTTP2.png" alt="图片名称" title=""></p>
+<h2 id="与HTTP关系密切的协议：IP、TCP和DNS"><a href="#与HTTP关系密切的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系密切的协议：IP、TCP和DNS"></a>与HTTP关系密切的协议：IP、TCP和DNS</h2><h3 id="负责传输的IP协议（网络层）"><a href="#负责传输的IP协议（网络层）" class="headerlink" title="负责传输的IP协议（网络层）"></a>负责传输的IP协议（网络层）</h3><p>IP协议的作用是把各种数据包传送给对方，而要保证确实传送到对方那里，两个重要条件是IP地址和MAC地址。IP地址指明了节点被分配到的地址，MAC地址是指网卡所属的固定地址。IP地址考研和MAC地址进行配对，IP地址可变换，MAC地址基本上不会更改。</p>
+<p>ARP是一种用以解析地址的协议，根据IP地址考研反查出MAC地址。</p>
+<p>无论哪台计算机、网络设备，都无法全面掌握互联网中的细节。</p>
+<h3 id="确保可靠性的TCP协议（传输层）"><a href="#确保可靠性的TCP协议（传输层）" class="headerlink" title="确保可靠性的TCP协议（传输层）"></a>确保可靠性的TCP协议（传输层）</h3><p>TCP提供可靠的字节流服务，即为了方便传输，把大块数据分割成以报文段为单位的数据包进行管理。</p>
+<p>TCP协议采用三次握手将数据准确地送达目标处。发送端发送带SYN的数据包，接收端回传带SYN/ACK的数据包，发送端再回传带ACK的是数据包。<br><img src="/img/HTTP3.png" alt="图片名称" title=""></p>
+<h3 id="负责域名解析的DNS服务（应用层）"><a href="#负责域名解析的DNS服务（应用层）" class="headerlink" title="负责域名解析的DNS服务（应用层）"></a>负责域名解析的DNS服务（应用层）</h3><p>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。<br><img src="/img/HTTP4.png" alt="图片名称" title=""></p>
+<h2 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h2><p>URI：Uniform Resource Identifier，统一资源标识符，<br>URL：Uniform Resource Locator，统一资源定位符。</p>
+<p>URI用字符串标识某一互联网资源，而URL表示资源的地点。可见URL是URI的子集。<br><img src="/img/HTTP5.png" alt="图片名称" title=""></p>
+<h1 id="简单的HTTP协议"><a href="#简单的HTTP协议" class="headerlink" title="简单的HTTP协议"></a>简单的HTTP协议</h1><h2 id="HTTP协议用于客户端和服务器端之间的通信"><a href="#HTTP协议用于客户端和服务器端之间的通信" class="headerlink" title="HTTP协议用于客户端和服务器端之间的通信"></a>HTTP协议用于客户端和服务器端之间的通信</h2><p>应用HTTP协议时，必定一端担任客户端，另一端担任服务器<br><img src="/img/HTTP6.png" alt="图片名称" title=""></p>
+<h2 id="通过请求和响应的交换达成通信"><a href="#通过请求和响应的交换达成通信" class="headerlink" title="通过请求和响应的交换达成通信"></a>通过请求和响应的交换达成通信</h2><p>请求必由客户端发出，服务端回复响应<br><img src="/img/HTTP7.png" alt="图片名称" title=""><br><img src="/img/HTTP8.png" alt="图片名称" title=""><br><img src="/img/HTTP9.png" alt="图片名称" title=""></p>
+<h2 id="HTTP是不保存状态的协议"><a href="#HTTP是不保存状态的协议" class="headerlink" title="HTTP是不保存状态的协议"></a>HTTP是不保存状态的协议</h2><p>不保存状态即无状态，HTTP协议自身不对请求和响应之间的通信状态进行保存。<br><img src="/img/HTTP10.png" alt="图片名称" title=""></p>
+<h2 id="告知服务器意图的HTTP方法"><a href="#告知服务器意图的HTTP方法" class="headerlink" title="告知服务器意图的HTTP方法"></a>告知服务器意图的HTTP方法</h2><h3 id="GET-获取资源"><a href="#GET-获取资源" class="headerlink" title="GET:获取资源"></a>GET:获取资源</h3><p>GET方法请求访问已被URI识别的资源。指定的资源经服务器解析后返回响应内容。<br><img src="/img/HTTP11.png" alt="图片名称" title=""></p>
+<h3 id="POST：传输实体主体"><a href="#POST：传输实体主体" class="headerlink" title="POST：传输实体主体"></a>POST：传输实体主体</h3><p><img src="/img/HTTP12.png" alt="图片名称" title=""></p>
+<h3 id="PUT：传输文件"><a href="#PUT：传输文件" class="headerlink" title="PUT：传输文件"></a>PUT：传输文件</h3><p>PUT用来传输文件，像FTP一样，要求在请求报文的主题中包含文件内容，然后保存到请求URI指定的位置。但自身不带验证机制，存在安全问题，所有一般不使用。<br><img src="/img/HTTP13.png" alt="图片名称" title=""></p>
+<h3 id="HEAD：获得报文首部"><a href="#HEAD：获得报文首部" class="headerlink" title="HEAD：获得报文首部"></a>HEAD：获得报文首部</h3><p>HEAD跟GET一样，指示不返回报文主体部分。<br><img src="/img/HTTP14.png" alt="图片名称" title=""></p>
+<h3 id="DELETE：删除文件"><a href="#DELETE：删除文件" class="headerlink" title="DELETE：删除文件"></a>DELETE：删除文件</h3><p>DELDETE用来删除文件，与PUT相反，同样不安全，不常使用。<br><img src="/img/HTTP15.png" alt="图片名称" title=""><br><img src="/img/HTTP16.png" alt="图片名称" title=""></p>
+<h2 id="持久连接节省通信量"><a href="#持久连接节省通信量" class="headerlink" title="持久连接节省通信量"></a>持久连接节省通信量</h2><p><img src="/img/HTTP17.png" alt="图片名称" title=""></p>
+<h3 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h3><p>为解决上述TCP连接的问题，HTTP/1.1和部分HTTP/1.0提出了持久连接，只要任意一端没有明确提出断开连接，则保持TCP连接状态。<br><img src="/img/HTTP18.png" alt="图片名称" title=""></p>
+<h3 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h3><p>持久连接使得多数请求以管线化方式发送成为可能。即同时并行发送多个请求。<br><img src="/img/HTTP19.png" alt="图片名称" title=""></p>
+<h2 id="使用Cookie的状态管理"><a href="#使用Cookie的状态管理" class="headerlink" title="使用Cookie的状态管理"></a>使用Cookie的状态管理</h2><p>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态。Cookie会根据从服务器发送的响应报文内的Set-Cookie首部字段信息，通知客户端保存Cookie。<br><img src="/img/HTTP20.png" alt="图片名称" title=""></p>
+<h1 id="HTTP报文内的HTTP信息"><a href="#HTTP报文内的HTTP信息" class="headerlink" title="HTTP报文内的HTTP信息"></a>HTTP报文内的HTTP信息</h1><h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p>用于HTTP协议交互的信息称为HTTP报文。客户端的HTTP报文叫做请求报文，服务器端的叫做响应报文。<br><img src="/img/HTTP21.png" alt="图片名称" title=""><br><img src="/img/HTTP22.png" alt="图片名称" title=""></p>
 ]]></content>
     
     <summary type="html">
@@ -2406,30 +2429,6 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     
     
       <category term="Mybatis" scheme="http://yoursite.com/tags/Mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法导论笔记（五）</title>
-    <link href="http://yoursite.com/2017/01/19/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/"/>
-    <id>http://yoursite.com/2017/01/19/算法导论笔记（五）/</id>
-    <published>2017-01-19T14:24:09.000Z</published>
-    <updated>2017-01-20T06:49:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Depth-First-Search<br><a id="more"></a></p>
-<h3 id="DFS-G"><a href="#DFS-G" class="headerlink" title="DFS(G)"></a>DFS(G)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> each vertex u∈G.V 图G=(V,E)</div><div class="line">&#123;</div><div class="line">  u.color=WHITE</div><div class="line">  u.π=NULL	（u前驱</div><div class="line">&#125;</div><div class="line">time=0</div><div class="line"><span class="keyword">for</span> each vertex u∈G.V</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(u.color==WHITE)</div><div class="line">  &#123;</div><div class="line">    DFS-VISIT(G,u)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="DFS-VISIT-G-u"><a href="#DFS-VISIT-G-u" class="headerlink" title="DFS-VISIT(G,u)"></a>DFS-VISIT(G,u)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">time++</div><div class="line">u.d=time (发现时间</div><div class="line">u.color=GRAY</div><div class="line"><span class="keyword">for</span> each v∈G:Adj[u]  (邻接链表</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span>(v.color==WHITE)</div><div class="line">  &#123;</div><div class="line">    v.π=u</div><div class="line">    DFS-VISIT(G,v)</div><div class="line">  &#125;</div><div class="line">&#125; </div><div class="line">u.color=BLCAK</div><div class="line">time++</div><div class="line">u.f=time (结束时间</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Depth-First-Search&lt;br&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
