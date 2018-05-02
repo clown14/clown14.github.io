@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-14T08:32:43.903Z</updated>
+  <updated>2018-05-02T12:01:44.867Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图解HTTP学习笔记（一）</title>
+    <link href="http://yoursite.com/2018/05/02/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://yoursite.com/2018/05/02/图解HTTP学习笔记（一）/</id>
+    <published>2018-05-02T11:18:34.000Z</published>
+    <updated>2018-05-02T12:01:44.867Z</updated>
+    
+    <content type="html"><![CDATA[<p>图解HTTP（一）<br><a id="more"></a></p>
+<h1 id="了解Web与网络基础"><a href="#了解Web与网络基础" class="headerlink" title="了解Web与网络基础"></a>了解Web与网络基础</h1><h2 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h2><p>通常使用的网络实在TCP/IP协议族的基础上运作的，HTTP属于它内部的子集。</p>
+<h3 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h3><p>不同硬件、操作系统之间的通信，所有的这一切都需要一种规则。这种规则称为协议（protocal），TCP/IP是互联网相关的各类协议族的总称。</p>
+<h3 id="TCP-IP的分层管理"><a href="#TCP-IP的分层管理" class="headerlink" title="TCP/IP的分层管理"></a>TCP/IP的分层管理</h3><p>TCP/IP协议族按层次分别分为：应用、传输、网络、数据链路层。<br>应用层决定了向用户提供了应用服务时通信的活动。<br>传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。<br>网络层用来处理在网络上流动的数据包。<br>链路层用来处理联结网络的硬件部分。</p>
+<h3 id="TCP-IP通信传输流"><a href="#TCP-IP通信传输流" class="headerlink" title="TCP/IP通信传输流"></a>TCP/IP通信传输流</h3><p><img src="/img/HTTP1.png" alt="图片名称" title=""><br><img src="/img/HTTP2.png" alt="图片名称" title=""></p>
+<h2 id="与HTTP关系密切的协议：IP、TCP和DNS"><a href="#与HTTP关系密切的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系密切的协议：IP、TCP和DNS"></a>与HTTP关系密切的协议：IP、TCP和DNS</h2><h3 id="负责传输的IP协议（网络层）"><a href="#负责传输的IP协议（网络层）" class="headerlink" title="负责传输的IP协议（网络层）"></a>负责传输的IP协议（网络层）</h3><p>IP协议的作用是把各种数据包传送给对方，而要保证确实传送到对方那里，两个重要条件是IP地址和MAC地址。IP地址指明了节点被分配到的地址，MAC地址是指网卡所属的固定地址。IP地址考研和MAC地址进行配对，IP地址可变换，MAC地址基本上不会更改。</p>
+<p>ARP是一种用以解析地址的协议，根据IP地址考研反查出MAC地址。</p>
+<p>无论哪台计算机、网络设备，都无法全面掌握互联网中的细节。</p>
+<h3 id="确保可靠性的TCP协议（传输层）"><a href="#确保可靠性的TCP协议（传输层）" class="headerlink" title="确保可靠性的TCP协议（传输层）"></a>确保可靠性的TCP协议（传输层）</h3><p>TCP提供可靠的字节流服务，即为了方便传输，把大块数据分割成以报文段为单位的数据包进行管理。</p>
+<p>TCP协议采用三次握手将数据准确地送达目标处。发送端发送带SYN的数据包，接收端回传带SYN/ACK的数据包，发送端再回传带ACK的是数据包。<br><img src="/img/HTTP3.png" alt="图片名称" title=""></p>
+<h3 id="负责域名解析的DNS服务（应用层）"><a href="#负责域名解析的DNS服务（应用层）" class="headerlink" title="负责域名解析的DNS服务（应用层）"></a>负责域名解析的DNS服务（应用层）</h3><p>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。<br><img src="/img/HTTP4.png" alt="图片名称" title=""></p>
+<h2 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h2><p>URI：Uniform Resource Identifier，统一资源标识符，<br>URL：Uniform Resource Locator，统一资源定位符。</p>
+<p>URI用字符串标识某一互联网资源，而URL表示资源的地点。可见URL是URI的子集。<br><img src="/img/HTTP5.png" alt="图片名称" title=""></p>
+<h1 id="简单的HTTP协议"><a href="#简单的HTTP协议" class="headerlink" title="简单的HTTP协议"></a>简单的HTTP协议</h1><h2 id="HTTP协议用于客户端和服务器端之间的通信"><a href="#HTTP协议用于客户端和服务器端之间的通信" class="headerlink" title="HTTP协议用于客户端和服务器端之间的通信"></a>HTTP协议用于客户端和服务器端之间的通信</h2><p>应用HTTP协议时，必定一端担任客户端，另一端担任服务器<br><img src="/img/HTTP6.png" alt="图片名称" title=""></p>
+<h2 id="通过请求和响应的交换达成通信"><a href="#通过请求和响应的交换达成通信" class="headerlink" title="通过请求和响应的交换达成通信"></a>通过请求和响应的交换达成通信</h2><p>请求必由客户端发出，服务端回复响应<br><img src="/img/HTTP7.png" alt="图片名称" title=""><br><img src="/img/HTTP8.png" alt="图片名称" title=""><br><img src="/img/HTTP9.png" alt="图片名称" title=""></p>
+<h2 id="HTTP是不保存状态的协议"><a href="#HTTP是不保存状态的协议" class="headerlink" title="HTTP是不保存状态的协议"></a>HTTP是不保存状态的协议</h2><p>不保存状态即无状态，HTTP协议自身不对请求和响应之间的通信状态进行保存。<br><img src="/img/HTTP10.png" alt="图片名称" title=""></p>
+<h2 id="告知服务器意图的HTTP方法"><a href="#告知服务器意图的HTTP方法" class="headerlink" title="告知服务器意图的HTTP方法"></a>告知服务器意图的HTTP方法</h2><h3 id="GET-获取资源"><a href="#GET-获取资源" class="headerlink" title="GET:获取资源"></a>GET:获取资源</h3><p>GET方法请求访问已被URI识别的资源。指定的资源经服务器解析后返回响应内容。<br><img src="/img/HTTP11.png" alt="图片名称" title=""></p>
+<h3 id="POST：传输实体主体"><a href="#POST：传输实体主体" class="headerlink" title="POST：传输实体主体"></a>POST：传输实体主体</h3><p><img src="/img/HTTP12.png" alt="图片名称" title=""></p>
+<h3 id="PUT：传输文件"><a href="#PUT：传输文件" class="headerlink" title="PUT：传输文件"></a>PUT：传输文件</h3><p>PUT用来传输文件，像FTP一样，要求在请求报文的主题中包含文件内容，然后保存到请求URI指定的位置。但自身不带验证机制，存在安全问题，所有一般不使用。<br><img src="/img/HTTP13.png" alt="图片名称" title=""></p>
+<h3 id="HEAD：获得报文首部"><a href="#HEAD：获得报文首部" class="headerlink" title="HEAD：获得报文首部"></a>HEAD：获得报文首部</h3><p>HEAD跟GET一样，指示不返回报文主体部分。<br><img src="/img/HTTP14.png" alt="图片名称" title=""></p>
+<h3 id="DELETE：删除文件"><a href="#DELETE：删除文件" class="headerlink" title="DELETE：删除文件"></a>DELETE：删除文件</h3><p>DELDETE用来删除文件，与PUT相反，同样不安全，不常使用。<br><img src="/img/HTTP15.png" alt="图片名称" title=""><br><img src="/img/HTTP16.png" alt="图片名称" title=""></p>
+<h2 id="持久连接节省通信量"><a href="#持久连接节省通信量" class="headerlink" title="持久连接节省通信量"></a>持久连接节省通信量</h2><p><img src="/img/HTTP17.png" alt="图片名称" title=""></p>
+<h3 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h3><p>为解决上述TCP连接的问题，HTTP/1.1和部分HTTP/1.0提出了持久连接，只要任意一端没有明确提出断开连接，则保持TCP连接状态。<br><img src="/img/HTTP18.png" alt="图片名称" title=""></p>
+<h3 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h3><p>持久连接使得多数请求以管线化方式发送成为可能。即同时并行发送多个请求。<br><img src="/img/HTTP19.png" alt="图片名称" title=""></p>
+<h2 id="使用Cookie的状态管理"><a href="#使用Cookie的状态管理" class="headerlink" title="使用Cookie的状态管理"></a>使用Cookie的状态管理</h2><p>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态。Cookie会根据从服务器发送的响应报文内的Set-Cookie首部字段信息，通知客户端保存Cookie。<br><img src="/img/HTTP20.png" alt="图片名称" title=""></p>
+<h1 id="HTTP报文内的HTTP信息"><a href="#HTTP报文内的HTTP信息" class="headerlink" title="HTTP报文内的HTTP信息"></a>HTTP报文内的HTTP信息</h1><h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p>用于HTTP协议交互的信息称为HTTP报文。客户端的HTTP报文叫做请求报文，服务器端的叫做响应报文。<br><img src="/img/HTTP21.png" alt="图片名称" title=""><br><img src="/img/HTTP22.png" alt="图片名称" title=""></p>
+<h1 id="返回结果的HTTP状态码"><a href="#返回结果的HTTP状态码" class="headerlink" title="返回结果的HTTP状态码"></a>返回结果的HTTP状态码</h1><h2 id="状态码告知从服务器端返回的请求结果"><a href="#状态码告知从服务器端返回的请求结果" class="headerlink" title="状态码告知从服务器端返回的请求结果"></a>状态码告知从服务器端返回的请求结果</h2><p>状态码的职责是当客户端向2服务器端发送请求时，描述返回的请求结果。<br><img src="/img/HTTP23.png" alt="图片名称" title=""></p>
+<h2 id="2XX成功"><a href="#2XX成功" class="headerlink" title="2XX成功"></a>2XX成功</h2><p>2XX的响应结果表明请求被正常处理了。</p>
+<h3 id="200-OK"><a href="#200-OK" class="headerlink" title="200 OK"></a>200 OK</h3><p><img src="/img/HTTP24.png" alt="图片名称" title=""><br>表示从客户端发来的请求在服务器端被正常处理了。</p>
+<h3 id="204-No-Content"><a href="#204-No-Content" class="headerlink" title="204 No Content"></a>204 No Content</h3><p><img src="/img/HTTP25.png" alt="图片名称" title=""><br>代表服务器接收的请求已成功处理，但在返回的响应报文中不含实体的主体部分。</p>
+<h3 id="206-Partial-Content"><a href="#206-Partial-Content" class="headerlink" title="206 Partial Content"></a>206 Partial Content</h3><p><img src="/img/HTTP26.png" alt="图片名称" title=""><br>表示客户端进行了范围请求，而服务器成功执行了这部分的GET请求。</p>
+<h2 id="3XX-重定向"><a href="#3XX-重定向" class="headerlink" title="3XX 重定向"></a>3XX 重定向</h2><p>3XX响应结果表明浏览器需要执行某些特殊的处理以正确处理请求。</p>
+<h3 id="301-Moved-Permanently"><a href="#301-Moved-Permanently" class="headerlink" title="301 Moved Permanently"></a>301 Moved Permanently</h3><p><img src="/img/HTTP27.png" alt="图片名称" title=""><br>永久性重定向。表示请求的资源已被分配了新的URI，以后应使用资源现在所指的URI。</p>
+<h3 id="302-Found"><a href="#302-Found" class="headerlink" title="302 Found"></a>302 Found</h3><p><img src="/img/HTTP28.png" alt="图片名称" title=""><br>表示请求的资源已被分配的新的URI，希望用户能使用新的URI访问。和301相比，302只是临时性质的改变，可能还会改变。</p>
+<h3 id="303-See-Other"><a href="#303-See-Other" class="headerlink" title="303 See Other"></a>303 See Other</h3><p><img src="/img/HTTP29.png" alt="图片名称" title=""><br>表示由于请求对应的资源存在另一个URI。</p>
+<h3 id="304-Not-Modified"><a href="#304-Not-Modified" class="headerlink" title="304 Not Modified"></a>304 Not Modified</h3><p><img src="/img/HTTP30.png" alt="图片名称" title=""><br>表示客户端发送附带条件的请求时，服务器端允许请求访问资源，但为满足条件的情况。</p>
+<h3 id="307-Temporary-Redirect"><a href="#307-Temporary-Redirect" class="headerlink" title="307 Temporary Redirect"></a>307 Temporary Redirect</h3><p>临时重定向。该状态码与302Found有着相同的含义。</p>
+<h2 id="4XX客户端错误"><a href="#4XX客户端错误" class="headerlink" title="4XX客户端错误"></a>4XX客户端错误</h2><h3 id="400-Bad-Request"><a href="#400-Bad-Request" class="headerlink" title="400 Bad Request"></a>400 Bad Request</h3><p><img src="/img/HTTP31.png" alt="图片名称" title=""><br>表示请求报文中存在语法错误。</p>
+<h3 id="401-Unauthorized"><a href="#401-Unauthorized" class="headerlink" title="401 Unauthorized"></a>401 Unauthorized</h3><p><img src="/img/HTTP32.png" alt="图片名称" title=""><br>表示发送的请求需要有通过HTTP认证（BASIC认证、DIGEST认证）的认证信息。若之前已进行过一次请求，则表示用户认证失败。</p>
+<h3 id="403-Frobidden"><a href="#403-Frobidden" class="headerlink" title="403 Frobidden"></a>403 Frobidden</h3><p><img src="/img/HTTP33.png" alt="图片名称" title=""><br>表明对请求资源的访问被服务器拒绝了。</p>
+<h3 id="404-Not-Found"><a href="#404-Not-Found" class="headerlink" title="404 Not Found"></a>404 Not Found</h3><p><img src="/img/HTTP34.png" alt="图片名称" title=""><br>表明服务器上无法找到请求的资源，除此之外，也可以在服务器端拒绝请求且不想说明理由时使用。</p>
+<h2 id="5XX服务器错误"><a href="#5XX服务器错误" class="headerlink" title="5XX服务器错误"></a>5XX服务器错误</h2><h3 id="500-Internal-Server-Error"><a href="#500-Internal-Server-Error" class="headerlink" title="500 Internal Server Error"></a>500 Internal Server Error</h3><p><img src="/img/HTTP35.png" alt="图片名称" title=""><br>表明服务器在执行请求时发生了错误。也可能是Web应用存在的bug或某些临时的故障。</p>
+<h3 id="503-Service-Unavailable"><a href="#503-Service-Unavailable" class="headerlink" title="503 Service Unavailable"></a>503 Service Unavailable</h3><p><img src="/img/HTTP36.png" alt="图片名称" title=""><br>表明服务器暂时处于超负载或正在进行停机维护，无法处理请求。</p>
+<h1 id="与HTTP协作的Web服务器"><a href="#与HTTP协作的Web服务器" class="headerlink" title="与HTTP协作的Web服务器"></a>与HTTP协作的Web服务器</h1><h2 id="通信数据转发程序：代理、网关、隧道"><a href="#通信数据转发程序：代理、网关、隧道" class="headerlink" title="通信数据转发程序：代理、网关、隧道"></a>通信数据转发程序：代理、网关、隧道</h2><p>代理是一种有转发功能的应用程序，扮演了服务器和客户端“中间人”的角色，接收2由客户端发送的请求并转发给服务器，同时也接收服务器返回的响应并转发给客户端。</p>
+<p>网关是转发其他服务器通信数据的服务器，接收从客户端发送来的请求时，它就像自己拥有资源的源服务器一样对请求进行处理。</p>
+<p>隧道是在相隔甚远的客户端和服务器两者之间进行中转，并保持双方通信连接的应用程序。</p>
+<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p><img src="/img/HTTP37.png" alt="图片名称" title=""><br><img src="/img/HTTP38.png" alt="图片名称" title=""><br><img src="/img/HTTP39.png" alt="图片名称" title=""></p>
+<p>使用代理服务器的理由：利用缓存技术减少网络带宽的流量，组织内部针对特定网站的访问控制，以获取访问日志为主要目的，等等。</p>
+<p>缓存代理：<br>代理转发响应时，缓存代理预先将资源的副本（缓存）保存在代理服务器上，当再次请求相同资源，可以返回之前缓存的资源。</p>
+<p>透明代理：<br>转发请求或响应时，不对报文进行修改，反之称为非透明代理。</p>
+<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><p><img src="/img/HTTP40.png" alt="图片名称" title=""><br>网关的工作机制和代理十分相似，而网关能够使通信线路上的服务器提提供非HTTP协议服务，利用网关嗯那个提高通信的安全性。</p>
+<h3 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h3><p><img src="/img/HTTP41.png" alt="图片名称" title=""><br>隧道的目的时确保客户端与服务器进行安全的通信。</p>
+<h2 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h2><p>缓存是指代理服务器或客户端本地磁盘内保存的资源副本，利用缓存可减少对源服务器的访问，因此也就节省了通信流量和通信时间。<br><img src="/img/HTTP42.png" alt="图片名称" title=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;图解HTTP（一）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="HTTP" scheme="http://yoursite.com/categories/HTTP/"/>
+    
+    
+      <category term="HTTP" scheme="http://yoursite.com/tags/HTTP/"/>
+    
+  </entry>
   
   <entry>
     <title>MysqlCrashCourse学习笔记（三）</title>
@@ -2348,31 +2423,6 @@ log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
     <summary type="html">
     
       &lt;p&gt;Depth-First-Search&lt;br&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法导论笔记（四）</title>
-    <link href="http://yoursite.com/2017/01/16/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
-    <id>http://yoursite.com/2017/01/16/算法导论笔记（四）/</id>
-    <published>2017-01-16T07:33:54.000Z</published>
-    <updated>2017-01-20T06:35:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Queue &amp;&amp; Breadth-First-Search<br><a id="more"></a></p>
-<h3 id="Queue（队列）"><a href="#Queue（队列）" class="headerlink" title="Queue（队列）"></a>Queue（队列）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Enqueue(Q,x) （进栈）</div><div class="line"><span class="keyword">if</span>(Q.head==Q.tail+1)</div><div class="line">&#123;</div><div class="line">  error <span class="string">"overflow"</span></div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  Q.[Q.tail]=x</div><div class="line">  <span class="keyword">if</span>(Q.tail==Q.length)</div><div class="line">  &#123;</div><div class="line">    e.tail=1</div><div class="line">  &#125;<span class="keyword">else</span></div><div class="line">  Q.tail++</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Dequeue(Q) （出栈）</div><div class="line"><span class="keyword">if</span>(Q.head==Q.tail)</div><div class="line">&#123;</div><div class="line">  error <span class="string">"underflow"</span></div><div class="line">&#125;<span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  x=Q.[Q.head]</div><div class="line">  <span class="keyword">if</span>(Q.head==Q.length)</div><div class="line">  &#123;</div><div class="line">    e.head=1</div><div class="line">  &#125;<span class="keyword">else</span></div><div class="line">  Q.head++</div><div class="line">  <span class="built_in">return</span> x</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Breadth-First-Search（广度优先）"><a href="#Breadth-First-Search（广度优先）" class="headerlink" title="Breadth-First-Search（广度优先）"></a>Breadth-First-Search（广度优先）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> each vertex u∈G.V-&#123;s&#125; 图G=(V,E)</div><div class="line">&#123;</div><div class="line">  u.color=WHITE</div><div class="line">  u.d=∞		（s至u的距离</div><div class="line">  u.π=NULL	（u前驱</div><div class="line">&#125;</div><div class="line">s.color=GRAY</div><div class="line">s.d=0</div><div class="line">s.π=NULL</div><div class="line">Q=Φ </div><div class="line">Enqueue(Q,s)</div><div class="line"><span class="keyword">while</span>(Q!=Φ )</div><div class="line">&#123;</div><div class="line">  u=Dequeue(Q)</div><div class="line">  <span class="keyword">for</span> each v∈G.Adj[u]	（邻接链表</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span>(v.color==WHITE)</div><div class="line">    &#123;</div><div class="line">      v.color=GRAY</div><div class="line">      v.d=u.d+1</div><div class="line">      v.π=u</div><div class="line">      Enqueue(Q,v)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  u.color=BLACK</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Queue &amp;amp;&amp;amp; Breadth-First-Search&lt;br&gt;
     
     </summary>
     
