@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/05/14/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</loc>
+    <lastmod>2018-05-14T11:32:14.478Z</lastmod>
+    <data>
+        <display>
+        <title>图解HTTP学习笔记（三）</title>
+        <pubTime>2018-05-14T11:16:24.000Z</pubTime>
+        
+        <tag>HTTP</tag>
+         
+         
+           
+             
+              <breadCrumb title="HTTP" url="http://yoursite.com/categories/HTTP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/05/02/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
-    <lastmod>2018-05-02T12:10:15.705Z</lastmod>
+    <lastmod>2018-05-02T12:13:40.170Z</lastmod>
     <data>
         <display>
         <title>图解HTTP学习笔记（二）</title>
@@ -25,7 +45,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/05/02/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
-    <lastmod>2018-05-02T12:08:50.160Z</lastmod>
+    <lastmod>2018-05-02T12:13:38.917Z</lastmod>
     <data>
         <display>
         <title>图解HTTP学习笔记（一）</title>
