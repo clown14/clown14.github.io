@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-14T11:32:14.478Z</updated>
+  <updated>2018-05-14T11:44:22.347Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2018/05/14/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>http://yoursite.com/2018/05/14/图解HTTP学习笔记（三）/</id>
     <published>2018-05-14T11:16:24.000Z</published>
-    <updated>2018-05-14T11:32:14.478Z</updated>
+    <updated>2018-05-14T11:44:22.347Z</updated>
     
     <content type="html"><![CDATA[<p>图解HTTP（三）<br><a id="more"></a></p>
 <h1 id="HTTP首部"><a href="#HTTP首部" class="headerlink" title="HTTP首部"></a>HTTP首部</h1><h2 id="HTTP报文首部"><a href="#HTTP报文首部" class="headerlink" title="HTTP报文首部"></a>HTTP报文首部</h2><p><img src="/img/HTTP43.png" alt="图片名称" title=""><br><img src="/img/HTTP44.png" alt="图片名称" title=""></p>
@@ -35,6 +35,16 @@
 <h3 id="Transfer-Encoding"><a href="#Transfer-Encoding" class="headerlink" title="Transfer-Encoding"></a>Transfer-Encoding</h3><p><img src="/img/HTTP54.png" alt="图片名称" title=""><br>规定了传输报文主体时采用的编码方式。</p>
 <h3 id="Upgrade"><a href="#Upgrade" class="headerlink" title="Upgrade"></a>Upgrade</h3><p><img src="/img/HTTP55.png" alt="图片名称" title=""><br>用于检测HTTP协议及其他协议是否可使用更高的版本进行通信。</p>
 <h3 id="Via"><a href="#Via" class="headerlink" title="Via"></a>Via</h3><p><img src="/img/HTTP56.png" alt="图片名称" title=""><br>追踪客户端与服务器之间的请求和响应报文的传输路径。</p>
+<h2 id="请求首部字段"><a href="#请求首部字段" class="headerlink" title="请求首部字段"></a>请求首部字段</h2><h3 id="Accept"><a href="#Accept" class="headerlink" title="Accept"></a>Accept</h3><p><img src="/img/HTTP57.png" alt="图片名称" title=""><br>通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级。</p>
+<h3 id="Accept-Charset"><a href="#Accept-Charset" class="headerlink" title="Accept-Charset"></a>Accept-Charset</h3><p><img src="/img/HTTP58.png" alt="图片名称" title=""><br>通知服务器用户代理支持的字符集及字符集的相对优先顺序。</p>
+<h3 id="Accept-Encoding"><a href="#Accept-Encoding" class="headerlink" title="Accept-Encoding"></a>Accept-Encoding</h3><p><img src="/img/HTTP59.png" alt="图片名称" title=""><br>告知服务器用户代理支持的内容编码及内容编码的优先级顺序。</p>
+<h3 id="Accept-Language"><a href="#Accept-Language" class="headerlink" title="Accept-Language"></a>Accept-Language</h3><p><img src="/img/HTTP60.png" alt="图片名称" title=""><br>告知服务器用户代理能够处理的自然语言以及自然语言集的相对优先级。</p>
+<h3 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h3><p><img src="/img/HTTP61.png" alt="图片名称" title=""><br>告知服务器，用户代理的认证信息。</p>
+<h3 id="Except"><a href="#Except" class="headerlink" title="Except"></a>Except</h3><p><img src="/img/HTTP62.png" alt="图片名称" title=""><br>告知服务器，期待出现的某种特定行为。</p>
+<h3 id="From"><a href="#From" class="headerlink" title="From"></a>From</h3><p><img src="/img/HTTP63.png" alt="图片名称" title=""><br>告知服务器使用用户代理的用户的电子邮件地址。</p>
+<h3 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h3><p><img src="/img/HTTP64.png" alt="图片名称" title=""><br>告知服务器，请求的资源所处的互联网主机名和端口号。</p>
+<h3 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h3><p><img src="/img/HTTP65.png" alt="图片名称" title=""><br>告知服务器请求的原始资源URI。</p>
+<h3 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent"></a>User-Agent</h3><p><img src="/img/HTTP66.png" alt="图片名称" title=""><br>会将创建请求的浏览器和用户代理名称等信息传达给服务器。</p>
 ]]></content>
     
     <summary type="html">
