@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-14T11:44:22.347Z</updated>
+  <updated>2018-05-23T10:07:07.788Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,35 +16,99 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>图解HTTP学习笔记（四）</title>
+    <link href="http://yoursite.com/2018/05/23/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
+    <id>http://yoursite.com/2018/05/23/图解HTTP学习笔记（四）/</id>
+    <published>2018-05-23T09:32:23.000Z</published>
+    <updated>2018-05-23T10:07:07.788Z</updated>
+    
+    <content type="html"><![CDATA[<p>图解HTTP（四）<br><a id="more"></a></p>
+<h1 id="HTTP首部-续"><a href="#HTTP首部-续" class="headerlink" title="HTTP首部(续)"></a>HTTP首部(续)</h1><h2 id="响应首部字段"><a href="#响应首部字段" class="headerlink" title="响应首部字段"></a>响应首部字段</h2><h3 id="Accept-Ranges"><a href="#Accept-Ranges" class="headerlink" title="Accept-Ranges"></a>Accept-Ranges</h3><p><img src="/img/HTTP/HTTP67.png" alt="图片名称" title=""><br>用来告知客户端服务器是否能处理范围请求，以指定获取服务器端某个部分的资源。</p>
+<h3 id="Age"><a href="#Age" class="headerlink" title="Age"></a>Age</h3><p><img src="/img/HTTP/HTTP68.png" alt="图片名称" title=""><br>告知客户端，源服务器在多久前创建了响应。</p>
+<h3 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h3><p><img src="/img/HTTP/HTTP69.png" alt="图片名称" title=""><br>告知客户端实体标识。</p>
+<h3 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h3><p><img src="/img/HTTP/HTTP70.png" alt="图片名称" title=""><br>可以将响应接收方引导至某个与请求URI位置不同的资源。</p>
+<h2 id="实体首部字段"><a href="#实体首部字段" class="headerlink" title="实体首部字段"></a>实体首部字段</h2><h3 id="Allow"><a href="#Allow" class="headerlink" title="Allow"></a>Allow</h3><p><img src="/img/HTTP/HTTP71.png" alt="图片名称" title=""><br>用于通知客户端能够支持Request-URI指定资源的所有HTTP方法。</p>
+<h3 id="Content-Encoding"><a href="#Content-Encoding" class="headerlink" title="Content-Encoding"></a>Content-Encoding</h3><p><img src="/img/HTTP/HTTP72.png" alt="图片名称" title=""><br>会告知客户端服务器对实体的主体部分选用的内容编码方式。</p>
+<h3 id="Content-Language"><a href="#Content-Language" class="headerlink" title="Content-Language"></a>Content-Language</h3><p><img src="/img/HTTP/HTTP73.png" alt="图片名称" title=""><br>告知客户端，实体主体使用的自然语言。</p>
+<h3 id="Content-Length"><a href="#Content-Length" class="headerlink" title="Content-Length"></a>Content-Length</h3><p><img src="/img/HTTP/HTTP74.png" alt="图片名称" title=""><br>表明了实体主体部分的大小。</p>
+<h3 id="Content-Location"><a href="#Content-Location" class="headerlink" title="Content-Location"></a>Content-Location</h3><p><img src="/img/HTTP/HTTP75.png" alt="图片名称" title=""><br>给出与报文主体部分相对应的URI。</p>
+<h3 id="Content-MD5"><a href="#Content-MD5" class="headerlink" title="Content-MD5"></a>Content-MD5</h3><p><img src="/img/HTTP/HTTP76.png" alt="图片名称" title=""><br>检查报文主体在传输过程中是否保持完整，以及确认传输到达。</p>
+<h3 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h3><p><img src="/img/HTTP/HTTP77.png" alt="图片名称" title=""><br>说明了实体主体内对象的媒体类型。</p>
+<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p><img src="/img/HTTP/HTTP78.png" alt="图片名称" title=""><br>将资源失效的日期告知客户端。</p>
+<h3 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h3><p><img src="/img/HTTP/HTTP79.png" alt="图片名称" title=""><br>指明资源最终修改的时间。</p>
+<h2 id="为Cookie服务的首部字段"><a href="#为Cookie服务的首部字段" class="headerlink" title="为Cookie服务的首部字段"></a>为Cookie服务的首部字段</h2><p>Cookie的工作机制是用户识别及状态管理。Web网站为了管理用户的状态会通过Web浏览器，把一些数据临时写入用户的计算机内。接着当用户访问该Web网站时，可通过通信方式取回之前发放的Cookie。</p>
+<p><img src="/img/HTTP/HTTP80.png" alt="图片名称" title=""></p>
+<h3 id="Set-Cookie"><a href="#Set-Cookie" class="headerlink" title="Set-Cookie"></a>Set-Cookie</h3><p><img src="/img/HTTP/HTTP81.png" alt="图片名称" title=""><br>用于通知客户端能够支持Request-URI指定资源的所有HTTP方法。</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>首部字段Cookie会告知服务器，当客户端想获得HTTP状态管理支持时，就会在请求中包含从服务器接收到的Cookie。</p>
+<h1 id="确保Web安全的HTTPS"><a href="#确保Web安全的HTTPS" class="headerlink" title="确保Web安全的HTTPS"></a>确保Web安全的HTTPS</h1><h2 id="HTTP的缺点"><a href="#HTTP的缺点" class="headerlink" title="HTTP的缺点"></a>HTTP的缺点</h2><h3 id="通信使用明文可能会被窃听"><a href="#通信使用明文可能会被窃听" class="headerlink" title="通信使用明文可能会被窃听"></a>通信使用明文可能会被窃听</h3><p>按TCP/IP协议族的工作机制，通信内容在所有的通信线路上都有可能遭到窥视。即使已经过加密处理的通信，也会被窥视到通信内容。</p>
+<p><img src="/img/HTTP/HTTP82.png" alt="图片名称" title=""></p>
+<p>目前防止窃听的几种对策中，最普及的是加密技术。<br>一种是将通信加密。HTTP协议中没有加密机制，但可以通过和SSL（Secure Socket Layer，安全套接层）或TLS（Transporter Layer Security，安全层传输协议）的组合使用，加密HTTP的通信内容。与SSL组合使用的HTTP被称为HTTPS（HTTP Secure，超文本传输安全协议）。<br>另一种是将参与通信的内容本身加密，即把HTTP报文里所含的内容进行加密处理。</p>
+<h3 id="不验证通信方的身份就可能遭遇伪装"><a href="#不验证通信方的身份就可能遭遇伪装" class="headerlink" title="不验证通信方的身份就可能遭遇伪装"></a>不验证通信方的身份就可能遭遇伪装</h3><p>在HTTP协议通信时，由于不存在确认通信方的处理步骤，任何人都可以发起请求。会存在以下隐患</p>
+<ul>
+<li>无法确定请求发送至目标的Web服务器是否是按真实意图返回响应的那台服务器。有可能是已伪装的Web服务器。</li>
+<li>无法确定响应返回到的客户端是否是按真实意图响应接收的那个客户端。有可能是已伪装的客户端。</li>
+<li>无法确定正在通信的对方是否具备访问权限。因为某些Web服务器上保存着重要的信息，执行发给特定用户通信的权限。</li>
+<li>无法判断请求时来自何方、出自谁手。</li>
+<li>即使是无意义的请求也会照单全收。无法阻止海量请求下的DoS攻击（Denial of Service，拒绝服务攻击）。</li>
+</ul>
+<p>虽然使用HTTP协议无法确定通信方，但如果使用SSL则可以。SSL不仅提供加密处理，而且还使用了一种被称为证书的手段，可用于确定方。</p>
+<p><img src="/img/HTTP/HTTP83.png" alt="图片名称" title=""></p>
+<h3 id="无法证明报文完整性，可能已遭篡改"><a href="#无法证明报文完整性，可能已遭篡改" class="headerlink" title="无法证明报文完整性，可能已遭篡改"></a>无法证明报文完整性，可能已遭篡改</h3><p>没有任何办法确认，发出的请求/响应和接收到的请求/响应是前后相同的。</p>
+<p><img src="/img/HTTP/HTTP84.png" alt="图片名称" title=""></p>
+<h2 id="HTTP-加密-认证-完整性保护-HTTPS"><a href="#HTTP-加密-认证-完整性保护-HTTPS" class="headerlink" title="HTTP+加密+认证+完整性保护=HTTPS"></a>HTTP+加密+认证+完整性保护=HTTPS</h2><h3 id="HTTP加上加密处理和认证以及完整性保护后即是HTTPS"><a href="#HTTP加上加密处理和认证以及完整性保护后即是HTTPS" class="headerlink" title="HTTP加上加密处理和认证以及完整性保护后即是HTTPS"></a>HTTP加上加密处理和认证以及完整性保护后即是HTTPS</h3><p><img src="/img/HTTP/HTTP85.png" alt="图片名称" title=""></p>
+<h3 id="HTTPS是身披SSL外壳的HTTP"><a href="#HTTPS是身披SSL外壳的HTTP" class="headerlink" title="HTTPS是身披SSL外壳的HTTP"></a>HTTPS是身披SSL外壳的HTTP</h3><p><img src="/img/HTTP/HTTP86.png" alt="图片名称" title=""></p>
+<h3 id="相互交互密钥的公开密钥加密技术"><a href="#相互交互密钥的公开密钥加密技术" class="headerlink" title="相互交互密钥的公开密钥加密技术"></a>相互交互密钥的公开密钥加密技术</h3><p>SSL采用公开密钥加密的加密处理方式。<br>近代的加密算法中加密算法公开，密钥保密。</p>
+<p><img src="/img/HTTP/HTTP87.png" alt="图片名称" title=""></p>
+<p>公开密钥加密解决了共享密钥加密的困难。公开密钥加密使用一对非对称的密钥。一把叫做私有密钥，另一把叫做公开密钥</p>
+<p><img src="/img/HTTP/HTTP88.png" alt="图片名称" title=""></p>
+<p>HTTPS采用共享密钥加密和公开密钥加密两者并用的混合加密机制。</p>
+<p><img src="/img/HTTP/HTTP89.png" alt="图片名称" title=""></p>
+<h3 id="HTTPS的安全通信机制"><a href="#HTTPS的安全通信机制" class="headerlink" title="HTTPS的安全通信机制"></a>HTTPS的安全通信机制</h3><p><img src="/img/HTTP/HTTP90.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP91.png" alt="图片名称" title=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;图解HTTP（四）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="HTTP" scheme="http://yoursite.com/categories/HTTP/"/>
+    
+    
+      <category term="HTTP" scheme="http://yoursite.com/tags/HTTP/"/>
+    
+  </entry>
+  
+  <entry>
     <title>图解HTTP学习笔记（三）</title>
     <link href="http://yoursite.com/2018/05/14/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>http://yoursite.com/2018/05/14/图解HTTP学习笔记（三）/</id>
     <published>2018-05-14T11:16:24.000Z</published>
-    <updated>2018-05-14T11:44:22.347Z</updated>
+    <updated>2018-05-23T09:49:30.413Z</updated>
     
     <content type="html"><![CDATA[<p>图解HTTP（三）<br><a id="more"></a></p>
-<h1 id="HTTP首部"><a href="#HTTP首部" class="headerlink" title="HTTP首部"></a>HTTP首部</h1><h2 id="HTTP报文首部"><a href="#HTTP报文首部" class="headerlink" title="HTTP报文首部"></a>HTTP报文首部</h2><p><img src="/img/HTTP43.png" alt="图片名称" title=""><br><img src="/img/HTTP44.png" alt="图片名称" title=""></p>
+<h1 id="HTTP首部"><a href="#HTTP首部" class="headerlink" title="HTTP首部"></a>HTTP首部</h1><h2 id="HTTP报文首部"><a href="#HTTP报文首部" class="headerlink" title="HTTP报文首部"></a>HTTP报文首部</h2><p><img src="/img/HTTP/HTTP43.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP44.png" alt="图片名称" title=""></p>
 <h2 id="HTTP首部字段"><a href="#HTTP首部字段" class="headerlink" title="HTTP首部字段"></a>HTTP首部字段</h2><p>使用首部字段是为了给浏览器和服务器提供报文主体大小、所使用的语言、认证信息等内容。HTTP首部字段由首部字段名和字段值构成，中间用冒号分隔。</p>
-<p><img src="/img/HTTP45.png" alt="图片名称" title=""></p>
+<p><img src="/img/HTTP/HTTP45.png" alt="图片名称" title=""></p>
 <h2 id="HTTP-1-1通用首部字段"><a href="#HTTP-1-1通用首部字段" class="headerlink" title="HTTP/1.1通用首部字段"></a>HTTP/1.1通用首部字段</h2><p>通用首部字段是指，请求报文和响应报文双方都会使用的首部。</p>
-<h3 id="Cashe-Control"><a href="#Cashe-Control" class="headerlink" title="Cashe-Control"></a>Cashe-Control</h3><p>通过指定Caseh-Control的指令，就能操作缓存的工作机制。<br><img src="/img/HTTP46.png" alt="图片名称" title=""><br><img src="/img/HTTP47.png" alt="图片名称" title=""><br>例如：<br><img src="/img/HTTP48.png" alt="图片名称" title=""><br>当指定使用public指令，则明确表明其他用户也可以利用缓存。</p>
-<p><img src="/img/HTTP49.png" alt="图片名称" title=""><br>使用no-cashe是为了防止从缓存中返回过期的资源。<br><img src="/img/HTTP50.png" alt="图片名称" title=""><br>该指令规定缓存不能再本地存储请求或响应的任一部分。</p>
-<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>作用：控制不再转发给代理的首部字段，管理持久连接<br><img src="/img/HTTP51.png" alt="图片名称" title=""><br>HTTP/1.1的默认连接都是持久连接。1.1之前的默认是非持久连接，要想在旧版的HTTP协议上维持持续连接，需指定Connection值为Keep-Alive。</p>
-<h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><p>Date表明创建HTTP报文的日期和时间。<br><img src="/img/HTTP52.png" alt="图片名称" title=""></p>
-<h3 id="Trailer"><a href="#Trailer" class="headerlink" title="Trailer"></a>Trailer</h3><p>Trailer会事先说明在报文主体后记录了哪些首部字段。<br><img src="/img/HTTP53.png" alt="图片名称" title=""></p>
-<h3 id="Transfer-Encoding"><a href="#Transfer-Encoding" class="headerlink" title="Transfer-Encoding"></a>Transfer-Encoding</h3><p><img src="/img/HTTP54.png" alt="图片名称" title=""><br>规定了传输报文主体时采用的编码方式。</p>
-<h3 id="Upgrade"><a href="#Upgrade" class="headerlink" title="Upgrade"></a>Upgrade</h3><p><img src="/img/HTTP55.png" alt="图片名称" title=""><br>用于检测HTTP协议及其他协议是否可使用更高的版本进行通信。</p>
-<h3 id="Via"><a href="#Via" class="headerlink" title="Via"></a>Via</h3><p><img src="/img/HTTP56.png" alt="图片名称" title=""><br>追踪客户端与服务器之间的请求和响应报文的传输路径。</p>
-<h2 id="请求首部字段"><a href="#请求首部字段" class="headerlink" title="请求首部字段"></a>请求首部字段</h2><h3 id="Accept"><a href="#Accept" class="headerlink" title="Accept"></a>Accept</h3><p><img src="/img/HTTP57.png" alt="图片名称" title=""><br>通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级。</p>
-<h3 id="Accept-Charset"><a href="#Accept-Charset" class="headerlink" title="Accept-Charset"></a>Accept-Charset</h3><p><img src="/img/HTTP58.png" alt="图片名称" title=""><br>通知服务器用户代理支持的字符集及字符集的相对优先顺序。</p>
-<h3 id="Accept-Encoding"><a href="#Accept-Encoding" class="headerlink" title="Accept-Encoding"></a>Accept-Encoding</h3><p><img src="/img/HTTP59.png" alt="图片名称" title=""><br>告知服务器用户代理支持的内容编码及内容编码的优先级顺序。</p>
-<h3 id="Accept-Language"><a href="#Accept-Language" class="headerlink" title="Accept-Language"></a>Accept-Language</h3><p><img src="/img/HTTP60.png" alt="图片名称" title=""><br>告知服务器用户代理能够处理的自然语言以及自然语言集的相对优先级。</p>
-<h3 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h3><p><img src="/img/HTTP61.png" alt="图片名称" title=""><br>告知服务器，用户代理的认证信息。</p>
-<h3 id="Except"><a href="#Except" class="headerlink" title="Except"></a>Except</h3><p><img src="/img/HTTP62.png" alt="图片名称" title=""><br>告知服务器，期待出现的某种特定行为。</p>
-<h3 id="From"><a href="#From" class="headerlink" title="From"></a>From</h3><p><img src="/img/HTTP63.png" alt="图片名称" title=""><br>告知服务器使用用户代理的用户的电子邮件地址。</p>
-<h3 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h3><p><img src="/img/HTTP64.png" alt="图片名称" title=""><br>告知服务器，请求的资源所处的互联网主机名和端口号。</p>
-<h3 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h3><p><img src="/img/HTTP65.png" alt="图片名称" title=""><br>告知服务器请求的原始资源URI。</p>
-<h3 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent"></a>User-Agent</h3><p><img src="/img/HTTP66.png" alt="图片名称" title=""><br>会将创建请求的浏览器和用户代理名称等信息传达给服务器。</p>
+<h3 id="Cashe-Control"><a href="#Cashe-Control" class="headerlink" title="Cashe-Control"></a>Cashe-Control</h3><p>通过指定Caseh-Control的指令，就能操作缓存的工作机制。<br><img src="/img/HTTP/HTTP46.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP47.png" alt="图片名称" title=""><br>例如：<br><img src="/img/HTTP/HTTP48.png" alt="图片名称" title=""><br>当指定使用public指令，则明确表明其他用户也可以利用缓存。</p>
+<p><img src="/img/HTTP/HTTP49.png" alt="图片名称" title=""><br>使用no-cashe是为了防止从缓存中返回过期的资源。<br><img src="/img/HTTP/HTTP50.png" alt="图片名称" title=""><br>该指令规定缓存不能再本地存储请求或响应的任一部分。</p>
+<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>作用：控制不再转发给代理的首部字段，管理持久连接<br><img src="/img/HTTP/HTTP51.png" alt="图片名称" title=""><br>HTTP/1.1的默认连接都是持久连接。1.1之前的默认是非持久连接，要想在旧版的HTTP协议上维持持续连接，需指定Connection值为Keep-Alive。</p>
+<h3 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h3><p>Date表明创建HTTP报文的日期和时间。<br><img src="/img/HTTP/HTTP52.png" alt="图片名称" title=""></p>
+<h3 id="Trailer"><a href="#Trailer" class="headerlink" title="Trailer"></a>Trailer</h3><p>Trailer会事先说明在报文主体后记录了哪些首部字段。<br><img src="/img/HTTP/HTTP53.png" alt="图片名称" title=""></p>
+<h3 id="Transfer-Encoding"><a href="#Transfer-Encoding" class="headerlink" title="Transfer-Encoding"></a>Transfer-Encoding</h3><p><img src="/img/HTTP/HTTP54.png" alt="图片名称" title=""><br>规定了传输报文主体时采用的编码方式。</p>
+<h3 id="Upgrade"><a href="#Upgrade" class="headerlink" title="Upgrade"></a>Upgrade</h3><p><img src="/img/HTTP/HTTP55.png" alt="图片名称" title=""><br>用于检测HTTP协议及其他协议是否可使用更高的版本进行通信。</p>
+<h3 id="Via"><a href="#Via" class="headerlink" title="Via"></a>Via</h3><p><img src="/img/HTTP/HTTP56.png" alt="图片名称" title=""><br>追踪客户端与服务器之间的请求和响应报文的传输路径。</p>
+<h2 id="请求首部字段"><a href="#请求首部字段" class="headerlink" title="请求首部字段"></a>请求首部字段</h2><h3 id="Accept"><a href="#Accept" class="headerlink" title="Accept"></a>Accept</h3><p><img src="/img/HTTP/HTTP57.png" alt="图片名称" title=""><br>通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级。</p>
+<h3 id="Accept-Charset"><a href="#Accept-Charset" class="headerlink" title="Accept-Charset"></a>Accept-Charset</h3><p><img src="/img/HTTP/HTTP58.png" alt="图片名称" title=""><br>通知服务器用户代理支持的字符集及字符集的相对优先顺序。</p>
+<h3 id="Accept-Encoding"><a href="#Accept-Encoding" class="headerlink" title="Accept-Encoding"></a>Accept-Encoding</h3><p><img src="/img/HTTP/HTTP59.png" alt="图片名称" title=""><br>告知服务器用户代理支持的内容编码及内容编码的优先级顺序。</p>
+<h3 id="Accept-Language"><a href="#Accept-Language" class="headerlink" title="Accept-Language"></a>Accept-Language</h3><p><img src="/img/HTTP/HTTP60.png" alt="图片名称" title=""><br>告知服务器用户代理能够处理的自然语言以及自然语言集的相对优先级。</p>
+<h3 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h3><p><img src="/img/HTTP/HTTP61.png" alt="图片名称" title=""><br>告知服务器，用户代理的认证信息。</p>
+<h3 id="Except"><a href="#Except" class="headerlink" title="Except"></a>Except</h3><p><img src="/img/HTTP/HTTP62.png" alt="图片名称" title=""><br>告知服务器，期待出现的某种特定行为。</p>
+<h3 id="From"><a href="#From" class="headerlink" title="From"></a>From</h3><p><img src="/img/HTTP/HTTP63.png" alt="图片名称" title=""><br>告知服务器使用用户代理的用户的电子邮件地址。</p>
+<h3 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h3><p><img src="/img/HTTP/HTTP64.png" alt="图片名称" title=""><br>告知服务器，请求的资源所处的互联网主机名和端口号。</p>
+<h3 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h3><p><img src="/img/HTTP/HTTP65.png" alt="图片名称" title=""><br>告知服务器请求的原始资源URI。</p>
+<h3 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent"></a>User-Agent</h3><p><img src="/img/HTTP/HTTP66.png" alt="图片名称" title=""><br>会将创建请求的浏览器和用户代理名称等信息传达给服务器。</p>
 ]]></content>
     
     <summary type="html">
@@ -65,36 +129,36 @@
     <link href="http://yoursite.com/2018/05/02/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>http://yoursite.com/2018/05/02/图解HTTP学习笔记（二）/</id>
     <published>2018-05-02T12:08:10.000Z</published>
-    <updated>2018-05-02T12:13:40.170Z</updated>
+    <updated>2018-05-23T09:53:02.938Z</updated>
     
     <content type="html"><![CDATA[<p>图解HTTP（二）<br><a id="more"></a></p>
-<h1 id="返回结果的HTTP状态码"><a href="#返回结果的HTTP状态码" class="headerlink" title="返回结果的HTTP状态码"></a>返回结果的HTTP状态码</h1><h2 id="状态码告知从服务器端返回的请求结果"><a href="#状态码告知从服务器端返回的请求结果" class="headerlink" title="状态码告知从服务器端返回的请求结果"></a>状态码告知从服务器端返回的请求结果</h2><p>状态码的职责是当客户端向2服务器端发送请求时，描述返回的请求结果。<br><img src="/img/HTTP23.png" alt="图片名称" title=""></p>
+<h1 id="返回结果的HTTP状态码"><a href="#返回结果的HTTP状态码" class="headerlink" title="返回结果的HTTP状态码"></a>返回结果的HTTP状态码</h1><h2 id="状态码告知从服务器端返回的请求结果"><a href="#状态码告知从服务器端返回的请求结果" class="headerlink" title="状态码告知从服务器端返回的请求结果"></a>状态码告知从服务器端返回的请求结果</h2><p>状态码的职责是当客户端向2服务器端发送请求时，描述返回的请求结果。<br><img src="/img/HTTP/HTTP23.png" alt="图片名称" title=""></p>
 <h2 id="2XX成功"><a href="#2XX成功" class="headerlink" title="2XX成功"></a>2XX成功</h2><p>2XX的响应结果表明请求被正常处理了。</p>
-<h3 id="200-OK"><a href="#200-OK" class="headerlink" title="200 OK"></a>200 OK</h3><p><img src="/img/HTTP24.png" alt="图片名称" title=""><br>表示从客户端发来的请求在服务器端被正常处理了。</p>
-<h3 id="204-No-Content"><a href="#204-No-Content" class="headerlink" title="204 No Content"></a>204 No Content</h3><p><img src="/img/HTTP25.png" alt="图片名称" title=""><br>代表服务器接收的请求已成功处理，但在返回的响应报文中不含实体的主体部分。</p>
-<h3 id="206-Partial-Content"><a href="#206-Partial-Content" class="headerlink" title="206 Partial Content"></a>206 Partial Content</h3><p><img src="/img/HTTP26.png" alt="图片名称" title=""><br>表示客户端进行了范围请求，而服务器成功执行了这部分的GET请求。</p>
+<h3 id="200-OK"><a href="#200-OK" class="headerlink" title="200 OK"></a>200 OK</h3><p><img src="/img/HTTP/HTTP24.png" alt="图片名称" title=""><br>表示从客户端发来的请求在服务器端被正常处理了。</p>
+<h3 id="204-No-Content"><a href="#204-No-Content" class="headerlink" title="204 No Content"></a>204 No Content</h3><p><img src="/img/HTTP/HTTP25.png" alt="图片名称" title=""><br>代表服务器接收的请求已成功处理，但在返回的响应报文中不含实体的主体部分。</p>
+<h3 id="206-Partial-Content"><a href="#206-Partial-Content" class="headerlink" title="206 Partial Content"></a>206 Partial Content</h3><p><img src="/img/HTTP/HTTP26.png" alt="图片名称" title=""><br>表示客户端进行了范围请求，而服务器成功执行了这部分的GET请求。</p>
 <h2 id="3XX-重定向"><a href="#3XX-重定向" class="headerlink" title="3XX 重定向"></a>3XX 重定向</h2><p>3XX响应结果表明浏览器需要执行某些特殊的处理以正确处理请求。</p>
-<h3 id="301-Moved-Permanently"><a href="#301-Moved-Permanently" class="headerlink" title="301 Moved Permanently"></a>301 Moved Permanently</h3><p><img src="/img/HTTP27.png" alt="图片名称" title=""><br>永久性重定向。表示请求的资源已被分配了新的URI，以后应使用资源现在所指的URI。</p>
-<h3 id="302-Found"><a href="#302-Found" class="headerlink" title="302 Found"></a>302 Found</h3><p><img src="/img/HTTP28.png" alt="图片名称" title=""><br>表示请求的资源已被分配的新的URI，希望用户能使用新的URI访问。和301相比，302只是临时性质的改变，可能还会改变。</p>
-<h3 id="303-See-Other"><a href="#303-See-Other" class="headerlink" title="303 See Other"></a>303 See Other</h3><p><img src="/img/HTTP29.png" alt="图片名称" title=""><br>表示由于请求对应的资源存在另一个URI。</p>
-<h3 id="304-Not-Modified"><a href="#304-Not-Modified" class="headerlink" title="304 Not Modified"></a>304 Not Modified</h3><p><img src="/img/HTTP30.png" alt="图片名称" title=""><br>表示客户端发送附带条件的请求时，服务器端允许请求访问资源，但为满足条件的情况。</p>
+<h3 id="301-Moved-Permanently"><a href="#301-Moved-Permanently" class="headerlink" title="301 Moved Permanently"></a>301 Moved Permanently</h3><p><img src="/img/HTTP/HTTP27.png" alt="图片名称" title=""><br>永久性重定向。表示请求的资源已被分配了新的URI，以后应使用资源现在所指的URI。</p>
+<h3 id="302-Found"><a href="#302-Found" class="headerlink" title="302 Found"></a>302 Found</h3><p><img src="/img/HTTP/HTTP28.png" alt="图片名称" title=""><br>表示请求的资源已被分配的新的URI，希望用户能使用新的URI访问。和301相比，302只是临时性质的改变，可能还会改变。</p>
+<h3 id="303-See-Other"><a href="#303-See-Other" class="headerlink" title="303 See Other"></a>303 See Other</h3><p><img src="/img/HTTP/HTTP29.png" alt="图片名称" title=""><br>表示由于请求对应的资源存在另一个URI。</p>
+<h3 id="304-Not-Modified"><a href="#304-Not-Modified" class="headerlink" title="304 Not Modified"></a>304 Not Modified</h3><p><img src="/img/HTTP/HTTP30.png" alt="图片名称" title=""><br>表示客户端发送附带条件的请求时，服务器端允许请求访问资源，但为满足条件的情况。</p>
 <h3 id="307-Temporary-Redirect"><a href="#307-Temporary-Redirect" class="headerlink" title="307 Temporary Redirect"></a>307 Temporary Redirect</h3><p>临时重定向。该状态码与302Found有着相同的含义。</p>
-<h2 id="4XX客户端错误"><a href="#4XX客户端错误" class="headerlink" title="4XX客户端错误"></a>4XX客户端错误</h2><h3 id="400-Bad-Request"><a href="#400-Bad-Request" class="headerlink" title="400 Bad Request"></a>400 Bad Request</h3><p><img src="/img/HTTP31.png" alt="图片名称" title=""><br>表示请求报文中存在语法错误。</p>
-<h3 id="401-Unauthorized"><a href="#401-Unauthorized" class="headerlink" title="401 Unauthorized"></a>401 Unauthorized</h3><p><img src="/img/HTTP32.png" alt="图片名称" title=""><br>表示发送的请求需要有通过HTTP认证（BASIC认证、DIGEST认证）的认证信息。若之前已进行过一次请求，则表示用户认证失败。</p>
-<h3 id="403-Frobidden"><a href="#403-Frobidden" class="headerlink" title="403 Frobidden"></a>403 Frobidden</h3><p><img src="/img/HTTP33.png" alt="图片名称" title=""><br>表明对请求资源的访问被服务器拒绝了。</p>
-<h3 id="404-Not-Found"><a href="#404-Not-Found" class="headerlink" title="404 Not Found"></a>404 Not Found</h3><p><img src="/img/HTTP34.png" alt="图片名称" title=""><br>表明服务器上无法找到请求的资源，除此之外，也可以在服务器端拒绝请求且不想说明理由时使用。</p>
-<h2 id="5XX服务器错误"><a href="#5XX服务器错误" class="headerlink" title="5XX服务器错误"></a>5XX服务器错误</h2><h3 id="500-Internal-Server-Error"><a href="#500-Internal-Server-Error" class="headerlink" title="500 Internal Server Error"></a>500 Internal Server Error</h3><p><img src="/img/HTTP35.png" alt="图片名称" title=""><br>表明服务器在执行请求时发生了错误。也可能是Web应用存在的bug或某些临时的故障。</p>
-<h3 id="503-Service-Unavailable"><a href="#503-Service-Unavailable" class="headerlink" title="503 Service Unavailable"></a>503 Service Unavailable</h3><p><img src="/img/HTTP36.png" alt="图片名称" title=""><br>表明服务器暂时处于超负载或正在进行停机维护，无法处理请求。</p>
+<h2 id="4XX客户端错误"><a href="#4XX客户端错误" class="headerlink" title="4XX客户端错误"></a>4XX客户端错误</h2><h3 id="400-Bad-Request"><a href="#400-Bad-Request" class="headerlink" title="400 Bad Request"></a>400 Bad Request</h3><p><img src="/img/HTTP/HTTP31.png" alt="图片名称" title=""><br>表示请求报文中存在语法错误。</p>
+<h3 id="401-Unauthorized"><a href="#401-Unauthorized" class="headerlink" title="401 Unauthorized"></a>401 Unauthorized</h3><p><img src="/img/HTTP/HTTP32.png" alt="图片名称" title=""><br>表示发送的请求需要有通过HTTP认证（BASIC认证、DIGEST认证）的认证信息。若之前已进行过一次请求，则表示用户认证失败。</p>
+<h3 id="403-Frobidden"><a href="#403-Frobidden" class="headerlink" title="403 Frobidden"></a>403 Frobidden</h3><p><img src="/img/HTTP/HTTP33.png" alt="图片名称" title=""><br>表明对请求资源的访问被服务器拒绝了。</p>
+<h3 id="404-Not-Found"><a href="#404-Not-Found" class="headerlink" title="404 Not Found"></a>404 Not Found</h3><p><img src="/img/HTTP/HTTP34.png" alt="图片名称" title=""><br>表明服务器上无法找到请求的资源，除此之外，也可以在服务器端拒绝请求且不想说明理由时使用。</p>
+<h2 id="5XX服务器错误"><a href="#5XX服务器错误" class="headerlink" title="5XX服务器错误"></a>5XX服务器错误</h2><h3 id="500-Internal-Server-Error"><a href="#500-Internal-Server-Error" class="headerlink" title="500 Internal Server Error"></a>500 Internal Server Error</h3><p><img src="/img/HTTP/HTTP35.png" alt="图片名称" title=""><br>表明服务器在执行请求时发生了错误。也可能是Web应用存在的bug或某些临时的故障。</p>
+<h3 id="503-Service-Unavailable"><a href="#503-Service-Unavailable" class="headerlink" title="503 Service Unavailable"></a>503 Service Unavailable</h3><p><img src="/img/HTTP/HTTP36.png" alt="图片名称" title=""><br>表明服务器暂时处于超负载或正在进行停机维护，无法处理请求。</p>
 <h1 id="与HTTP协作的Web服务器"><a href="#与HTTP协作的Web服务器" class="headerlink" title="与HTTP协作的Web服务器"></a>与HTTP协作的Web服务器</h1><h2 id="通信数据转发程序：代理、网关、隧道"><a href="#通信数据转发程序：代理、网关、隧道" class="headerlink" title="通信数据转发程序：代理、网关、隧道"></a>通信数据转发程序：代理、网关、隧道</h2><p>代理是一种有转发功能的应用程序，扮演了服务器和客户端“中间人”的角色，接收2由客户端发送的请求并转发给服务器，同时也接收服务器返回的响应并转发给客户端。</p>
 <p>网关是转发其他服务器通信数据的服务器，接收从客户端发送来的请求时，它就像自己拥有资源的源服务器一样对请求进行处理。</p>
 <p>隧道是在相隔甚远的客户端和服务器两者之间进行中转，并保持双方通信连接的应用程序。</p>
-<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p><img src="/img/HTTP37.png" alt="图片名称" title=""><br><img src="/img/HTTP38.png" alt="图片名称" title=""><br><img src="/img/HTTP39.png" alt="图片名称" title=""></p>
+<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p><img src="/img/HTTP/HTTP37.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP38.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP39.png" alt="图片名称" title=""></p>
 <p>使用代理服务器的理由：利用缓存技术减少网络带宽的流量，组织内部针对特定网站的访问控制，以获取访问日志为主要目的，等等。</p>
 <p>缓存代理：<br>代理转发响应时，缓存代理预先将资源的副本（缓存）保存在代理服务器上，当再次请求相同资源，可以返回之前缓存的资源。</p>
 <p>透明代理：<br>转发请求或响应时，不对报文进行修改，反之称为非透明代理。</p>
-<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><p><img src="/img/HTTP40.png" alt="图片名称" title=""><br>网关的工作机制和代理十分相似，而网关能够使通信线路上的服务器提提供非HTTP协议服务，利用网关嗯那个提高通信的安全性。</p>
-<h3 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h3><p><img src="/img/HTTP41.png" alt="图片名称" title=""><br>隧道的目的时确保客户端与服务器进行安全的通信。</p>
-<h2 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h2><p>缓存是指代理服务器或客户端本地磁盘内保存的资源副本，利用缓存可减少对源服务器的访问，因此也就节省了通信流量和通信时间。<br><img src="/img/HTTP42.png" alt="图片名称" title=""></p>
+<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><p><img src="/img/HTTP/HTTP40.png" alt="图片名称" title=""><br>网关的工作机制和代理十分相似，而网关能够使通信线路上的服务器提提供非HTTP协议服务，利用网关嗯那个提高通信的安全性。</p>
+<h3 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h3><p><img src="/img/HTTP/HTTP41.png" alt="图片名称" title=""><br>隧道的目的时确保客户端与服务器进行安全的通信。</p>
+<h2 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h2><p>缓存是指代理服务器或客户端本地磁盘内保存的资源副本，利用缓存可减少对源服务器的访问，因此也就节省了通信流量和通信时间。<br><img src="/img/HTTP/HTTP42.png" alt="图片名称" title=""></p>
 ]]></content>
     
     <summary type="html">
@@ -115,34 +179,34 @@
     <link href="http://yoursite.com/2018/05/02/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://yoursite.com/2018/05/02/图解HTTP学习笔记（一）/</id>
     <published>2018-05-02T11:18:34.000Z</published>
-    <updated>2018-05-02T12:13:38.917Z</updated>
+    <updated>2018-05-23T09:52:26.657Z</updated>
     
     <content type="html"><![CDATA[<p>图解HTTP（一）<br><a id="more"></a></p>
 <h1 id="了解Web与网络基础"><a href="#了解Web与网络基础" class="headerlink" title="了解Web与网络基础"></a>了解Web与网络基础</h1><h2 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h2><p>通常使用的网络实在TCP/IP协议族的基础上运作的，HTTP属于它内部的子集。</p>
 <h3 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h3><p>不同硬件、操作系统之间的通信，所有的这一切都需要一种规则。这种规则称为协议（protocal），TCP/IP是互联网相关的各类协议族的总称。</p>
 <h3 id="TCP-IP的分层管理"><a href="#TCP-IP的分层管理" class="headerlink" title="TCP/IP的分层管理"></a>TCP/IP的分层管理</h3><p>TCP/IP协议族按层次分别分为：应用、传输、网络、数据链路层。<br>应用层决定了向用户提供了应用服务时通信的活动。<br>传输层对上层应用层，提供处于网络连接中的两台计算机之间的数据传输。<br>网络层用来处理在网络上流动的数据包。<br>链路层用来处理联结网络的硬件部分。</p>
-<h3 id="TCP-IP通信传输流"><a href="#TCP-IP通信传输流" class="headerlink" title="TCP/IP通信传输流"></a>TCP/IP通信传输流</h3><p><img src="/img/HTTP1.png" alt="图片名称" title=""><br><img src="/img/HTTP2.png" alt="图片名称" title=""></p>
+<h3 id="TCP-IP通信传输流"><a href="#TCP-IP通信传输流" class="headerlink" title="TCP/IP通信传输流"></a>TCP/IP通信传输流</h3><p><img src="/img/HTTP/HTTP1.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP2.png" alt="图片名称" title=""></p>
 <h2 id="与HTTP关系密切的协议：IP、TCP和DNS"><a href="#与HTTP关系密切的协议：IP、TCP和DNS" class="headerlink" title="与HTTP关系密切的协议：IP、TCP和DNS"></a>与HTTP关系密切的协议：IP、TCP和DNS</h2><h3 id="负责传输的IP协议（网络层）"><a href="#负责传输的IP协议（网络层）" class="headerlink" title="负责传输的IP协议（网络层）"></a>负责传输的IP协议（网络层）</h3><p>IP协议的作用是把各种数据包传送给对方，而要保证确实传送到对方那里，两个重要条件是IP地址和MAC地址。IP地址指明了节点被分配到的地址，MAC地址是指网卡所属的固定地址。IP地址考研和MAC地址进行配对，IP地址可变换，MAC地址基本上不会更改。</p>
 <p>ARP是一种用以解析地址的协议，根据IP地址考研反查出MAC地址。</p>
 <p>无论哪台计算机、网络设备，都无法全面掌握互联网中的细节。</p>
 <h3 id="确保可靠性的TCP协议（传输层）"><a href="#确保可靠性的TCP协议（传输层）" class="headerlink" title="确保可靠性的TCP协议（传输层）"></a>确保可靠性的TCP协议（传输层）</h3><p>TCP提供可靠的字节流服务，即为了方便传输，把大块数据分割成以报文段为单位的数据包进行管理。</p>
-<p>TCP协议采用三次握手将数据准确地送达目标处。发送端发送带SYN的数据包，接收端回传带SYN/ACK的数据包，发送端再回传带ACK的是数据包。<br><img src="/img/HTTP3.png" alt="图片名称" title=""></p>
-<h3 id="负责域名解析的DNS服务（应用层）"><a href="#负责域名解析的DNS服务（应用层）" class="headerlink" title="负责域名解析的DNS服务（应用层）"></a>负责域名解析的DNS服务（应用层）</h3><p>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。<br><img src="/img/HTTP4.png" alt="图片名称" title=""></p>
+<p>TCP协议采用三次握手将数据准确地送达目标处。发送端发送带SYN的数据包，接收端回传带SYN/ACK的数据包，发送端再回传带ACK的是数据包。<br><img src="/img/HTTP/HTTP3.png" alt="图片名称" title=""></p>
+<h3 id="负责域名解析的DNS服务（应用层）"><a href="#负责域名解析的DNS服务（应用层）" class="headerlink" title="负责域名解析的DNS服务（应用层）"></a>负责域名解析的DNS服务（应用层）</h3><p>DNS协议提供通过域名查找IP地址，或逆向从IP地址反查域名的服务。<br><img src="/img/HTTP/HTTP4.png" alt="图片名称" title=""></p>
 <h2 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h2><p>URI：Uniform Resource Identifier，统一资源标识符，<br>URL：Uniform Resource Locator，统一资源定位符。</p>
-<p>URI用字符串标识某一互联网资源，而URL表示资源的地点。可见URL是URI的子集。<br><img src="/img/HTTP5.png" alt="图片名称" title=""></p>
-<h1 id="简单的HTTP协议"><a href="#简单的HTTP协议" class="headerlink" title="简单的HTTP协议"></a>简单的HTTP协议</h1><h2 id="HTTP协议用于客户端和服务器端之间的通信"><a href="#HTTP协议用于客户端和服务器端之间的通信" class="headerlink" title="HTTP协议用于客户端和服务器端之间的通信"></a>HTTP协议用于客户端和服务器端之间的通信</h2><p>应用HTTP协议时，必定一端担任客户端，另一端担任服务器<br><img src="/img/HTTP6.png" alt="图片名称" title=""></p>
-<h2 id="通过请求和响应的交换达成通信"><a href="#通过请求和响应的交换达成通信" class="headerlink" title="通过请求和响应的交换达成通信"></a>通过请求和响应的交换达成通信</h2><p>请求必由客户端发出，服务端回复响应<br><img src="/img/HTTP7.png" alt="图片名称" title=""><br><img src="/img/HTTP8.png" alt="图片名称" title=""><br><img src="/img/HTTP9.png" alt="图片名称" title=""></p>
-<h2 id="HTTP是不保存状态的协议"><a href="#HTTP是不保存状态的协议" class="headerlink" title="HTTP是不保存状态的协议"></a>HTTP是不保存状态的协议</h2><p>不保存状态即无状态，HTTP协议自身不对请求和响应之间的通信状态进行保存。<br><img src="/img/HTTP10.png" alt="图片名称" title=""></p>
-<h2 id="告知服务器意图的HTTP方法"><a href="#告知服务器意图的HTTP方法" class="headerlink" title="告知服务器意图的HTTP方法"></a>告知服务器意图的HTTP方法</h2><h3 id="GET-获取资源"><a href="#GET-获取资源" class="headerlink" title="GET:获取资源"></a>GET:获取资源</h3><p>GET方法请求访问已被URI识别的资源。指定的资源经服务器解析后返回响应内容。<br><img src="/img/HTTP11.png" alt="图片名称" title=""></p>
-<h3 id="POST：传输实体主体"><a href="#POST：传输实体主体" class="headerlink" title="POST：传输实体主体"></a>POST：传输实体主体</h3><p><img src="/img/HTTP12.png" alt="图片名称" title=""></p>
-<h3 id="PUT：传输文件"><a href="#PUT：传输文件" class="headerlink" title="PUT：传输文件"></a>PUT：传输文件</h3><p>PUT用来传输文件，像FTP一样，要求在请求报文的主题中包含文件内容，然后保存到请求URI指定的位置。但自身不带验证机制，存在安全问题，所有一般不使用。<br><img src="/img/HTTP13.png" alt="图片名称" title=""></p>
-<h3 id="HEAD：获得报文首部"><a href="#HEAD：获得报文首部" class="headerlink" title="HEAD：获得报文首部"></a>HEAD：获得报文首部</h3><p>HEAD跟GET一样，指示不返回报文主体部分。<br><img src="/img/HTTP14.png" alt="图片名称" title=""></p>
-<h3 id="DELETE：删除文件"><a href="#DELETE：删除文件" class="headerlink" title="DELETE：删除文件"></a>DELETE：删除文件</h3><p>DELDETE用来删除文件，与PUT相反，同样不安全，不常使用。<br><img src="/img/HTTP15.png" alt="图片名称" title=""><br><img src="/img/HTTP16.png" alt="图片名称" title=""></p>
-<h2 id="持久连接节省通信量"><a href="#持久连接节省通信量" class="headerlink" title="持久连接节省通信量"></a>持久连接节省通信量</h2><p><img src="/img/HTTP17.png" alt="图片名称" title=""></p>
-<h3 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h3><p>为解决上述TCP连接的问题，HTTP/1.1和部分HTTP/1.0提出了持久连接，只要任意一端没有明确提出断开连接，则保持TCP连接状态。<br><img src="/img/HTTP18.png" alt="图片名称" title=""></p>
-<h3 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h3><p>持久连接使得多数请求以管线化方式发送成为可能。即同时并行发送多个请求。<br><img src="/img/HTTP19.png" alt="图片名称" title=""></p>
-<h2 id="使用Cookie的状态管理"><a href="#使用Cookie的状态管理" class="headerlink" title="使用Cookie的状态管理"></a>使用Cookie的状态管理</h2><p>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态。Cookie会根据从服务器发送的响应报文内的Set-Cookie首部字段信息，通知客户端保存Cookie。<br><img src="/img/HTTP20.png" alt="图片名称" title=""></p>
-<h1 id="HTTP报文内的HTTP信息"><a href="#HTTP报文内的HTTP信息" class="headerlink" title="HTTP报文内的HTTP信息"></a>HTTP报文内的HTTP信息</h1><h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p>用于HTTP协议交互的信息称为HTTP报文。客户端的HTTP报文叫做请求报文，服务器端的叫做响应报文。<br><img src="/img/HTTP21.png" alt="图片名称" title=""><br><img src="/img/HTTP22.png" alt="图片名称" title=""></p>
+<p>URI用字符串标识某一互联网资源，而URL表示资源的地点。可见URL是URI的子集。<br><img src="/img/HTTP/HTTP5.png" alt="图片名称" title=""></p>
+<h1 id="简单的HTTP协议"><a href="#简单的HTTP协议" class="headerlink" title="简单的HTTP协议"></a>简单的HTTP协议</h1><h2 id="HTTP协议用于客户端和服务器端之间的通信"><a href="#HTTP协议用于客户端和服务器端之间的通信" class="headerlink" title="HTTP协议用于客户端和服务器端之间的通信"></a>HTTP协议用于客户端和服务器端之间的通信</h2><p>应用HTTP协议时，必定一端担任客户端，另一端担任服务器<br><img src="/img/HTTP/HTTP6.png" alt="图片名称" title=""></p>
+<h2 id="通过请求和响应的交换达成通信"><a href="#通过请求和响应的交换达成通信" class="headerlink" title="通过请求和响应的交换达成通信"></a>通过请求和响应的交换达成通信</h2><p>请求必由客户端发出，服务端回复响应<br><img src="/img/HTTP/HTTP7.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP8.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP9.png" alt="图片名称" title=""></p>
+<h2 id="HTTP是不保存状态的协议"><a href="#HTTP是不保存状态的协议" class="headerlink" title="HTTP是不保存状态的协议"></a>HTTP是不保存状态的协议</h2><p>不保存状态即无状态，HTTP协议自身不对请求和响应之间的通信状态进行保存。<br><img src="/img/HTTP/HTTP10.png" alt="图片名称" title=""></p>
+<h2 id="告知服务器意图的HTTP方法"><a href="#告知服务器意图的HTTP方法" class="headerlink" title="告知服务器意图的HTTP方法"></a>告知服务器意图的HTTP方法</h2><h3 id="GET-获取资源"><a href="#GET-获取资源" class="headerlink" title="GET:获取资源"></a>GET:获取资源</h3><p>GET方法请求访问已被URI识别的资源。指定的资源经服务器解析后返回响应内容。<br><img src="/img/HTTP/HTTP11.png" alt="图片名称" title=""></p>
+<h3 id="POST：传输实体主体"><a href="#POST：传输实体主体" class="headerlink" title="POST：传输实体主体"></a>POST：传输实体主体</h3><p><img src="/img/HTTP/HTTP12.png" alt="图片名称" title=""></p>
+<h3 id="PUT：传输文件"><a href="#PUT：传输文件" class="headerlink" title="PUT：传输文件"></a>PUT：传输文件</h3><p>PUT用来传输文件，像FTP一样，要求在请求报文的主题中包含文件内容，然后保存到请求URI指定的位置。但自身不带验证机制，存在安全问题，所有一般不使用。<br><img src="/img/HTTP/HTTP13.png" alt="图片名称" title=""></p>
+<h3 id="HEAD：获得报文首部"><a href="#HEAD：获得报文首部" class="headerlink" title="HEAD：获得报文首部"></a>HEAD：获得报文首部</h3><p>HEAD跟GET一样，指示不返回报文主体部分。<br><img src="/img/HTTP/HTTP14.png" alt="图片名称" title=""></p>
+<h3 id="DELETE：删除文件"><a href="#DELETE：删除文件" class="headerlink" title="DELETE：删除文件"></a>DELETE：删除文件</h3><p>DELDETE用来删除文件，与PUT相反，同样不安全，不常使用。<br><img src="/img/HTTP/HTTP15.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP16.png" alt="图片名称" title=""></p>
+<h2 id="持久连接节省通信量"><a href="#持久连接节省通信量" class="headerlink" title="持久连接节省通信量"></a>持久连接节省通信量</h2><p><img src="/img/HTTP/HTTP17.png" alt="图片名称" title=""></p>
+<h3 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h3><p>为解决上述TCP连接的问题，HTTP/1.1和部分HTTP/1.0提出了持久连接，只要任意一端没有明确提出断开连接，则保持TCP连接状态。<br><img src="/img/HTTP/HTTP18.png" alt="图片名称" title=""></p>
+<h3 id="管线化"><a href="#管线化" class="headerlink" title="管线化"></a>管线化</h3><p>持久连接使得多数请求以管线化方式发送成为可能。即同时并行发送多个请求。<br><img src="/img/HTTP/HTTP19.png" alt="图片名称" title=""></p>
+<h2 id="使用Cookie的状态管理"><a href="#使用Cookie的状态管理" class="headerlink" title="使用Cookie的状态管理"></a>使用Cookie的状态管理</h2><p>Cookie技术通过在请求和响应报文中写入Cookie信息来控制客户端的状态。Cookie会根据从服务器发送的响应报文内的Set-Cookie首部字段信息，通知客户端保存Cookie。<br><img src="/img/HTTP/HTTP20.png" alt="图片名称" title=""></p>
+<h1 id="HTTP报文内的HTTP信息"><a href="#HTTP报文内的HTTP信息" class="headerlink" title="HTTP报文内的HTTP信息"></a>HTTP报文内的HTTP信息</h1><h2 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h2><p>用于HTTP协议交互的信息称为HTTP报文。客户端的HTTP报文叫做请求报文，服务器端的叫做响应报文。<br><img src="/img/HTTP/HTTP21.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP22.png" alt="图片名称" title=""></p>
 ]]></content>
     
     <summary type="html">
@@ -163,7 +227,7 @@
     <link href="http://yoursite.com/2018/04/14/MysqlCrashCourse%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>http://yoursite.com/2018/04/14/MysqlCrashCourse学习笔记（三）/</id>
     <published>2018-04-14T06:53:38.000Z</published>
-    <updated>2018-04-14T08:32:43.903Z</updated>
+    <updated>2018-05-17T05:55:59.833Z</updated>
     
     <content type="html"><![CDATA[<p>MySQL必知必会（三）<br><a id="more"></a></p>
 <h1 id="使用子查询"><a href="#使用子查询" class="headerlink" title="使用子查询"></a>使用子查询</h1><h2 id="利用子查询进行过滤"><a href="#利用子查询进行过滤" class="headerlink" title="利用子查询进行过滤"></a>利用子查询进行过滤</h2><p>在SELECT语句中，子查询总是从内向外处理。</p>
@@ -268,7 +332,7 @@ END;
     <link href="http://yoursite.com/2018/04/01/MysqlCrashCourse%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>http://yoursite.com/2018/04/01/MysqlCrashCourse学习笔记（二）/</id>
     <published>2018-04-01T05:49:45.000Z</published>
-    <updated>2018-04-01T07:51:02.872Z</updated>
+    <updated>2018-05-17T05:55:59.834Z</updated>
     
     <content type="html"><![CDATA[<p>MySQL必知必会（二）<br><a id="more"></a></p>
 <h1 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h1><h2 id="使用WHERE子句"><a href="#使用WHERE子句" class="headerlink" title="使用WHERE子句"></a>使用WHERE子句</h2><p>在SELECT语句中，数据根据WHERE子句中指定的搜索条件进行过滤。WHERE子句在表名(FROM子句)之后给出：</p>
@@ -640,7 +704,7 @@ END;
     <link href="http://yoursite.com/2018/03/25/MysqlCrashCourse%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://yoursite.com/2018/03/25/MysqlCrashCourse学习笔记（一）/</id>
     <published>2018-03-25T06:14:00.000Z</published>
-    <updated>2018-04-01T05:51:53.821Z</updated>
+    <updated>2018-05-17T05:55:59.831Z</updated>
     
     <content type="html"><![CDATA[<p>MySQL必知必会（一）。<br><a id="more"></a></p>
 <h1 id="了解SQL"><a href="#了解SQL" class="headerlink" title="了解SQL"></a>了解SQL</h1><h2 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h2><p><strong>数据库</strong>（database）保存有组织的数据的容器（通常是一个文件或一组文件）。</p>
@@ -704,7 +768,7 @@ END;
     <link href="http://yoursite.com/2018/03/11/Java%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     <id>http://yoursite.com/2018/03/11/Java面试题/</id>
     <published>2018-03-11T08:53:08.000Z</published>
-    <updated>2018-03-11T09:19:22.302Z</updated>
+    <updated>2018-05-17T05:55:59.820Z</updated>
     
     <content type="html"><![CDATA[<p>找工作也有一周了，简单写下基础的面试题吧。<br><a id="more"></a></p>
 <p><a href="https://juejin.im/post/5a94a8ca6fb9a0635c049e67" target="_blank" rel="external">题目来源</a></p>
@@ -779,7 +843,7 @@ END;
     <link href="http://yoursite.com/2018/02/26/%E4%B8%80%E5%85%AB%E5%B1%95%E6%9C%9B/"/>
     <id>http://yoursite.com/2018/02/26/一八展望/</id>
     <published>2018-02-26T12:53:42.000Z</published>
-    <updated>2018-02-26T12:54:28.000Z</updated>
+    <updated>2018-05-17T05:55:59.838Z</updated>
     
     <content type="html"><![CDATA[<p>一八展望<br><a id="more"></a></p>
 <p>开始写这个博客的时候，想的是只写技术不写其他，到这篇之前也的确是这样的，当然，我承认水平还远远不够，不过今天想来想去还是对一八年做个展望吧。</p>
@@ -805,7 +869,7 @@ END;
     <link href="http://yoursite.com/2017/06/11/MBG%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/"/>
     <id>http://yoursite.com/2017/06/11/MBG使用手册/</id>
     <published>2017-06-11T12:09:20.000Z</published>
-    <updated>2017-06-11T12:31:14.000Z</updated>
+    <updated>2018-05-17T05:55:59.823Z</updated>
     
     <content type="html"><![CDATA[<p>Mybaits Generator 使用手册<br><a id="more"></a></p>
 <h2 id="Generator工具简介"><a href="#Generator工具简介" class="headerlink" title="Generator工具简介"></a>Generator工具简介</h2><p>自动生成底层模型类、Dao接口类甚至Mapping映射文件。</p>
@@ -874,7 +938,7 @@ END;
     <link href="http://yoursite.com/2017/04/22/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%83/"/>
     <id>http://yoursite.com/2017/04/22/Core-Java-I-学习笔记-七/</id>
     <published>2017-04-22T11:35:18.000Z</published>
-    <updated>2017-05-13T10:53:40.000Z</updated>
+    <updated>2018-05-17T05:55:59.809Z</updated>
     
     <content type="html"><![CDATA[<p>集合<br><a id="more"></a></p>
 <h2 id="Java集合框架"><a href="#Java集合框架" class="headerlink" title="Java集合框架"></a>Java集合框架</h2><p>与现代的数据结构类库的常见情况一样，Java集合类库也将<strong>接口（interface）</strong>与<strong>实现（implementation）</strong>分离。</p>
@@ -997,7 +1061,7 @@ e= staff.get(id); //get harry
     <link href="http://yoursite.com/2017/04/15/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%AD/"/>
     <id>http://yoursite.com/2017/04/15/Core-Java-I-学习笔记-六/</id>
     <published>2017-04-15T11:31:01.000Z</published>
-    <updated>2017-04-26T06:20:32.000Z</updated>
+    <updated>2018-05-17T05:55:59.817Z</updated>
     
     <content type="html"><![CDATA[<p>泛型<br><a id="more"></a></p>
 <h2 id="为什么要使用泛型程序设计"><a href="#为什么要使用泛型程序设计" class="headerlink" title="为什么要使用泛型程序设计"></a>为什么要使用泛型程序设计</h2><p><strong>泛型程序设计</strong>意味着编写的代码可以被很多不同类型的对象所重用。</p>
@@ -1130,7 +1194,7 @@ void setFirst(?)
     <link href="http://yoursite.com/2017/04/08/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%94/"/>
     <id>http://yoursite.com/2017/04/08/Core-Java-I-学习笔记-五/</id>
     <published>2017-04-08T11:46:50.000Z</published>
-    <updated>2017-04-09T11:57:50.000Z</updated>
+    <updated>2018-05-17T05:55:59.815Z</updated>
     
     <content type="html"><![CDATA[<p>接口，lambda表达式与内部类<br><a id="more"></a></p>
 <h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在Java中，接口不是类，而是对类的一组需求描述，这些类要遵从接口描述的统一格式进行定义。<br>接口中的所有方法自动地属于public，接口绝不能含有实例域。<br>实现接口时，必须把方法声明为public。</p>
@@ -1198,7 +1262,7 @@ class Employee implements Comparable
     <link href="http://yoursite.com/2017/04/02/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/"/>
     <id>http://yoursite.com/2017/04/02/Core-Java-I-学习笔记-四/</id>
     <published>2017-04-02T08:31:37.000Z</published>
-    <updated>2018-03-11T09:19:11.700Z</updated>
+    <updated>2018-05-17T05:55:59.819Z</updated>
     
     <content type="html"><![CDATA[<p>继承<br><a id="more"></a></p>
 <p>利用继承，可以基于已存在的类构造一个新类。继承已存在的类就是复用这些类的方法和域。在此基础上，还可以添加一些新的的方法和域，以满足新的需求。</p>
@@ -1276,7 +1340,7 @@ e= new Manager(..);
     <link href="http://yoursite.com/2017/03/25/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/"/>
     <id>http://yoursite.com/2017/03/25/Core-Java-I-学习笔记-三/</id>
     <published>2017-03-25T11:10:05.000Z</published>
-    <updated>2017-03-26T12:13:38.000Z</updated>
+    <updated>2018-05-17T05:55:59.811Z</updated>
     
     <content type="html"><![CDATA[<p>对象和类<br><a id="more"></a></p>
 <h2 id="面向对象概述"><a href="#面向对象概述" class="headerlink" title="面向对象概述"></a>面向对象概述</h2><p>Java完全面向对象。</p>
@@ -1409,7 +1473,7 @@ swap(a,v);
     <link href="http://yoursite.com/2017/03/18/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/"/>
     <id>http://yoursite.com/2017/03/18/Core-Java-I-学习笔记-二/</id>
     <published>2017-03-18T11:45:08.000Z</published>
-    <updated>2017-03-19T13:03:22.000Z</updated>
+    <updated>2018-05-17T05:55:59.813Z</updated>
     
     <content type="html"><![CDATA[<p>Java的基本程序设计结构<br><a id="more"></a></p>
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Java中，有三种标记注释的方式。</p>
@@ -1598,7 +1662,7 @@ for(int element : a)
     <link href="http://yoursite.com/2017/03/15/Linux-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2017/03/15/Linux-学习笔记/</id>
     <published>2017-03-15T05:59:32.000Z</published>
-    <updated>2017-03-15T08:39:42.000Z</updated>
+    <updated>2018-05-17T05:55:59.821Z</updated>
     
     <content type="html"><![CDATA[<p>Linux概述<br><a id="more"></a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先安装虚拟机，可以自行搜索VM。<br>下载CentOS的linux系统，我的版本是CentOS-6.7-i386-bin-DVD1。</p>
@@ -1672,7 +1736,7 @@ for(int element : a)
     <link href="http://yoursite.com/2017/03/06/Core-Java-I-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/"/>
     <id>http://yoursite.com/2017/03/06/Core-Java-I-学习笔记-一/</id>
     <published>2017-03-06T10:50:40.000Z</published>
-    <updated>2017-03-06T11:22:40.000Z</updated>
+    <updated>2018-05-17T05:55:59.807Z</updated>
     
     <content type="html"><![CDATA[<p>Java程序概述<br><a id="more"></a></p>
 <h2 id="关键术语"><a href="#关键术语" class="headerlink" title="关键术语"></a>关键术语</h2><h3 id="简单性"><a href="#简单性" class="headerlink" title="简单性"></a>简单性</h3><p>Java剔除了C++中许多很少使用，难以处理，易混淆的特性，是C++语法的一个“纯洁”版本，<br>如没有头文件、指针运算、结构、联合、操作符重载等。</p>
@@ -1711,7 +1775,7 @@ for(int element : a)
     <link href="http://yoursite.com/2017/02/08/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
     <id>http://yoursite.com/2017/02/08/Mybatis学习笔记（四）/</id>
     <published>2017-02-08T07:02:39.000Z</published>
-    <updated>2017-02-08T10:39:10.000Z</updated>
+    <updated>2018-05-17T05:55:59.830Z</updated>
     
     <content type="html"><![CDATA[<p>SqlMapConfig配置文件 &amp;&amp; 输入&amp;输出映射<br><a id="more"></a></p>
 <h2 id="SqlMapConfig"><a href="#SqlMapConfig" class="headerlink" title="SqlMapConfig"></a>SqlMapConfig</h2><p>SqlMapConfig.xml中配置的内容和顺序如下</p>
@@ -1955,7 +2019,7 @@ id：对resultMap的唯一标识
     <link href="http://yoursite.com/2017/02/06/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>http://yoursite.com/2017/02/06/Mybatis学习笔记（三）/</id>
     <published>2017-02-06T07:49:23.000Z</published>
-    <updated>2017-02-08T10:23:46.000Z</updated>
+    <updated>2018-05-17T05:55:59.826Z</updated>
     
     <content type="html"><![CDATA[<p>Mybatis的Dao开发<br><a id="more"></a><br>使用dao开发有两种开发方式，一种是使用普通的接口和接口实现类来进行开发<br>另一种开发方式是使用mapper代理的开发的方式(直接使用接口)</p>
 <h2 id="sqlSession的使用范围"><a href="#sqlSession的使用范围" class="headerlink" title="sqlSession的使用范围"></a>sqlSession的使用范围</h2><h3 id="sessionFactoryBuidler"><a href="#sessionFactoryBuidler" class="headerlink" title="sessionFactoryBuidler"></a>sessionFactoryBuidler</h3><p>通过SqlSessionFactoryBuilder创建会话工厂SqlSessionFactory将SqlSessionFactoryBuilder当成一个工具类使用即可，不需要使用单例管理SqlSessionFactoryBuilder。在需要创建SqlSessionFactory时候，只需要new一次SqlSessionFactoryBuilder即可。</p>
@@ -2156,260 +2220,6 @@ PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
     <summary type="html">
     
       &lt;p&gt;Mybatis的Dao开发&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Mybatis" scheme="http://yoursite.com/categories/Mybatis/"/>
-    
-    
-      <category term="Mybatis" scheme="http://yoursite.com/tags/Mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis学习笔记（二）</title>
-    <link href="http://yoursite.com/2017/02/05/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>http://yoursite.com/2017/02/05/Mybatis学习笔记（二）/</id>
-    <published>2017-02-05T06:36:12.000Z</published>
-    <updated>2017-02-05T07:58:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Mybatis入门程序<br><a id="more"></a></p>
-<h2 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h2><p>第一步：创建一个java工程。（数据库自行创建）<br>第二步：导入jar包。包括mybatis的jar包、mybatis依赖的jar包、mysql的数据库驱动。<br>第三步：创建一个log4j.properties。方便查看sql语句用的。<br>第四步：创建一个SqlMapConfig.xml。配置数据库连接池。<br>第五步：创建Mapper映射文件。<br>第六步：编码。</p>
-<h3 id="log4j-properties"><a href="#log4j-properties" class="headerlink" title="log4j.properties"></a>log4j.properties</h3><pre><code># Global logging configuration
-log4j.rootLogger=DEBUG, stdout
-# Console output...
-log4j.appender.stdout=org.apache.log4j.ConsoleAppender
-log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
-log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
-</code></pre><h3 id="SqlMapConfig-xml"><a href="#SqlMapConfig-xml" class="headerlink" title="SqlMapConfig.xml"></a>SqlMapConfig.xml</h3><pre><code>&lt;configuration&gt;
-    &lt;!-- 和spring整合后 environments配置将废除 --&gt;
-    &lt;environments default=&quot;development&quot;&gt;
-        &lt;environment id=&quot;development&quot;&gt;
-        &lt;transactionManager type=&quot;JDBC&quot;/&gt;
-            &lt;dataSource type=&quot;POOLED&quot;&gt;
-            &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-            &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://127.0.0.1:3306/mybatis&quot; /&gt;
-            &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-            &lt;property name=&quot;password&quot; value=&quot;&quot;/&gt;
-            &lt;/dataSource&gt;
-        &lt;/environment&gt;
-    &lt;/environments&gt;  
-
-    &lt;mappers&gt;
-        &lt;mapper resource=&quot;com/mybatis/po/User.xml&quot;/&gt;
-    &lt;/mappers&gt;
-&lt;/configuration&gt;
-</code></pre><h3 id="Mapper映射文件"><a href="#Mapper映射文件" class="headerlink" title="Mapper映射文件"></a>Mapper映射文件</h3><p>习惯上mapper映射文件的名称和数据库的表名一致。user.xml</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;!DOCTYPE mapper
-        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
-        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;!-- namespace 命名空间，作用就是对sql进行分类化管理,理解为sql隔离
- 注意：使用mapper代理方法开发，namespace有特殊重要的作用
- --&gt;
-&lt;mapper namespace=&quot;test&quot;&gt;
-    &lt;!-- 在映射文件中配置很多sql语句 --&gt;
-    &lt;!--需求:通过id查询用户表的记录 --&gt;
-    &lt;!-- 通过select执行数据库查询
-     id:标识映射文件中的sql，称为statement的id
-     将sql语句封装到mappedStatement对象中，所以将id称为statement的id
-     parameterType:指定输入参数的类型
-     #{}标示一个占位符,
-     #{value}其中value表示接收输入参数的名称，如果输入参数是简单类型，那么#{}中的值可以任意。
-
-     resultType：指定sql输出结果的映射的java对象类型，select指定resultType表示将单条记录映射成java对象
-     --&gt;
-
-    &lt;select id=&quot;selectUserByID&quot;    parameterType=&quot;int&quot;      resultType=&quot;User&quot;&gt;
-        select * from user where userID = #{userId}
-    &lt;/select&gt;
-
-    &lt;!-- 根据用户名称模糊查询用户信息，可能返回多条
-    resultType：指定就是单条记录所映射的java对象类型
-    ${}:表示拼接sql串，将接收到参数的内容不加任何修饰拼接在sql中。
-    使用${}拼接sql，引起 sql注入
-    ${value}：接收输入参数的内容，如果传入类型是简单类型，${}中只能使用value
-     --&gt;
-
-    &lt;select id=&quot;getUserByName&quot; parameterType=&quot;string&quot; resultType=&quot;User&quot;&gt;
-        select * from user where userName LIKE #{name}
-    &lt;/select&gt;
-
-    &lt;!-- 添加用户
-    parameterType：指定输入 参数类型是pojo（包括 用户信息）
-    #{}中指定pojo的属性名，接收到pojo对象的属性值，mybatis通过OGNL获取对象的属性值
-    --&gt;
-
-    &lt;insert id=&quot;insertUser&quot;  parameterType=&quot;User&quot; &gt;
-        &lt;!--
-         将插入数据的主键返回，返回到user对象中
-
-         SELECT LAST_INSERT_ID()：得到刚insert进去记录的主键值，只适用与自增主键
-
-         keyProperty：将查询到主键值设置到parameterType指定的对象的哪个属性
-         order：SELECT LAST_INSERT_ID()执行顺序，相对于insert语句来说它的执行顺序
-         resultType：指定SELECT LAST_INSERT_ID()的结果类型
-          --&gt;
-        &lt;selectKey keyProperty=&quot;id&quot; order=&quot;AFTER&quot; resultType=&quot;java.lang.Integer&quot;&gt;
-          SELECT LAST_INSERT_ID()
-        &lt;/selectKey&gt;
-
-        INSERT INTO `user`(userName,userAge,userAddress) 
-        VALUES(#{userName},#{userAge},#{userAddress})
-    &lt;/insert&gt;
-
-    &lt;!-- 删除用户 根据id删除用户，需要输入 id值--&gt;
-    &lt;delete id=&quot;deleteUser&quot; parameterType=&quot;java.lang.Integer&quot;&gt;
-        delete from user where id=#{userId}
-    &lt;/delete&gt;
-
-    &lt;!-- 根据id更新用户
-    分析：
-    需要传入用户的id
-    需要传入用户的更新信息
-    parameterType指定user对象，包括 id和更新信息，注意：id必须存在
-    #{id}：从输入 user对象中获取id属性值
-     --&gt;
-
-    &lt;update id=&quot;updateUser&quot; parameterType=&quot;User&quot;&gt;
-        UPDATE USER
-        SET userName = #{username},
-         userAge = #{age},
-         userAddress = #{address},
-        WHERE
-        userID = #{id}
-    &lt;/update&gt;
-&lt;/mapper&gt;
-</code></pre><h3 id="po类"><a href="#po类" class="headerlink" title="po类"></a>po类</h3><p>User.java</p>
-<pre><code>public class User {
-    private int userid;
-    private String userName;
-    private int userAge;
-    private String userAddress;
-     /**
-     * @return the userid
-     */
-    public int getUserid() {
-        return userid;
-    }
-    /**
-     * @param userid the userid to set
-     */
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
-    /**
-     * @return the userName
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * @param userName the userName to set
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-    /**
-     * @return the userAge
-     */
-    public int getUserAge() {
-        return userAge;
-    }
-    /**
-     * @param userAge the userAge to set
-     */
-    public void setUserAge(int userAge) {
-        this.userAge = userAge;
-    }
-    /**
-     * @return the userAddress
-     */
-    public String getUserAddress() {
-        return userAddress;
-    }
-    /**
-     * @param userAddress the userAddress to set
-     */
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return &quot;User [userid=&quot; + userid + &quot;, userName=&quot; + userName + &quot;, userAge=&quot; + userAge + &quot;, userAddress=&quot;
-                + userAddress + &quot;]&quot;;
-    }
-}
-</code></pre><h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><pre><code>public class Test1 {
-    static {
-        try {
-            //把配置文件读取到流中
-            reader = Resources.getResourceAsReader(&quot;SqlMapConfig.xml&quot;);
-            // InputStream=Resources.getResourceAsStream(&quot;SqlMapConfig.xml&quot;);
-            //创建SqlSessionFactory对象
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static SqlSessionFactory getSession() {
-        return sqlSessionFactory;
-    }
-
-    public static void main(String[] args) {
-        //创建sqlsession对象
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        try {
-            //查询用户
-            //查询一条记录使用selectOne方法
-            //第一个参数：statementID
-            //第二个参数：sql语句用到的参数
-            User user =(User) sqlSession.selectOne(&quot;test.selectUserByID&quot;,2);
-            System.out.println(user);    
-
-        /*  //添加用户            
-            User user = new User(); user.setUserName(&quot;张三&quot;);
-            user.setUserAge(26); 
-            user.setUserAddress(&quot;天津&quot;);
-            sqlSession.insert(&quot;test.insertUser&quot;, user);
-
-            //
-            //删除用户
-            sqlSession.delete(&quot;test.deleteUser&quot;, 2);
-
-            //更新信息
-            User user = sqlSession.selectOne(&quot;test.getUserByID&quot;, 2);
-            System.out.println(user); 
-            user.setUserName(&quot;武松&quot;);
-            user.setUserAge(20); 
-            user.setUserAddress(&quot;清河县&quot;);
-            sqlSession.update(&quot;test.updateUser&quot;, user);*/
-
-        } finally {
-            //关闭sqlsession
-            sqlSession.commit();
-            sqlSession.close();
-        }
-    }
-}
-</code></pre><h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><pre><code>User [userid=3, userName=sss, userAge=0, userAddress=null]
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="parameterType"><a href="#parameterType" class="headerlink" title="parameterType"></a>parameterType</h3><p>指定传递参数类型，前台传入参数和后台获取参数类型必须匹配</p>
-<h3 id="resultType"><a href="#resultType" class="headerlink" title="resultType"></a>resultType</h3><p>指定返回值类型，执行sql结果映射Java对象</p>
-<h3 id="和"><a href="#和" class="headerlink" title="#和$"></a>#和$</h3><p>#{}表示一个占位符，#{}接受传入参数，类型可以是基本类型，pojo，map<br>如果接受的是基本类型的值，那么#{}括号中可以任意或者value<br>如果#{}获取是的pojo，mybatis通过ognl获取参数值。Ognl就是对象导航语言 属性.属性.属性的方式获取值。<br>如果传递是map值，#{}中需要的是map的key</p>
-<p>${}表示拼接sql,会引入sql注入，不建议使用<br>${}接受输入参数可以是pojo，基本类型，map<br>${}如果接受的是基本类型，只能是value<br>${}接受pojo类型的参数，通过ognl对象导航进行获取</p>
-<h3 id="selectOne和selectList"><a href="#selectOne和selectList" class="headerlink" title="selectOne和selectList"></a>selectOne和selectList</h3><p>selectOne是查询单个对象记录，selectList查询多条记录<br>不能使用selectOne查询selectList的记录</p>
-<h3 id="mybatis和hibernate区别"><a href="#mybatis和hibernate区别" class="headerlink" title="mybatis和hibernate区别"></a>mybatis和hibernate区别</h3><p>Hibernate:hibernate是一个标准的ORM框架，不需要写sql语句，维护关系比叫复杂，sql语句自动生成，对sql语句优化，修改比较困难。<br>Hibernate的优缺点：<br>优点：面向对象开发，不需要自己写sql语句。如果进行数据库迁移不需要修改sql语句，只需要修改一下方言。<br>缺点：hibernate维护数据表关系比较复杂。完全是有hibernate来管理数据表的关系，对于我们来说完全是透明的，不易维护。<br>Hibernate自动生成sql语句，生成sql语句比较复杂，比较难挑错。<br>Hibernate由于是面向对象开发，不能开发比较复杂的业务。<br>应用场景：<br>适合需求变化较少的项目，比如ERP，CRM等等<br>Mybatis框架对jdbc框架进行封装，屏蔽了jdbc的缺点，开发简单。<br>Mybatis只需要程序员关注sql本身，不需要过多的关注业务。对sql的优化，修改比较容易<br>适应场景：<br>适合需求变化多端的项目，比如：互联网项目</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Mybatis入门程序&lt;br&gt;
     
     </summary>
     

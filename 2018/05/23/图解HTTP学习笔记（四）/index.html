@@ -1,0 +1,727 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTTP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Onion'blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="图解HTTP（四）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图解HTTP学习笔记（四）">
+<meta property="og:url" content="http://yoursite.com/2018/05/23/图解HTTP学习笔记（四）/index.html">
+<meta property="og:site_name" content="Onion'blog">
+<meta property="og:description" content="图解HTTP（四）">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP67.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP68.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP69.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP70.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP71.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP72.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP73.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP74.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP75.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP76.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP77.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP78.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP79.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP80.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP81.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP82.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP83.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP84.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP85.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP86.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP87.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP88.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP89.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP90.png">
+<meta property="og:image" content="http://yoursite.com/img/HTTP/HTTP91.png">
+<meta property="og:updated_time" content="2018-05-23T10:07:07.788Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图解HTTP学习笔记（四）">
+<meta name="twitter:description" content="图解HTTP（四）">
+<meta name="twitter:image" content="http://yoursite.com/img/HTTP/HTTP67.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/23/图解HTTP学习笔记（四）/"/>
+
+  <title> 图解HTTP学习笔记（四） | Onion'blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Onion'blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">write once, use anywhere</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                图解HTTP学习笔记（四）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-23T17:32:23+08:00" content="2018-05-23">
+              2018-05-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>图解HTTP（四）<br><a id="more"></a></p>
+<h1 id="HTTP首部-续"><a href="#HTTP首部-续" class="headerlink" title="HTTP首部(续)"></a>HTTP首部(续)</h1><h2 id="响应首部字段"><a href="#响应首部字段" class="headerlink" title="响应首部字段"></a>响应首部字段</h2><h3 id="Accept-Ranges"><a href="#Accept-Ranges" class="headerlink" title="Accept-Ranges"></a>Accept-Ranges</h3><p><img src="/img/HTTP/HTTP67.png" alt="图片名称" title=""><br>用来告知客户端服务器是否能处理范围请求，以指定获取服务器端某个部分的资源。</p>
+<h3 id="Age"><a href="#Age" class="headerlink" title="Age"></a>Age</h3><p><img src="/img/HTTP/HTTP68.png" alt="图片名称" title=""><br>告知客户端，源服务器在多久前创建了响应。</p>
+<h3 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h3><p><img src="/img/HTTP/HTTP69.png" alt="图片名称" title=""><br>告知客户端实体标识。</p>
+<h3 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h3><p><img src="/img/HTTP/HTTP70.png" alt="图片名称" title=""><br>可以将响应接收方引导至某个与请求URI位置不同的资源。</p>
+<h2 id="实体首部字段"><a href="#实体首部字段" class="headerlink" title="实体首部字段"></a>实体首部字段</h2><h3 id="Allow"><a href="#Allow" class="headerlink" title="Allow"></a>Allow</h3><p><img src="/img/HTTP/HTTP71.png" alt="图片名称" title=""><br>用于通知客户端能够支持Request-URI指定资源的所有HTTP方法。</p>
+<h3 id="Content-Encoding"><a href="#Content-Encoding" class="headerlink" title="Content-Encoding"></a>Content-Encoding</h3><p><img src="/img/HTTP/HTTP72.png" alt="图片名称" title=""><br>会告知客户端服务器对实体的主体部分选用的内容编码方式。</p>
+<h3 id="Content-Language"><a href="#Content-Language" class="headerlink" title="Content-Language"></a>Content-Language</h3><p><img src="/img/HTTP/HTTP73.png" alt="图片名称" title=""><br>告知客户端，实体主体使用的自然语言。</p>
+<h3 id="Content-Length"><a href="#Content-Length" class="headerlink" title="Content-Length"></a>Content-Length</h3><p><img src="/img/HTTP/HTTP74.png" alt="图片名称" title=""><br>表明了实体主体部分的大小。</p>
+<h3 id="Content-Location"><a href="#Content-Location" class="headerlink" title="Content-Location"></a>Content-Location</h3><p><img src="/img/HTTP/HTTP75.png" alt="图片名称" title=""><br>给出与报文主体部分相对应的URI。</p>
+<h3 id="Content-MD5"><a href="#Content-MD5" class="headerlink" title="Content-MD5"></a>Content-MD5</h3><p><img src="/img/HTTP/HTTP76.png" alt="图片名称" title=""><br>检查报文主体在传输过程中是否保持完整，以及确认传输到达。</p>
+<h3 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h3><p><img src="/img/HTTP/HTTP77.png" alt="图片名称" title=""><br>说明了实体主体内对象的媒体类型。</p>
+<h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p><img src="/img/HTTP/HTTP78.png" alt="图片名称" title=""><br>将资源失效的日期告知客户端。</p>
+<h3 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h3><p><img src="/img/HTTP/HTTP79.png" alt="图片名称" title=""><br>指明资源最终修改的时间。</p>
+<h2 id="为Cookie服务的首部字段"><a href="#为Cookie服务的首部字段" class="headerlink" title="为Cookie服务的首部字段"></a>为Cookie服务的首部字段</h2><p>Cookie的工作机制是用户识别及状态管理。Web网站为了管理用户的状态会通过Web浏览器，把一些数据临时写入用户的计算机内。接着当用户访问该Web网站时，可通过通信方式取回之前发放的Cookie。</p>
+<p><img src="/img/HTTP/HTTP80.png" alt="图片名称" title=""></p>
+<h3 id="Set-Cookie"><a href="#Set-Cookie" class="headerlink" title="Set-Cookie"></a>Set-Cookie</h3><p><img src="/img/HTTP/HTTP81.png" alt="图片名称" title=""><br>用于通知客户端能够支持Request-URI指定资源的所有HTTP方法。</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>首部字段Cookie会告知服务器，当客户端想获得HTTP状态管理支持时，就会在请求中包含从服务器接收到的Cookie。</p>
+<h1 id="确保Web安全的HTTPS"><a href="#确保Web安全的HTTPS" class="headerlink" title="确保Web安全的HTTPS"></a>确保Web安全的HTTPS</h1><h2 id="HTTP的缺点"><a href="#HTTP的缺点" class="headerlink" title="HTTP的缺点"></a>HTTP的缺点</h2><h3 id="通信使用明文可能会被窃听"><a href="#通信使用明文可能会被窃听" class="headerlink" title="通信使用明文可能会被窃听"></a>通信使用明文可能会被窃听</h3><p>按TCP/IP协议族的工作机制，通信内容在所有的通信线路上都有可能遭到窥视。即使已经过加密处理的通信，也会被窥视到通信内容。</p>
+<p><img src="/img/HTTP/HTTP82.png" alt="图片名称" title=""></p>
+<p>目前防止窃听的几种对策中，最普及的是加密技术。<br>一种是将通信加密。HTTP协议中没有加密机制，但可以通过和SSL（Secure Socket Layer，安全套接层）或TLS（Transporter Layer Security，安全层传输协议）的组合使用，加密HTTP的通信内容。与SSL组合使用的HTTP被称为HTTPS（HTTP Secure，超文本传输安全协议）。<br>另一种是将参与通信的内容本身加密，即把HTTP报文里所含的内容进行加密处理。</p>
+<h3 id="不验证通信方的身份就可能遭遇伪装"><a href="#不验证通信方的身份就可能遭遇伪装" class="headerlink" title="不验证通信方的身份就可能遭遇伪装"></a>不验证通信方的身份就可能遭遇伪装</h3><p>在HTTP协议通信时，由于不存在确认通信方的处理步骤，任何人都可以发起请求。会存在以下隐患</p>
+<ul>
+<li>无法确定请求发送至目标的Web服务器是否是按真实意图返回响应的那台服务器。有可能是已伪装的Web服务器。</li>
+<li>无法确定响应返回到的客户端是否是按真实意图响应接收的那个客户端。有可能是已伪装的客户端。</li>
+<li>无法确定正在通信的对方是否具备访问权限。因为某些Web服务器上保存着重要的信息，执行发给特定用户通信的权限。</li>
+<li>无法判断请求时来自何方、出自谁手。</li>
+<li>即使是无意义的请求也会照单全收。无法阻止海量请求下的DoS攻击（Denial of Service，拒绝服务攻击）。</li>
+</ul>
+<p>虽然使用HTTP协议无法确定通信方，但如果使用SSL则可以。SSL不仅提供加密处理，而且还使用了一种被称为证书的手段，可用于确定方。</p>
+<p><img src="/img/HTTP/HTTP83.png" alt="图片名称" title=""></p>
+<h3 id="无法证明报文完整性，可能已遭篡改"><a href="#无法证明报文完整性，可能已遭篡改" class="headerlink" title="无法证明报文完整性，可能已遭篡改"></a>无法证明报文完整性，可能已遭篡改</h3><p>没有任何办法确认，发出的请求/响应和接收到的请求/响应是前后相同的。</p>
+<p><img src="/img/HTTP/HTTP84.png" alt="图片名称" title=""></p>
+<h2 id="HTTP-加密-认证-完整性保护-HTTPS"><a href="#HTTP-加密-认证-完整性保护-HTTPS" class="headerlink" title="HTTP+加密+认证+完整性保护=HTTPS"></a>HTTP+加密+认证+完整性保护=HTTPS</h2><h3 id="HTTP加上加密处理和认证以及完整性保护后即是HTTPS"><a href="#HTTP加上加密处理和认证以及完整性保护后即是HTTPS" class="headerlink" title="HTTP加上加密处理和认证以及完整性保护后即是HTTPS"></a>HTTP加上加密处理和认证以及完整性保护后即是HTTPS</h3><p><img src="/img/HTTP/HTTP85.png" alt="图片名称" title=""></p>
+<h3 id="HTTPS是身披SSL外壳的HTTP"><a href="#HTTPS是身披SSL外壳的HTTP" class="headerlink" title="HTTPS是身披SSL外壳的HTTP"></a>HTTPS是身披SSL外壳的HTTP</h3><p><img src="/img/HTTP/HTTP86.png" alt="图片名称" title=""></p>
+<h3 id="相互交互密钥的公开密钥加密技术"><a href="#相互交互密钥的公开密钥加密技术" class="headerlink" title="相互交互密钥的公开密钥加密技术"></a>相互交互密钥的公开密钥加密技术</h3><p>SSL采用公开密钥加密的加密处理方式。<br>近代的加密算法中加密算法公开，密钥保密。</p>
+<p><img src="/img/HTTP/HTTP87.png" alt="图片名称" title=""></p>
+<p>公开密钥加密解决了共享密钥加密的困难。公开密钥加密使用一对非对称的密钥。一把叫做私有密钥，另一把叫做公开密钥</p>
+<p><img src="/img/HTTP/HTTP88.png" alt="图片名称" title=""></p>
+<p>HTTPS采用共享密钥加密和公开密钥加密两者并用的混合加密机制。</p>
+<p><img src="/img/HTTP/HTTP89.png" alt="图片名称" title=""></p>
+<h3 id="HTTPS的安全通信机制"><a href="#HTTPS的安全通信机制" class="headerlink" title="HTTPS的安全通信机制"></a>HTTPS的安全通信机制</h3><p><img src="/img/HTTP/HTTP90.png" alt="图片名称" title=""><br><img src="/img/HTTP/HTTP91.png" alt="图片名称" title=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTTP/" rel="tag">#HTTP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/14/图解HTTP学习笔记（三）/" rel="next" title="图解HTTP学习笔记（三）">
+                <i class="fa fa-chevron-left"></i> 图解HTTP学习笔记（三）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="onion" />
+          <p class="site-author-name" itemprop="name">onion</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/clown14" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/clown14" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sun-ka-77" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yoyoyohamapi.me" title="yoyoyohamapi" target="_blank">yoyoyohamapi</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.qinaoyun.cn/Blog/index.html" title="qinaoyun" target="_blank">qinaoyun</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP首部-续"><span class="nav-number">1.</span> <span class="nav-text">HTTP首部(续)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#响应首部字段"><span class="nav-number">1.1.</span> <span class="nav-text">响应首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accept-Ranges"><span class="nav-number">1.1.1.</span> <span class="nav-text">Accept-Ranges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Age"><span class="nav-number">1.1.2.</span> <span class="nav-text">Age</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ETag"><span class="nav-number">1.1.3.</span> <span class="nav-text">ETag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Location"><span class="nav-number">1.1.4.</span> <span class="nav-text">Location</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体首部字段"><span class="nav-number">1.2.</span> <span class="nav-text">实体首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Allow"><span class="nav-number">1.2.1.</span> <span class="nav-text">Allow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-Encoding"><span class="nav-number">1.2.2.</span> <span class="nav-text">Content-Encoding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-Language"><span class="nav-number">1.2.3.</span> <span class="nav-text">Content-Language</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-Length"><span class="nav-number">1.2.4.</span> <span class="nav-text">Content-Length</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-Location"><span class="nav-number">1.2.5.</span> <span class="nav-text">Content-Location</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-MD5"><span class="nav-number">1.2.6.</span> <span class="nav-text">Content-MD5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-Type"><span class="nav-number">1.2.7.</span> <span class="nav-text">Content-Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expires"><span class="nav-number">1.2.8.</span> <span class="nav-text">Expires</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Last-Modified"><span class="nav-number">1.2.9.</span> <span class="nav-text">Last-Modified</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为Cookie服务的首部字段"><span class="nav-number">1.3.</span> <span class="nav-text">为Cookie服务的首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-Cookie"><span class="nav-number">1.3.1.</span> <span class="nav-text">Set-Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie"><span class="nav-number">1.3.2.</span> <span class="nav-text">Cookie</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确保Web安全的HTTPS"><span class="nav-number">2.</span> <span class="nav-text">确保Web安全的HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP的缺点"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通信使用明文可能会被窃听"><span class="nav-number">2.1.1.</span> <span class="nav-text">通信使用明文可能会被窃听</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不验证通信方的身份就可能遭遇伪装"><span class="nav-number">2.1.2.</span> <span class="nav-text">不验证通信方的身份就可能遭遇伪装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无法证明报文完整性，可能已遭篡改"><span class="nav-number">2.1.3.</span> <span class="nav-text">无法证明报文完整性，可能已遭篡改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-加密-认证-完整性保护-HTTPS"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP+加密+认证+完整性保护=HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP加上加密处理和认证以及完整性保护后即是HTTPS"><span class="nav-number">2.2.1.</span> <span class="nav-text">HTTP加上加密处理和认证以及完整性保护后即是HTTPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS是身披SSL外壳的HTTP"><span class="nav-number">2.2.2.</span> <span class="nav-text">HTTPS是身披SSL外壳的HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相互交互密钥的公开密钥加密技术"><span class="nav-number">2.2.3.</span> <span class="nav-text">相互交互密钥的公开密钥加密技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS的安全通信机制"><span class="nav-number">2.2.4.</span> <span class="nav-text">HTTPS的安全通信机制</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">onion</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+        <!-- UY END -->
+    
+  
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
