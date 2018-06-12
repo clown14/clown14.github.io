@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-23T10:07:07.788Z</updated>
+  <updated>2018-06-12T06:28:45.317Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java多线程核心技术学习笔记（一）</title>
+    <link href="http://yoursite.com/2018/06/11/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://yoursite.com/2018/06/11/Java多线程核心技术学习笔记（一）/</id>
+    <published>2018-06-11T08:51:54.000Z</published>
+    <updated>2018-06-12T06:28:45.317Z</updated>
+    
+    <content type="html"><![CDATA[<p>Java Multi-thread Programming学习笔记（一）<br><a id="more"></a></p>
+<p>相关代码：<a href="https://github.com/clown14/learnThread" target="_blank" rel="external">https://github.com/clown14/learnThread</a></p>
+<h1 id="Java多线程技能"><a href="#Java多线程技能" class="headerlink" title="Java多线程技能"></a>Java多线程技能</h1><h2 id="进程和多线程的概念及线程的优点"><a href="#进程和多线程的概念及线程的优点" class="headerlink" title="进程和多线程的概念及线程的优点"></a>进程和多线程的概念及线程的优点</h2><p>通俗地讲，进程是一个正在操作系统中运行的exe程序，进程是受操作系统管理的基本运行单元。</p>
+<p>线程可以理解成是在进程中独立运行的子任务。</p>
+<p>使用多线程，可以在同一时间内运行更多不同种类的任务，可以最大限度地利用CPU 的空闲时间。</p>
+<p><img src="/img/Thread1.png" alt="图片名称" title=""></p>
+<h2 id="使用多线程"><a href="#使用多线程" class="headerlink" title="使用多线程"></a>使用多线程</h2><h3 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h3><p>实现多线程的方式主要有两种，一是继承Thread类，二是实现Runnable接口。</p>
+<p>Thread类结构：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></div></pre></td></tr></table></figure>
+<p>可以发现，Thread类实现了Runnable接口，它们之间是多态的关系。使用继承Thread类的方式局限在于不支持多继承，而实现Runnable接口支持多继承。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>.run();</div><div class="line">        System.out.println(<span class="string">"MyThread"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> class <span class="title">Run</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        MyThread mythread = <span class="keyword">new</span> MyThread();</div><div class="line">        mythread.start();</div><div class="line">        System.out.println(<span class="string">"运行结束！"</span>)；</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述代码运行结果先输出“运行结束！”，然后是“MyThread”，可见使用多线程时，代码的运行结果与代码执行顺序或调用顺序是无关的，即线程具有随机性。</p>
+<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>当想创建的线程类已经有一个父类，就不能再继承自Thread类，需要实现Runnable接口 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"运行中！"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Runnable runnable = <span class="keyword">new</span> MyRunnable();</div><div class="line">        Thread thread = <span class="keyword">new</span> Thread(runnable);</div><div class="line">        thread.start();</div><div class="line">        System.out.println(<span class="string">"运行结束！"</span>)；</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="实例变量与线程安全"><a href="#实例变量与线程安全" class="headerlink" title="实例变量与线程安全"></a>实例变量与线程安全</h3><p>自定义线程类中的实例变量针对其他线程可以有共享与不共享之分。共享数据就是多个线程可以访问同一变量。 </p>
+<p>（1）不共享数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">5</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyThread</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">        <span class="keyword">this</span>.setName(name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.run();</div><div class="line">        <span class="keyword">while</span> (count &gt; <span class="number">0</span>) &#123;</div><div class="line">            count--;</div><div class="line">            System.out.println(<span class="string">"由"</span> + <span class="keyword">this</span>.currentThread().getName() + <span class="string">"计算.count"</span> + count);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        MyThread a = <span class="keyword">new</span> MyThread(<span class="string">"A"</span>);</div><div class="line">        MyThread b = <span class="keyword">new</span> MyThread(<span class="string">"B"</span>);</div><div class="line">        MyThread c = <span class="keyword">new</span> MyThread(<span class="string">"C"</span>);</div><div class="line">        a.start();</div><div class="line">        b.start();</div><div class="line">        c.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从运行结果看，一共创建了3个线程，每个线程有各自的count，自己减少自己的count变量的值。</p>
+<p>（2）共享数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">5</span>;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.run();</div><div class="line">        count--;</div><div class="line">        System.out.println(<span class="string">"由"</span> + <span class="keyword">this</span>.currentThread().getName() + <span class="string">"计算.count"</span> + count);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        t4.MyThread mythread = <span class="keyword">new</span> t4.MyThread();</div><div class="line">        Thread a = <span class="keyword">new</span> Thread(mythread,<span class="string">"A"</span>);</div><div class="line">        Thread b = <span class="keyword">new</span> Thread(mythread,<span class="string">"B"</span>);</div><div class="line">        Thread c = <span class="keyword">new</span> Thread(mythread,<span class="string">"C"</span>);</div><div class="line">        Thread d = <span class="keyword">new</span> Thread(mythread,<span class="string">"D"</span>);</div><div class="line">        Thread e = <span class="keyword">new</span> Thread(mythread,<span class="string">"E"</span>);</div><div class="line">        a.start();</div><div class="line">        b.start();</div><div class="line">        c.start();</div><div class="line">        d.start();</div><div class="line">        e.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从结果看到线程A和B打印的都是3，出现了”非线程安全“问题，需要更改代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">5</span>;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.run();</div><div class="line">        count--;</div><div class="line">        System.out.println(<span class="string">"由"</span> + <span class="keyword">this</span>.currentThread().getName() + <span class="string">"计算.count"</span> + count);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过在run方法前加入synchronized关键字，使多个线程在执行run方法时，以排队的方式进行处理。<br>线程在调用run方法时，先判断有没有上锁，如果上锁，必须等其他线程对run调用完后才执行run。<br>synchronized可以在任意对象及方法上加锁，而加锁的这段代码称为互斥区或临界区。</p>
+<p>非线程安全主要是指多个线程对同一个对象中的同一个实例变量进行操作时会出现值被更改、值不同步的情况，进而影响程序的执行流程。</p>
+<h2 id="currentThread-方法"><a href="#currentThread-方法" class="headerlink" title="currentThread()方法"></a>currentThread()方法</h2><p>currentThread()方法可返回代码段正在被哪个线程调用的信息。 </p>
+<h2 id="isAlive-方法"><a href="#isAlive-方法" class="headerlink" title="isAlive() 方法"></a>isAlive() 方法</h2><p>isAlive()方法判断当前的线程是否处于活动状态。活动状态就是线程已经启动且尚未终止。</p>
+<h2 id="sleep-方法"><a href="#sleep-方法" class="headerlink" title="sleep() 方法"></a>sleep() 方法</h2><p>sleep()的作用是在指定的毫秒数内让当前“正在执行的线程”休眠（暂停执行）。这个“正在执行的线程”是指this.currenThread()返回的线程。 </p>
+<h2 id="getId-方法"><a href="#getId-方法" class="headerlink" title="getId() 方法"></a>getId() 方法</h2><p>getId()方法的作用是取得线程的唯一标识。</p>
+<h2 id="停止线程"><a href="#停止线程" class="headerlink" title="停止线程"></a>停止线程</h2><h3 id="停止不了的线程"><a href="#停止不了的线程" class="headerlink" title="停止不了的线程"></a>停止不了的线程</h3><p>大多数停止一个线程的操作使用Thread.interrupt()方法，尽管方法的名称是“停止，中止”的意思，调用这个方法仅仅是在当前线程中打了一个停止的标记，并不是真的停止线程。</p>
+<h3 id="判断线程是否是停止状态"><a href="#判断线程是否是停止状态" class="headerlink" title="判断线程是否是停止状态"></a>判断线程是否是停止状态</h3><p>Thread.java类中提供了两种方法。</p>
+<ol>
+<li>this.interrupted()：测试当前线程是否已经中断，执行后具有将状态标志清除为false的功能。</li>
+<li>this.isInterrupted()：测试线程是否已经中断，但不清楚状态标志。</li>
+</ol>
+<p>interrupted()方法的声明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">interrupted</span><span class="params">()</span></span></div></pre></td></tr></table></figure>
+<p>isInterrupted()方法的声明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isInterrupted</span><span class="params">()</span></span></div></pre></td></tr></table></figure>
+<h3 id="能停止的线程——异常法"><a href="#能停止的线程——异常法" class="headerlink" title="能停止的线程——异常法"></a>能停止的线程——异常法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.run();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">500000</span>; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>.isInterrupted()) &#123;</div><div class="line">                    System.out.println(<span class="string">"已经是停止状态了！我要退出了！"</span>);</div><div class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> InterruptedException();</div><div class="line">                &#125;</div><div class="line">                System.out.println(<span class="string">"i="</span> + (i + <span class="number">1</span>));</div><div class="line">            &#125;</div><div class="line">            System.out.println(<span class="string">"我在for下面"</span>);</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            System.out.println(<span class="string">"进MyThread.java类run 方法中的catch了！"</span>);</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            MyThread thread = <span class="keyword">new</span> MyThread();</div><div class="line">            thread.start();</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            thread.interrupt();</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            System.out.println(<span class="string">"main catch"</span>);</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="string">"end!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="在沉睡中停止"><a href="#在沉睡中停止" class="headerlink" title="在沉睡中停止"></a>在沉睡中停止</h3><p>如果在sleep状态下停止某一线程，会进入catch语句，并且清楚停止状态值，使之变成false。</p>
+<h3 id="能停止的线程——暴力停止"><a href="#能停止的线程——暴力停止" class="headerlink" title="能停止的线程——暴力停止"></a>能停止的线程——暴力停止</h3><p>使用stoo()方法停止线程是非常暴力的。方法stop()已经被作废，因为如果强制让线程停止则有可能使一些清理性的工作得不到完成。另一个情况就是对锁的对象进行了“解锁”，导致数据得不到同步的处理，出现数据不一致的问题。</p>
+<h3 id="使用return停止线程"><a href="#使用return停止线程" class="headerlink" title="使用return停止线程"></a>使用return停止线程</h3><p>将方法interrupt()与return结合使用也能实现停止线程的效果。不过还是建议使用”抛异常“的方法来实现线程的停止，因为在catch块中还可以将异常向上抛，使线程停止的事件得以传播。</p>
+<h2 id="暂停线程"><a href="#暂停线程" class="headerlink" title="暂停线程"></a>暂停线程</h2><p>暂停线程意味着此线程还可以恢复运行。在Java多线程中，可以使用suspend()方法暂停线程，使用resume()方法恢复线程的执行。</p>
+<h3 id="缺点——独占"><a href="#缺点——独占" class="headerlink" title="缺点——独占"></a>缺点——独占</h3><p>在使用suspend与resume方法时，如果使用不当，极易造成公共的同步对象的独占，使得其他线程无法访问公共同步对象。</p>
+<h3 id="缺点——不同步"><a href="#缺点——不同步" class="headerlink" title="缺点——不同步"></a>缺点——不同步</h3><p>在使用suspend与resume方法时也容易出现因为线程的暂停而导致数据不同步的情况。</p>
+<h2 id="yield方法"><a href="#yield方法" class="headerlink" title="yield方法"></a>yield方法</h2><p>yield方法的作用时放弃当前的cpu资源，将它让给其他的任务去占用cpu执行时间。但放弃的时间不确定，有可能刚刚放弃，马上又获得cpu时间片。</p>
+<h2 id="线程的优先级"><a href="#线程的优先级" class="headerlink" title="线程的优先级"></a>线程的优先级</h2><p>在操作系统中，线程可以划分优先级，优先级较高的线程得到的CPU资源较多。设置线程的优先级使用setPriority()方法。在Java中，优先级分为1~10这10个等级，如果小于1或大于10，则抛出IllegalArgumentException()。</p>
+<p>设置线程的优先级使用setPriority()方法，此方法在JDK的源代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">setPriority</span><span class="params">(<span class="keyword">int</span> newPriority)</span> </span>&#123;</div><div class="line">    ThreadGroup g;</div><div class="line">    checkAccess();</div><div class="line">    <span class="keyword">if</span> (newPriority &gt; MAX_PRIORITY || newPriority &lt; MIN_PRIORITY) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>((g = getThreadGroup()) != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (newPriority &gt; g.getMaxPriority()) &#123;</div><div class="line">            newPriority = g.getMaxPriority();</div><div class="line">        &#125;</div><div class="line">        setPriority0(priority = newPriority);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="线程优先级的继承特性"><a href="#线程优先级的继承特性" class="headerlink" title="线程优先级的继承特性"></a>线程优先级的继承特性</h3><p>在Java中，线程的优先级具有继承性，比如A线程启动B线程，则B线程的优先级与A是一样的。</p>
+<h3 id="优先级具有规则性"><a href="#优先级具有规则性" class="headerlink" title="优先级具有规则性"></a>优先级具有规则性</h3><p>高优先级的线程总是大部分先执行完，但不代表高优先级的线程全部先执行完。当线程优先级的等级差距很大时，谁先执行完何代码的调用顺序无关。CPU尽量将执行资源让给优先级比较高的线程。</p>
+<h3 id="优先级具有随机性"><a href="#优先级具有随机性" class="headerlink" title="优先级具有随机性"></a>优先级具有随机性</h3><p>不要把线程的优先级与运行结果的顺序作为衡量的标准，优先级较高的线程并不一定每一次都先执行完run()方法中的任务，也就是说，线程优先级与打印顺序无关，不要将这两者的关系相关联，它们的关系具有不确定性何随机性。</p>
+<h2 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h2><p>在Java线程中有两种线程，一种是用户线程，另一种是守护线程。守护线程是一种特殊的线程，它的特性有“陪伴“的含义，当进程中不存在非守护线程了，则守护线程自动销毁。典型的守护线程是垃圾回收线程。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java Multi-thread Programming学习笔记（一）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Thread" scheme="http://yoursite.com/tags/Thread/"/>
+    
+  </entry>
   
   <entry>
     <title>图解HTTP学习笔记（四）</title>
@@ -2004,222 +2079,6 @@ id：对resultMap的唯一标识
     <summary type="html">
     
       &lt;p&gt;SqlMapConfig配置文件 &amp;amp;&amp;amp; 输入&amp;amp;输出映射&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Mybatis" scheme="http://yoursite.com/categories/Mybatis/"/>
-    
-    
-      <category term="Mybatis" scheme="http://yoursite.com/tags/Mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis学习笔记（三）</title>
-    <link href="http://yoursite.com/2017/02/06/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
-    <id>http://yoursite.com/2017/02/06/Mybatis学习笔记（三）/</id>
-    <published>2017-02-06T07:49:23.000Z</published>
-    <updated>2018-05-17T05:55:59.826Z</updated>
-    
-    <content type="html"><![CDATA[<p>Mybatis的Dao开发<br><a id="more"></a><br>使用dao开发有两种开发方式，一种是使用普通的接口和接口实现类来进行开发<br>另一种开发方式是使用mapper代理的开发的方式(直接使用接口)</p>
-<h2 id="sqlSession的使用范围"><a href="#sqlSession的使用范围" class="headerlink" title="sqlSession的使用范围"></a>sqlSession的使用范围</h2><h3 id="sessionFactoryBuidler"><a href="#sessionFactoryBuidler" class="headerlink" title="sessionFactoryBuidler"></a>sessionFactoryBuidler</h3><p>通过SqlSessionFactoryBuilder创建会话工厂SqlSessionFactory将SqlSessionFactoryBuilder当成一个工具类使用即可，不需要使用单例管理SqlSessionFactoryBuilder。在需要创建SqlSessionFactory时候，只需要new一次SqlSessionFactoryBuilder即可。</p>
-<h3 id="sqlSessionFactory"><a href="#sqlSessionFactory" class="headerlink" title="sqlSessionFactory"></a>sqlSessionFactory</h3><p>sqlSessionFactory生产sqlSession回话，使用单列模式进行创建sqlSessionFactory(工厂一旦创建，只创建一个实例)，将mybatis和spring进行整合后使用单列模式进行管理。</p>
-<h3 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h3><p>sqlSession是面向用户的一个回话接口<br>sqlSession提供很多操作数据库的方法：selectOne(查询单个对象)，selectList(返回单个或者多个对象)<br>sqlSession是线程不安全的，在sqlSession实现类中除了有查询数据库中的方法外还有数据域属性。<br>sqlSession最好是在方法内部使用。</p>
-<h2 id="传统的dao的开发方式"><a href="#传统的dao的开发方式" class="headerlink" title="传统的dao的开发方式"></a>传统的dao的开发方式</h2><p>程序员需要编写dao接口和dao接口实现类<br>在dao实现类里面进行注入sqlSessionFactory,然后通过sqlSessionFactory创建sqlSession</p>
-<h3 id="Dao接口"><a href="#Dao接口" class="headerlink" title="Dao接口"></a>Dao接口</h3><pre><code>public interface UserDao {
-    public User selectUserByID(int id) throws Exception;
-
-    public void insertUser(User user) throws Exception;
-
-    public List&lt;User&gt; getUserByName(String name) throws Exception;
-
-    public void deleteUser(int id) throws Exception;
-}
-</code></pre><h3 id="Dao的实现类"><a href="#Dao的实现类" class="headerlink" title="Dao的实现类"></a>Dao的实现类</h3><pre><code>public class UserDaoImpl implements UserDao {
-
-    //给dao层注入SessionFactory对象
-    //使用构造方法进行注入
-    public SqlSessionFactory sessionFactory;    
-    public UserDaoImpl(SqlSessionFactory sessionFactory){
-        this.sessionFactory=sessionFactory;
-    }
-
-    @Override
-    public User selectUserByID(int id) throws Exception {
-        // TODO Auto-generated method stub
-        //获取sqlSession
-            SqlSession sqlSession = sessionFactory.openSession();
-            //根据ID进行查询
-            User user = sqlSession.selectOne(&quot;test.selectUserByID&quot;, 3);
-            return user;
-    }
-
-    @Override
-    public void insertUser(User user) throws Exception{
-        // TODO Auto-generated method stub
-        SqlSession sqlSession = sessionFactory.openSession();
-        //执行插入操作
-        sqlSession.insert(&quot;test.insertUser&quot;, user);
-    }
-
-    @Override
-    public List&lt;User&gt; getUserByName(String name) throws Exception{
-        // TODO Auto-generated method stub
-        SqlSession sqlSession = sessionFactory.openSession();
-        List&lt;User&gt; list = sqlSession.selectList(&quot;test.getUserByName&quot;, name);
-        return list;
-    }
-
-    @Override
-    public void deleteUser(int id) throws Exception {
-        // TODO Auto-generated method stub
-        SqlSession sqlSession = sessionFactory.openSession();
-        //执行删除操作
-        sqlSession.delete(&quot;test.deleteUser&quot;, id);
-    }
-
-}
-</code></pre><h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><pre><code>public class UserDaoImplTest {
-
-    private SqlSessionFactory sqlSessionFactory;
-
-    // 此方法是在执行testFindUserById之前执行
-    @Before
-    public void setUp() throws Exception {
-        // 创建sqlSessionFactory
-
-        // mybatis配置文件
-        String resource = &quot;SqlMapConfig.xml&quot;;
-        // 得到配置文件流
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        // 创建会话工厂，传入mybatis的配置文件信息
-        sqlSessionFactory = new SqlSessionFactoryBuilder()
-                .build(inputStream);
-    }
-
-    @Test
-    public void testFindUserById() throws Exception {
-        // 创建UserDao的对象
-        UserDao userDao = new UserDaoImpl(sqlSessionFactory);
-
-        // 调用UserDao的方法
-        User user = userDao.selectUserByID(1);
-
-        System.out.println(user);
-    }
-
-}
-</code></pre><h3 id="原始dao总结"><a href="#原始dao总结" class="headerlink" title="原始dao总结"></a>原始dao总结</h3><ul>
-<li>dao接口中存在着大量的模版方法，能不能提取出来，大量减轻程序员的压力</li>
-<li>实现类进行操作数据库时对statement的ID进行硬编码了。</li>
-<li>sqlSession直接进行设置参数，由于sqlsession使用的泛型，设置参数类型不会报错，这样不利于开发。</li>
-</ul>
-<h2 id="代理Mapper开发模式"><a href="#代理Mapper开发模式" class="headerlink" title="代理Mapper开发模式"></a>代理Mapper开发模式</h2><p>程序员还需要开发mapper.xml文件。<br>程序员编写mapper接口需要遵循一些开发规范。Mybatis会自动生成mapper接口实现类代理类。</p>
-<h3 id="开发规范"><a href="#开发规范" class="headerlink" title="开发规范"></a>开发规范</h3><ul>
-<li><p>namespace的地址和mapper.xml的地址相同</p>
-  <!--
-   namespace 命名空间，作用就是对sql进行分类化管理,理解为sql隔离
-   注意：使用mapper代理方法开发，namespace有特殊重要的作用,namespace等于mapper接口地址
-   -->
-  <mapper namespace="com.mybatis.mapper.UserMapper">
-</mapper></li>
-<li><p>Dao接口中的方法必须和statement的Id必须一致</p>
-</li>
-<li>Mapper接口中的方法输入参数必须和对应的Mapper.xml中的parameterType中的参数匹配</li>
-<li>Mapper接口返回值类型必须和对应的mapper.xml中resultType输出类型匹配。</li>
-</ul>
-<pre><code>User getUserByName(String name);
-</code></pre><hr>
-<pre><code>&lt;select id=&quot;getUserByName&quot; parameterType=&quot;string&quot; resultType=&quot;User&quot;&gt;
-  SELECT * FROM  user  WHERE userName LIKE #{name}
-&lt;/select&gt;
-</code></pre><h3 id="mapper-xml"><a href="#mapper-xml" class="headerlink" title="mapper.xml"></a>mapper.xml</h3><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;!DOCTYPE mapper
-PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
-&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-
-&lt;mapper namespace=&quot;com.mybatis.mapper.UserMapper&quot;&gt;
-
-    &lt;select id=&quot;selectUserByID&quot;    parameterType=&quot;int&quot;      resultType=&quot;User&quot;&gt;
-        select * from user where userID = #{userId}
-    &lt;/select&gt;
-
-    &lt;insert id=&quot;addUser&quot;  parameterType=&quot;User&quot; &gt;
-        INSERT INTO `user`(userName,userAge,userAddress) 
-        VALUES(#{userName},#{userAge},#{userAddress})
-    &lt;/insert&gt;
-
-    &lt;!-- resultType是返回结果中一条记录的类型 --&gt;
-    &lt;select id=&quot;getUserByName&quot; parameterType=&quot;string&quot; resultType=&quot;User&quot;&gt;
-        SELECT * from user where userName LIKE #{name}
-    &lt;/select&gt;
-
-    &lt;update id=&quot;updateUser&quot; parameterType=&quot;User&quot;&gt;
-        UPDATE USER
-        SET userName = #{username},
-         userAge = #{age},
-         userAddress = #{address},
-        WHERE
-        userID = #{id}
-    &lt;/update&gt;
-
-    &lt;delete id=&quot;deleteUser&quot; parameterType=&quot;int&quot;&gt;
-           delete from user where id=#{userId}
-    &lt;/delete&gt;
-
-&lt;/mapper&gt;
-</code></pre><h3 id="UserMapper-java"><a href="#UserMapper-java" class="headerlink" title="UserMapper.java"></a>UserMapper.java</h3><pre><code>public interface UserMapper {
-    User selectUserByID(int id);
-
-    void insertUser(User user);
-
-    User getUserByName(String name);
-
-    void updateUser (User user);
-
-    void deleteUser(int id);
-}
-</code></pre><h3 id="Test-java"><a href="#Test-java" class="headerlink" title="Test.java"></a>Test.java</h3><pre><code>public class UserDaoImplTest {
-
-    private SqlSessionFactory sqlSessionFactory;
-
-    // 此方法是在执行testFindUserById之前执行
-    @Before
-    public void setUp() throws Exception {
-        // 创建sqlSessionFactory
-
-        // mybatis配置文件
-        String resource = &quot;SqlMapConfig.xml&quot;;
-        // 得到配置文件流
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        // 创建会话工厂，传入mybatis的配置文件信息
-        sqlSessionFactory = new SqlSessionFactoryBuilder()
-                .build(inputStream);
-    }
-
-    @Test
-    public void testFindUserById() throws Exception {
-        SqlSession sqlSession=sqlSessionFactory.openSession();  
-
-        //创建UserMapper代理对象  
-        UserMapper userMapper=sqlSession.getMapper(UserMapper.class);  
-
-        //调用userMapper的方法  
-        User user=userMapper.selectUserById(1);  
-
-        System.out.println(user.getUsername());
-    }
-
-}
-</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Mapper动态代理方式底层根据返回值类型进行判断调用那个方法：<br>如果是返回单个对象就调用selectOne<br>如果是返回集合就调用selectList</p>
-<p>Mapper接口中的参数只能是一个是否影响系统开发系统维护：<br>注意：dao层代码是被业务层公用的，即使是dao层代码参数只能是一个<br>业务层包装成不同类型pojo都可以满足不同业务需求。<br>持久层方法参数可以是map，基本类型，自定义对象，包装类型.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Mybatis的Dao开发&lt;br&gt;
     
     </summary>
     
