@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-06-12T06:28:45.317Z</updated>
+  <updated>2018-06-21T08:23:10.215Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,98 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java多线程核心技术学习笔记（二）</title>
+    <link href="http://yoursite.com/2018/06/19/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://yoursite.com/2018/06/19/Java多线程核心技术学习笔记（二）/</id>
+    <published>2018-06-19T07:26:56.000Z</published>
+    <updated>2018-06-21T08:23:10.215Z</updated>
+    
+    <content type="html"><![CDATA[<p>Java Multi-thread Programming学习笔记（一）<br><a id="more"></a></p>
+<p>相关代码：<a href="https://github.com/clown14/learnThread/tree/master/chapter2/src" target="_blank" rel="external">https://github.com/clown14/learnThread/tree/master/chapter2/src</a></p>
+<h1 id="对象及变量的并发访问"><a href="#对象及变量的并发访问" class="headerlink" title="对象及变量的并发访问"></a>对象及变量的并发访问</h1><h2 id="Synchronized同步方法"><a href="#Synchronized同步方法" class="headerlink" title="Synchronized同步方法"></a>Synchronized同步方法</h2><h3 id="方法内的变量为线程安全"><a href="#方法内的变量为线程安全" class="headerlink" title="方法内的变量为线程安全 :"></a>方法内的变量为线程安全 :</h3><p>“非线程安全”问题存在于“实例变量”中，如果是方法内部的私有变量，则不存在“非线程安全”问题。</p>
+<h3 id="实例变量非线程安全-："><a href="#实例变量非线程安全-：" class="headerlink" title="实例变量非线程安全 ："></a>实例变量非线程安全 ：</h3><p>如果多个线程共同访问1个对象中的实例变量，则有可能出现“非线程安全”问题。用线程访问的对象中如果有多个实例变量，则运行的结果有可能出现交叉的情况。部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HasSelfPrivateNum</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num = <span class="number">0</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addI</span><span class="params">(String username)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (username.equals(<span class="string">"a"</span>)) &#123;</div><div class="line">                num = <span class="number">100</span>;</div><div class="line">                System.out.println(<span class="string">"a set over!"</span>);</div><div class="line">                Thread.sleep(<span class="number">2000</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                num = <span class="number">200</span>;</div><div class="line">                System.out.println(<span class="string">"b set over!"</span>);</div><div class="line">            &#125;</div><div class="line">            System.out.println(username + <span class="string">" num="</span> + num);</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        HasSelfPrivateNum numRef = <span class="keyword">new</span> HasSelfPrivateNum();</div><div class="line">        ThreadA athread = <span class="keyword">new</span> ThreadA(numRef);</div><div class="line">        athread.start();</div><div class="line">        ThreadB bthread = <span class="keyword">new</span> ThreadB(numRef);</div><div class="line">        bthread.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出结果中a的值为200，只需在addI方法前添加synchronized即可保证线程安全。</p>
+<h3 id="多个对象多个锁"><a href="#多个对象多个锁" class="headerlink" title="多个对象多个锁"></a>多个对象多个锁</h3><p>部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HasSelfPrivateNum</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addI</span><span class="params">(String username)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (username.equals(<span class="string">"a"</span>)) &#123;</div><div class="line">                num = <span class="number">100</span>;</div><div class="line">                System.out.println(<span class="string">"a set over!"</span>);</div><div class="line">                Thread.sleep(<span class="number">2000</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                num = <span class="number">200</span>;</div><div class="line">                System.out.println(<span class="string">"b set over!"</span>);</div><div class="line">            &#125;</div><div class="line">            System.out.println(username + <span class="string">" num="</span> + num);</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        HasSelfPrivateNum numRef1 = <span class="keyword">new</span> HasSelfPrivateNum();</div><div class="line">        HasSelfPrivateNum numRef2 = <span class="keyword">new</span> HasSelfPrivateNum();</div><div class="line">        ThreadA athread = <span class="keyword">new</span> ThreadA(numRef1);</div><div class="line">        athread.start();</div><div class="line">        ThreadB bthread = <span class="keyword">new</span> ThreadB(numRef2);</div><div class="line">        bthread.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从结果看发现是异步进行。因为关键字synchronized取得的锁都是对象锁，而不是把一段代码或方法（函数）当作锁，哪个线程先执行带synchronized关键字的方法，哪个线程就持有该方法所属对象的锁Lock，那么其他线程只能呈等待状态，前提是多个线程访问的时同一个对象。 如果多个线程访问多个对象，则JVM会创建多个锁。</p>
+<h3 id="synchronized方法与锁对象"><a href="#synchronized方法与锁对象" class="headerlink" title="synchronized方法与锁对象"></a>synchronized方法与锁对象</h3><p>调用用synchronized声明的方法一定是排队运行的。另外只有共享资源的读写访问才需要同步化。</p>
+<p>1） A线程先持有object对象的Lock锁，B线程可以以异步的方式调用object对象中的非synchronized类型的方法。</p>
+<p>2） A线程先持有object对象的Lock锁，B线程如果在这时调用object对象中的synchronized类型的方法则需等待，也就是同步。</p>
+<h3 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h3><p>已经实现多个线程调用同一个方法时，为了避免数据出现交叉的情况，可以使用synchronized关键字来进行同步。虽然在赋值时出现了同步，但在取值时有可能出现一些意想不到的意外，这种情况就是脏读（dirtyRead)。发生脏读的情况是在读取实例变量时，此值已经被其他线程更改过了。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PublicVar</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String username = <span class="string">"A"</span>;</div><div class="line">    <span class="keyword">public</span> String password = <span class="string">"AA"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(String username, String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">this</span>.username = username;</div><div class="line">            Thread.sleep(<span class="number">5000</span>);</div><div class="line">            <span class="keyword">this</span>.password = password;</div><div class="line">            System.out.println(<span class="string">"setValue method thread name="</span> +</div><div class="line">                    Thread.currentThread().getName() + <span class="string">" username="</span> +</div><div class="line">                    username + <span class="string">" password="</span> +</div><div class="line">                    password);</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getValue</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"getValue method thread name="</span> +</div><div class="line">                Thread.currentThread().getName() + <span class="string">" username="</span> +</div><div class="line">                username + <span class="string">" password="</span> +</div><div class="line">                password);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadA</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> PublicVar publicVar;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ThreadA</span><span class="params">(PublicVar publicVar)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">        <span class="keyword">this</span>.publicVar = publicVar;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.run();</div><div class="line">        publicVar.setValue(<span class="string">"B"</span>,<span class="string">"BB"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            PublicVar publicVarRef = <span class="keyword">new</span> PublicVar();</div><div class="line">            ThreadA thread = <span class="keyword">new</span> ThreadA(publicVarRef);</div><div class="line">            thread.start();</div><div class="line">            Thread.sleep(<span class="number">200</span>);<span class="comment">//打印结果受此值大小影响</span></div><div class="line">            publicVarRef.getValue();</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果中main中username为B，解决办法只需在getValue方法前加上synchronized。</p>
+<p>当A线程调用anyObject对象加入synchronized关键字的X方法时，A线程就获得了X方法锁，更准确地讲，是获得了对象的锁，其他线程必须等A线程执行完毕才可以调用X方法，但B线程可以随意调用其他的非synchronized同步方法。而B线程如果调用了声明了synchronized关键字的非X方法时，必须等A线程将X方法执行完，也就是释放对象锁后才可以调用。 </p>
+<h3 id="synchronized锁重入"><a href="#synchronized锁重入" class="headerlink" title="synchronized锁重入"></a>synchronized锁重入</h3><p>在使用synchronized时，当一个线程得到一个对象锁后，再次请求此对象锁时是可以再次得到该对象的锁的。也证明在一个synchronized方法/块的内部调用本类的其他synchronized方法/块时，是永远可以得到锁的。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Service</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service1</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"service1"</span>);</div><div class="line">        service2();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service2</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"service2"</span>);</div><div class="line">        service3();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service3</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"service3"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        Service service = <span class="keyword">new</span> Service();</div><div class="line">        service.service1();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        MyThread t = <span class="keyword">new</span> MyThread();</div><div class="line">        t.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果可以看到service1,2,3依次输出，如果不可锁重入，就会造成死锁。</p>
+<p>可重入锁也支持在父子类继承的环境中。子类完全可以通过“可重入锁”调用父类的同步方法。 </p>
+<h3 id="出现异常，锁自动释放"><a href="#出现异常，锁自动释放" class="headerlink" title="出现异常，锁自动释放"></a>出现异常，锁自动释放</h3><p>当一个线程执行的代码出现异常时，其所持有的锁会自动释放 </p>
+<h3 id="同步不具有继承性"><a href="#同步不具有继承性" class="headerlink" title="同步不具有继承性"></a>同步不具有继承性</h3><p>同步不可以继承。 </p>
+<h2 id="synchronized同步语句块"><a href="#synchronized同步语句块" class="headerlink" title="synchronized同步语句块"></a>synchronized同步语句块</h2><p>用synchronized声明方法在某些情况下是由弊端的，比如A线程调用同步方法执行一个长时间的任务，那么B线程则必须等等比较长时间。在这样的情况下可以使用synchronized同步语句块来解决。</p>
+<h3 id="synchronized同步代码块的使用"><a href="#synchronized同步代码块的使用" class="headerlink" title="synchronized同步代码块的使用"></a>synchronized同步代码块的使用</h3><p>当两个并发线程访问同一个对象object中的synchronized(this)同步代码块时，一段时间内只能由一个线程被执行，另一个线程必须等等当前线程执行完这个代码块以后才能执行该代码块。 </p>
+<p>部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectService</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serviceMethod</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">                System.out.println(<span class="string">"begin time="</span> + System.currentTimeMillis());</div><div class="line">                Thread.sleep(<span class="number">2000</span>);</div><div class="line">                System.out.println(<span class="string">"end   time="</span> + System.currentTimeMillis());</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        ObjectService service = <span class="keyword">new</span> ObjectService();</div><div class="line">        ThreadA a = <span class="keyword">new</span> ThreadA(service);</div><div class="line">        a.setName(<span class="string">"a"</span>);</div><div class="line">        a.start();</div><div class="line">        ThreadB b = <span class="keyword">new</span> ThreadB(service);</div><div class="line">        b.setName(<span class="string">"b"</span>);</div><div class="line">        b.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到虽然使用了synchronized同步代码块，但执行效率还是没有提高，还是同步运行。</p>
+<h3 id="用同步代码块解决同步方法的弊端"><a href="#用同步代码块解决同步方法的弊端" class="headerlink" title="用同步代码块解决同步方法的弊端"></a>用同步代码块解决同步方法的弊端</h3><p>当一个线程访问对象的一个synchronized同步代码块时，另一个线程仍然可以访问该对象中的非synchronized(this)同步代码块。 </p>
+<h3 id="一半异步，一半同步"><a href="#一半异步，一半同步" class="headerlink" title="一半异步，一半同步"></a>一半异步，一半同步</h3><p>不在synchronized块中就是异步执行，在synchronized块中就是同步执行。部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Task</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doLongTimeTask</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">100</span>;i++) &#123;</div><div class="line">            System.out.println(<span class="string">"nosynchronized threadName="</span> +</div><div class="line">                    Thread.currentThread().getName() + <span class="string">" i="</span> + (i + i));</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="string">""</span>);</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">100</span>;i++) &#123;</div><div class="line">                System.out.println(<span class="string">"synchronized threadName="</span> +</div><div class="line">                        Thread.currentThread().getName() + <span class="string">" i="</span> + (i + i));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Task task = <span class="keyword">new</span> Task();</div><div class="line">        MyThread1 thread1 = <span class="keyword">new</span> MyThread1(task);</div><div class="line">        thread1.start();</div><div class="line">        MyThread2 thread2 = <span class="keyword">new</span> MyThread2(task);</div><div class="line">        thread2.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到进入synchronized代码块后则排队执行。</p>
+<h3 id="synchronized代码块间的同步性"><a href="#synchronized代码块间的同步性" class="headerlink" title="synchronized代码块间的同步性"></a>synchronized代码块间的同步性</h3><p>当一个线程访问object的一个synchronized(this)同步代码块时，其他线程对同一个object中所有其他synchronized(this)同步代码块的访问将被阻塞，这说明synchronized使用的“对象监视器”是一个。 部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectService</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serviceMethodA</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">                System.out.println(<span class="string">"A begin time="</span> + System.currentTimeMillis());</div><div class="line">                Thread.sleep(<span class="number">2000</span>);</div><div class="line">                System.out.println(<span class="string">"A end   time="</span> + System.currentTimeMillis());</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serviceMethodB</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</div><div class="line">            System.out.println(<span class="string">"B begin time="</span> + System.currentTimeMillis());</div><div class="line">            System.out.println(<span class="string">"B end   time="</span> + System.currentTimeMillis());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        ObjectService service = <span class="keyword">new</span> ObjectService();</div><div class="line">        ThreadA a = <span class="keyword">new</span> ThreadA(service);</div><div class="line">        a.setName(<span class="string">"a"</span>);</div><div class="line">        a.start();</div><div class="line">        ThreadB b = <span class="keyword">new</span> ThreadB(service);</div><div class="line">        b.setName(<span class="string">"b"</span>);</div><div class="line">        b.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="同步synchronized-this-代码块时锁定当前对象的"><a href="#同步synchronized-this-代码块时锁定当前对象的" class="headerlink" title="同步synchronized(this)代码块时锁定当前对象的"></a>同步synchronized(this)代码块时锁定当前对象的</h3><p>和synchronized方法一样，synchronized(this)代码块也是锁定当前对象的。 </p>
+<h3 id="将任意对象作为对象监视器"><a href="#将任意对象作为对象监视器" class="headerlink" title="将任意对象作为对象监视器"></a>将任意对象作为对象监视器</h3><p>（1）synchronized同步方法</p>
+<p>1）对其他synchronized同步方法或synchronized(this)同步代码块调用呈阻塞状态。<br>2）同一时间只有一个线程可以执行synchronized同步方法中的代码。</p>
+<p>（2）synchronized(this)同步代码块</p>
+<p>1）对其他synchronized同步方法或synchronized(this)同步代码块调用呈阻塞状态。<br>2）同一时间只有一个线程可以执行synchronized(this)同步代码块中的代码。</p>
+<p>Synchronized(非this对象)格式的作用只有1种：synchronized(非this对象x)同步代码块。</p>
+<p>1） 在多个线程持有“对象监视器”为同一个对象的前提下，同一时间只有一个线程可以执行synchronized(非this对象x)同步代码块中的代码。<br>2） 当持有“对象监视器”为同一个对象的前提下，同一时间只有一个线程可以执行synchronized(非this对象x)同步代码块中的代码。</p>
+<p>部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Service</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String usernameParam;</div><div class="line">    <span class="keyword">private</span> String passwordParam;</div><div class="line">    <span class="comment">//private String anyString = new String();</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsernamePassword</span><span class="params">(String username, String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            String anyString = <span class="keyword">new</span> String();</div><div class="line">            <span class="keyword">synchronized</span> (anyString) &#123;</div><div class="line">                System.out.println(<span class="string">"线程名称为："</span> + Thread.currentThread().getName()</div><div class="line">                        + <span class="string">"在"</span> + System.currentTimeMillis() + <span class="string">"进入同步块"</span>);</div><div class="line">                usernameParam = username;</div><div class="line">                Thread.sleep(<span class="number">3000</span>);</div><div class="line">                passwordParam = password;</div><div class="line">                System.out.println(<span class="string">"线程名称为："</span> + Thread.currentThread().getName()</div><div class="line">                        + <span class="string">"在"</span> + System.currentTimeMillis() + <span class="string">"离开同步块"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Service service = <span class="keyword">new</span> Service();</div><div class="line">        ThreadA a = <span class="keyword">new</span> ThreadA(service);</div><div class="line">        a.setName(<span class="string">"A"</span>);</div><div class="line">        a.start();</div><div class="line">        ThreadB b = <span class="keyword">new</span> ThreadB(service);</div><div class="line">        b.setName(<span class="string">"B"</span>);</div><div class="line">        b.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由结果可见，使用“synchronized(非this对象x)同步代码块”格式进行同步操作时，对象监视器必须是同一个对象。如果不是同一个对象监视器，运行结果就是异步调用了，就会交叉运行。</p>
+<p>锁非this对象具有一定的优点：如果在一个类中由很多个synchronized方法，这时虽然能实现同步，但会受到阻塞，所以影响运行效率；但如果使用同步代码块锁非this对象，则synchronized(非this)代码块中的程序与同步方法是异步的，不与其他锁this同步方法争抢this锁，则可大大提高运行效率。 </p>
+<p>同步代码块放在非同步synchronized方法中进行声明，并不能保证调用方法的线程的执行同步/顺序性，也就是线程调用方法的顺序是无序的，虽然在同步块中执行的顺序是同步的，这样极易出现“脏读”问题。 部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyOneList</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> List list = <span class="keyword">new</span> ArrayList();</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(String data)</span> </span>&#123;</div><div class="line">        list.add(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> list.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> MyOneList <span class="title">addServiceMethod</span><span class="params">(MyOneList list, String data)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">         	<span class="keyword">if</span> (list.getSize() &lt; <span class="number">1</span>) &#123;</div><div class="line">                Thread.sleep(<span class="number">2000</span>);</div><div class="line">                list.add(data);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread1</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> MyOneList list;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        MyService msRef = <span class="keyword">new</span> MyService();</div><div class="line">        msRef.addServiceMethod(list, <span class="string">"A"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyThread1</span><span class="params">(MyOneList list)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">        <span class="keyword">this</span>.list = list;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread2</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> MyOneList list;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyThread2</span><span class="params">(MyOneList list)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">        <span class="keyword">this</span>.list = list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        MyService msRef = <span class="keyword">new</span> MyService();</div><div class="line">        msRef.addServiceMethod(list, <span class="string">"B"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line">        MyOneList list = <span class="keyword">new</span> MyOneList();</div><div class="line">        MyThread1 thread1 = <span class="keyword">new</span> MyThread1(list);</div><div class="line">        thread1.setName(<span class="string">"A"</span>);</div><div class="line">        thread1.start();</div><div class="line">        MyThread2 thread2 = <span class="keyword">new</span> MyThread2(list);</div><div class="line">        thread2.setName(<span class="string">"B"</span>);</div><div class="line">        thread2.start();</div><div class="line">        Thread.sleep(<span class="number">6000</span>);</div><div class="line">        System.out.println(<span class="string">"listSize="</span> + list.getSize());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行后发现“脏读”出现了，原因是两个线程以异步的方式返回list参数的size()大小。解决办法就是“同步化”。</p>
+<h3 id="细化验证3个结论"><a href="#细化验证3个结论" class="headerlink" title="细化验证3个结论"></a>细化验证3个结论</h3><p>“synchronized(非this对象x)”格式的写法是将x对象本身作为“对象监视器”，这样就可以得出以下3个结论：</p>
+<p>1） 当多个线程同时执行synchronized(x){}同步代码块时呈同步效果。原因是使用了同一个“对象监视器”，如果使用不同“对象监视器”就会异步交叉运行。<br>2） 当其他线程执行x对象中synchronized同步方法时呈同步效果。<br>3） 当其他线程执行x对象方法里面的synchronized(this)代码块时也呈现同步效果。</p>
+<h3 id="静态同步synchronized方法与synchronized-class-代码块"><a href="#静态同步synchronized方法与synchronized-class-代码块" class="headerlink" title="静态同步synchronized方法与synchronized(class)代码块"></a>静态同步synchronized方法与synchronized(class)代码块</h3><p>Synchronized还可以应用在static静态方法上，如果这样写，那是对当前的*.java文件对应 的Class类进行持锁。<br>Synchronized加到static静态方法上时给Class类上锁，而synchronized关键字加到非static静态方法上是给对象上锁。<br>Class锁可以对类的所以对象实例起作用。<br>同步synchronized(class)代码块的作用其实和synchronized static方法的作用一样。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Service</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printA</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.out.println(<span class="string">"线程名称为："</span> + Thread.currentThread().getName() +</div><div class="line">                    <span class="string">"在"</span> + System.currentTimeMillis() + <span class="string">"进入printA"</span>);</div><div class="line">            Thread.sleep(<span class="number">3000</span>);</div><div class="line">            System.out.println(<span class="string">"线程名称为："</span> + Thread.currentThread().getName() +</div><div class="line">                    <span class="string">"在"</span> + System.currentTimeMillis() + <span class="string">"离开printA"</span>);</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printB</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"线程名称为："</span> + Thread.currentThread().getName() +</div><div class="line">                <span class="string">"在"</span> + System.currentTimeMillis() + <span class="string">"进入printB"</span>);</div><div class="line">        System.out.println(<span class="string">"线程名称为："</span> + Thread.currentThread().getName() +</div><div class="line">                <span class="string">"在"</span> + System.currentTimeMillis() + <span class="string">"离开printB"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printC</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"线程名称为："</span> + Thread.currentThread().getName() +</div><div class="line">                <span class="string">"在"</span> + System.currentTimeMillis() + <span class="string">"进入printC"</span>);</div><div class="line">        System.out.println(<span class="string">"线程名称为："</span> + Thread.currentThread().getName() +</div><div class="line">                <span class="string">"在"</span> + System.currentTimeMillis() + <span class="string">"离开printC"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Service service = <span class="keyword">new</span> Service();</div><div class="line">        ThreadA a = <span class="keyword">new</span> ThreadA(service);</div><div class="line">        a.setName(<span class="string">"A"</span>);</div><div class="line">        a.start();</div><div class="line">        ThreadB b = <span class="keyword">new</span> ThreadB(service);</div><div class="line">        b.setName(<span class="string">"B"</span>);</div><div class="line">        b.start();</div><div class="line">        ThreadC c= <span class="keyword">new</span> ThreadC(service);</div><div class="line">        c.setName(<span class="string">"C"</span>);</div><div class="line">        c.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>异步的原因是持有不同的锁，一个是对象锁，另一个是Class锁，而Class锁可以对类的所以对象实例起作用。</p>
+<h3 id="数据类型String的常量池特性"><a href="#数据类型String的常量池特性" class="headerlink" title="数据类型String的常量池特性"></a>数据类型String的常量池特性</h3><p>在JVM中具有String常量池缓存的功能，将synchronized(string)同步块与String联合使用时，要注意常量池以带来的一些例外。</p>
+<h3 id="多线程的死锁"><a href="#多线程的死锁" class="headerlink" title="多线程的死锁"></a>多线程的死锁</h3><p>Java线程死锁是一个经典的多线程问题，因为不同的线程都在等等根本不可能被释放的锁，从而导致所以的任务都无法继续完成，死锁是程序设计的bug，再设计程序时就要避免双方互相持有对方的锁的情况。</p>
+<h3 id="内置类与同步"><a href="#内置类与同步" class="headerlink" title="内置类与同步"></a>内置类与同步</h3><p>内置类中有两个同步方法，但使用的却是不同的锁，打印的结果也是异步的。 代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OutClass</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">synchronized</span> (<span class="string">"其他的锁"</span>) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">10</span>; i++) &#123;</div><div class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">" i="</span> + i);</div><div class="line">                    <span class="keyword">try</span> &#123;</div><div class="line">                        Thread.sleep(<span class="number">100</span>);</div><div class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line"></div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span>  <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">11</span>; i&lt;=<span class="number">20</span> ;i++) &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">" i="</span> + i);</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    Thread.sleep(<span class="number">100</span>);</div><div class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于持有不同的“对象监视器”，所以打印结果就是乱序的。</p>
+<h3 id="锁对象的改变"><a href="#锁对象的改变" class="headerlink" title="锁对象的改变"></a>锁对象的改变</h3><p>在将任何数据类型作为同步锁时，需要注意的是，是否有多个线程同时持有锁对象，如果同时持有相同的锁对象，则这些线程之间就是同步的；如果分别获得锁对象，这些线程之间就是异步的。<br>只要对象不变，即使对象的属性被改变，运行的结果还是同步。</p>
+<h2 id="Volatile关键字"><a href="#Volatile关键字" class="headerlink" title="Volatile关键字"></a>Volatile关键字</h2><h3 id="关键字volatile与死循环"><a href="#关键字volatile与死循环" class="headerlink" title="关键字volatile与死循环"></a>关键字volatile与死循环</h3><p>如果不是在多继承的情况下，使用继承Thread类和实现Runnable接口在取得程序运行的结果上并没有什么太大的区别。如果一旦出现“多继承”，则用实现Runnable接口的方式来处理多线程的问题就是很有必要的。</p>
+<h3 id="解决同步死循环"><a href="#解决同步死循环" class="headerlink" title="解决同步死循环"></a>解决同步死循环</h3><p>关键字volatile的作用是强制从公共堆栈中取得变量的值，而不是从线程私有数据栈中取得变量的值。</p>
+<h3 id="解决异步死循环"><a href="#解决异步死循环" class="headerlink" title="解决异步死循环"></a>解决异步死循环</h3><p>使用volatile关键字增加了实例变量在多个线程之间的可见性。但volatile关键字最致命的缺点是不支持原子性。</p>
+<p>Synchronized和volatile对比：</p>
+<p>1） volatile是线程同步的轻量级实现，所以volatile性能肯定比synchronized要好，并且volatile只能修饰变量，而synchronized可以修饰方法，以及代码块。</p>
+<p>2） 多线程访问volatile不会发生阻塞，而synchronized会出现阻塞。</p>
+<p>3） Volatile能保证数据的可见性，但不能保证原子性；而synchronized可以保证原子性，也可以间接保证可见性，因为它会将私有内存和公共内存中的数据做同步。</p>
+<p>4） Volatile解决的是变量在多个线程之间的可见性；而synchronized关键字解决的是多个线程之间访问资源的同步性。</p>
+<h3 id="volatile非原子的特性"><a href="#volatile非原子的特性" class="headerlink" title="volatile非原子的特性"></a>volatile非原子的特性</h3><p>Volatile虽然增加了实例变量再多个线程之间的可见性，但它却不具备同步性，那么也就不具备原子性。</p>
+<p>Volatile主要使用的场合实在多个线程中可以感知实例变量被更改了，并且可以获得最新的值使用，也就是用多线程读取共享变量时可以获得最新值使用。</p>
+<h3 id="synchronized代码块有volatile同步的功能"><a href="#synchronized代码块有volatile同步的功能" class="headerlink" title="synchronized代码块有volatile同步的功能"></a>synchronized代码块有volatile同步的功能</h3><p>Synchronized可以使多个线程访问同一个资源具有同步性，而且它还具有将线程工作内存中的私有变量与公共内存中的变量同步的功能。</p>
+<p>Synchronized可以保证再同一时刻，只要一个线程可以执行某一个方法或某一个代码块。它包含两个特征：互斥性和可见性。同步synchronized不仅可以解决一个线程看到对象处于不一致的状态，还可以保证进入同步方法或者同步代码块的买个线程，都看到由一个锁保护之前所以的修改效果。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java Multi-thread Programming学习笔记（一）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Thread" scheme="http://yoursite.com/tags/Thread/"/>
+    
+  </entry>
   
   <entry>
     <title>Java多线程核心技术学习笔记（一）</title>
@@ -95,7 +187,7 @@
     <link href="http://yoursite.com/2018/05/23/%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
     <id>http://yoursite.com/2018/05/23/图解HTTP学习笔记（四）/</id>
     <published>2018-05-23T09:32:23.000Z</published>
-    <updated>2018-05-23T10:07:07.788Z</updated>
+    <updated>2018-06-12T06:31:37.725Z</updated>
     
     <content type="html"><![CDATA[<p>图解HTTP（四）<br><a id="more"></a></p>
 <h1 id="HTTP首部-续"><a href="#HTTP首部-续" class="headerlink" title="HTTP首部(续)"></a>HTTP首部(续)</h1><h2 id="响应首部字段"><a href="#响应首部字段" class="headerlink" title="响应首部字段"></a>响应首部字段</h2><h3 id="Accept-Ranges"><a href="#Accept-Ranges" class="headerlink" title="Accept-Ranges"></a>Accept-Ranges</h3><p><img src="/img/HTTP/HTTP67.png" alt="图片名称" title=""><br>用来告知客户端服务器是否能处理范围请求，以指定获取服务器端某个部分的资源。</p>
@@ -1842,250 +1934,6 @@ for(int element : a)
     
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis学习笔记（四）</title>
-    <link href="http://yoursite.com/2017/02/08/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
-    <id>http://yoursite.com/2017/02/08/Mybatis学习笔记（四）/</id>
-    <published>2017-02-08T07:02:39.000Z</published>
-    <updated>2018-05-17T05:55:59.830Z</updated>
-    
-    <content type="html"><![CDATA[<p>SqlMapConfig配置文件 &amp;&amp; 输入&amp;输出映射<br><a id="more"></a></p>
-<h2 id="SqlMapConfig"><a href="#SqlMapConfig" class="headerlink" title="SqlMapConfig"></a>SqlMapConfig</h2><p>SqlMapConfig.xml中配置的内容和顺序如下</p>
-<ul>
-<li>properties（属性）</li>
-<li>settings（全局配置参数）</li>
-<li><strong> typeAliases（类型别名) </strong></li>
-<li>typeHandlers（类型处理器）</li>
-<li><em>objectFactory（对象工厂）</em></li>
-<li><em>plugins（插件）</em></li>
-<li>environments（环境集合属性对象）<ul>
-<li>environment（环境子属性对象）<ul>
-<li>transactionManager（事务管理）</li>
-<li>dataSource（数据源）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong> mappers（映射器）</strong><br>(注：粗体是重点，斜体不常用)</li>
-</ul>
-<h3 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h3><p>将数据库连接参数单独配置在db.properties中，只需要在SqlMapConfig.xml中加载db.properties的属性值。在SqlMapConfig.xml中就不需要对数据库连接参数硬编码。<br>将数据库连接参数只配置在db.properties中。原因：方便对参数进行统一管理，其它xml可以引用该db.properties。</p>
-<pre><code>jdbc.driver=com.mysql.jdbc.Driver
-jdbc.url=jdbc:mysql://localhost:3306/mybatis001?characterEncoding=utf-8
-jdbc.username=root
-jdbc.password=
-</code></pre><p>注意： MyBatis 将按照下面的顺序(优先级)来加载属性：</p>
-<ul>
-<li>在properties元素体内定义的属性首先被读取。</li>
-<li>然后会读取properties元素中resource或url加载的属性，它会覆盖已读取的同名属性。</li>
-<li>最后读取parameterType传递的属性，它会覆盖已读取的同名属性。</li>
-</ul>
-<h3 id="settings"><a href="#settings" class="headerlink" title="settings"></a>settings</h3><p>mybatis框架在运行时可以调整一些运行参数,比如：开启二级缓存、开启延迟加载…<br>全局参数将会影响mybatis的运行行为。具体参考:<a href="http://www.mybatis.org/mybatis-3/configuration.html#settings" target="_blank" rel="external">mybatis-settings</a></p>
-<h3 id="typeAliases"><a href="#typeAliases" class="headerlink" title="typeAliases"></a>typeAliases</h3><p>在mapper.xml中，定义很多的statement，statement需要parameterType指定输入参数的类型、需要resultType指定输出结果的映射类型。<br>如果在指定类型时输入类型全路径，不方便进行开发，可以针对parameterType或resultType指定的类型定义一些别名，在mapper.xml中通过别名定义，方便开发。</p>
-<ul>
-<li>mybatis默认支持别名参考：<a href="http://www.mybatis.org/mybatis-3/configuration.html#typeAliases" target="_blank" rel="external">typeAliases</a></li>
-<li>自定义别名：</li>
-</ul>
-<pre><code>&lt;!-- 别名定义 --&gt;
-&lt;typeAliases&gt;
-
-    &lt;!-- 针对单个别名定义
-    type：类型的路径
-    alias：别名
-     --&gt;
-    &lt;!--  &lt;typeAlias alias=&quot;User&quot;  type=&quot;com.mybatis.po.User&quot;/&gt;  --&gt;
-    &lt;!-- 批量别名定义
-    指定包名，mybatis自动扫描包中的po类，自动定义别名，别名就是类名（首字母大写或小写都可以）
-    --&gt;
-    &lt;package name=&quot;com.mybatis.po&quot;/&gt;
-
-&lt;/typeAliases&gt;
-</code></pre><h3 id="typeHandlers"><a href="#typeHandlers" class="headerlink" title="typeHandlers"></a>typeHandlers</h3><p>mybatis中通过typeHandlers完成jdbc类型和java类型的转换。<br>通常情况下，mybatis提供的类型处理器满足日常的需求，不需要自定义。具体参考：<a href="http://www.mybatis.org/mybatis-3/configuration.html#typeHandlers" target="_blank" rel="external">typeHandlers</a></p>
-<h3 id="mappers"><a href="#mappers" class="headerlink" title="mappers"></a>mappers</h3><ul>
-<li>通过resource加载单个配置文件<pre><code>&lt;!--通过resource方法一次加载一个映射文件 --&gt;
-&lt;mapper resource=&quot;com/mybatis/po/User.xml&quot;/&gt;
-</code></pre></li>
-<li>通过mapper接口加载单个mapper<pre><code>&lt;!-- 通过mapper接口加载单个 映射文件
-    遵循一些规范：需要将mapper接口类名和mapper.xml映射文件名称保持一致，且在一个目录中
-    上边规范的前提是：使用的是mapper代理方法--&gt;
-&lt;mapper class=&quot;com.mybatis.mapper.UserMapper&quot;/&gt;
-</code></pre></li>
-<li>package批量加载Mapper文件<pre><code>&lt;!-- 批量加载mapper
-        指定mapper接口的包名，mybatis自动扫描包下边所有mapper接口进行加载
-        遵循一些规范：需要将mapper接口类名和mapper.xml映射文件名称保持一致，且在一个目录 中
-        上边规范的前提是：使用的是mapper代理方法
-         --&gt;
-&lt;package name=&quot;com.mybatis.mapper&quot;/&gt;
-</code></pre></li>
-</ul>
-<h2 id="输入映射"><a href="#输入映射" class="headerlink" title="输入映射"></a>输入映射</h2><p>通过parameterType指定输入参数类型，参数类型可以是基本类型，pojo，map类型</p>
-<h3 id="传递pojo的包装对象"><a href="#传递pojo的包装对象" class="headerlink" title="传递pojo的包装对象"></a>传递pojo的包装对象</h3><ul>
-<li><p>定义包装类型pojo</p>
-<pre><code>public class UserQueryVo {
-    //在这里包装所需要的查询条件
-
-    //用户查询条件
-    private UserCustom userCustom;
-
-    public UserCustom getUserCustom() {
-        return userCustom;
-    }
-
-    public void setUserCustom(UserCustom userCustom) {
-        this.userCustom = userCustom;
-    }
-
-    //可以包装其它的查询条件，订单、商品
-    //....
-}
-</code></pre><p>其中，UserCustom类继承User</p>
-<pre><code>public class UserCustom extends User{
-}
-</code></pre></li>
-<li><p>mapper.xml</p>
-<pre><code>&lt;select id=&quot;FindUserList&quot; parameterType=&quot;QueryVo&quot; resultType=&quot;user&quot;&gt;
-    &lt;!-- 取属性名称使用“.”的方式来取 --&gt;
-    select * from user where id=#{user.userId}
-&lt;/select&gt;
-</code></pre></li>
-</ul>
-<ul>
-<li><p>mapper.java</p>
-<pre><code>//用户信合查询息综
-public List&lt;User&gt; findUserList(UserQueryVo vo) throws Exception;
-</code></pre></li>
-<li><p>测试代码</p>
-<pre><code>public void testFindUserList() throws Exception {
-
-    SqlSession sqlSession = sqlSessionFactory.openSession();
-
-    //创建UserMapper对象，mybatis自动生成mapper代理对象
-    UserMapper userMapper  sqlSession.getMapper(UserMapper.class);
-
-    //创建包装对象，设置查询条件
-    UserQueryVo userQueryVo = new UserQueryVo();
-    UserCustom userCustom = new UserCustom();
-    //由于这里使用动态sql，如果不设置某个值，条件不会拼接在sql中
-    userCustom.setAge(&quot;1&quot;);
-    userCustom.setuserName(&quot;张三&quot;);
-    userQueryVo.setUserCustom(userCustom);
-    //调用userMapper的方法
-
-    List&lt;UserCustom&gt; list = userMapper.findUserList(userQueryVo);
-
-    System.out.println(list);
-}
-</code></pre></li>
-</ul>
-<h2 id="输出映射"><a href="#输出映射" class="headerlink" title="输出映射"></a>输出映射</h2><p>输出映射有两种方式：resultType，resultMap</p>
-<h3 id="resultType"><a href="#resultType" class="headerlink" title="resultType"></a>resultType</h3><p>使用resultType进行输出映射，只有查询出来的列名和pojo中的属性名一致，该列才可以映射成功。<br>如果查询出来的列名和pojo中的属性名全部不一致，没有创建pojo对象。<br>只要查询出来的列名和pojo中的属性有一个一致，就会创建pojo对象。</p>
-<ul>
-<li><p>mapper.xml</p>
-<pre><code>&lt;select id=&quot;findUserCount&quot; parameterType=&quot;com.iot.mybatis.po.UserQueryVo&quot; resultType=&quot;int&quot;&gt;
-    SELECT count(*) FROM user WHERE user.sex=#{userCustom.sex} AND user.username LIKE &apos;%${userCustom.username}%&apos;
-&lt;/select&gt;
-</code></pre></li>
-<li><p>mapper.java</p>
-<pre><code>public void testFindUserCount() throws Exception {
-
-    SqlSession sqlSession = sqlSessionFactory.openSession();
-
-    //创建UserMapper对象，mybatis自动生成mapper代理对象
-    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-
-    //创建包装对象，设置查询条件
-    UserQueryVo userQueryVo = new UserQueryVo();
-    UserCustom userCustom = new UserCustom();
-    //由于这里使用动态sql，如果不设置某个值，条件不会拼接在sql中
-    userCustom.setuserName(&quot;小&quot;);
-    userQueryVo.setUserCustom(userCustom);
-    //调用userMapper的方法
-
-    int count = userMapper.findUserCount(userQueryVo);
-
-    System.out.println(count);
-}
-</code></pre><p>查询出来的结果集只有一行且一列，可以使用简单类型进行输出映射。</p>
-</li>
-</ul>
-<h3 id="输出pojo"><a href="#输出pojo" class="headerlink" title="输出pojo"></a>输出pojo</h3><p>不管是输出的pojo单个对象还是一个列表（list中包括pojo），在mapper.xml中resultType指定的类型是一样的。</p>
-<ul>
-<li><p>输出pojo对象</p>
-<pre><code>public User findUserById(int id) throws Exception;
-</code></pre></li>
-<li><p>输出pojo对象list</p>
-<pre><code>public List&lt;User&gt; findUserByName(String name) throws Exception;
-</code></pre><p>生成的动态代理对象中是根据mapper方法的返回值类型确定是调用selectOne(返回单个对象调用)还是selectList （返回集合对象调用 ）。</p>
-</li>
-</ul>
-<h3 id="resultMap"><a href="#resultMap" class="headerlink" title="resultMap"></a>resultMap</h3><p>mybatis中使用resultMap完成高级输出结果映射。</p>
-<ul>
-<li><p>定义reusltMap</p>
-<pre><code>&lt;!-- 定义resultMap
-将SELECT id id_,username username_ FROM USER 和User类中的属性作一个映射关系
-
-type：resultMap最终映射的java对象类型,可以使用别名
-id：对resultMap的唯一标识
- --&gt;
- &lt;resultMap type=&quot;user&quot;  id=&quot;userResultMap&quot;&gt;
-    &lt;!-- 
-        id:为主键列
-        column:结果集中的主键列的列名
-        property：对应user对象中保存主键属性。
-        最终resultMap对column和property作一个映射关系 （对应关系）
-     --&gt;
-    &lt;id column=&quot;id&quot; property=&quot;userID&quot;/&gt;
-    &lt;!-- 普通列
-        result：对普通名映射定义
-         column：查询出来的列名
-         property：type指定的pojo类型中的属性名
-         最终resultMap对column和property作一个映射关系 （对应关系）
-      --&gt;
-    &lt;result column=&quot;uname&quot; property=&quot;userName&quot;/&gt;
-    &lt;result column=&quot;age&quot; property=&quot;userAge&quot;/&gt;
-&lt;/resultMap&gt;
-</code></pre></li>
-<li><p>使用resultMap作为statement的输出映射类型</p>
-<pre><code>&lt;!-- 使用resultMap进行输出映射
-    resultMap：指定定义的resultMap的id，如果这个resultMap在其它的mapper文件，前边需要加namespace
-    --&gt;
-&lt;select id=&quot;getUserResultMap&quot; resultMap=&quot;userResultMap&quot;&gt;
-    select userID, userName uname, userAge age from mybatis.user
-&lt;/select&gt;
-</code></pre></li>
-<li><p>mapper.java</p>
-<pre><code>public List&lt;User&gt; getUserResultMap() throws Exception;
-</code></pre></li>
-<li><p>测试代码</p>
-<pre><code>public void testFindUserByIdResultMap() throws Exception {
-
-    SqlSession sqlSession = sqlSessionFactory.openSession();
-
-    //创建UserMapper对象，mybatis自动生成mapper代理对象
-    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-
-    //调用userMapper的方法
-
-    List&lt;User&gt; list = userMapper.getUserResultMap();
-
-    System.out.println(list);
-</code></pre></li>
-</ul>
-<pre><code>}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;SqlMapConfig配置文件 &amp;amp;&amp;amp; 输入&amp;amp;输出映射&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Mybatis" scheme="http://yoursite.com/categories/Mybatis/"/>
-    
-    
-      <category term="Mybatis" scheme="http://yoursite.com/tags/Mybatis/"/>
     
   </entry>
   
